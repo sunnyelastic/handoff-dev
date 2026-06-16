@@ -7,92 +7,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Glossary — Elasticsearch Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-/* ── Local Space Grotesk + Space Mono ── */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Medium.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 700;
-  src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 400;
-  font-style: normal;
-  src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 400;
-  font-style: italic;
-  src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 700;
-  font-style: normal;
-  src: url('fonts/SpaceMono-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 700;
-  font-style: italic;
-  src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-weight: 400;
-  src: url('fonts/Inter-Regular.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 500;
-  src: url('fonts/Inter-Medium.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 600;
-  src: url('fonts/Inter-SemiBold.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 700;
-  src: url('fonts/Inter-Bold.otf') format('opentype');
-  font-display: swap;
-}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -101,15 +18,15 @@
   /* ── Elastic Design System Tokens ── */
   --color-bg-white:       #FFFFFF;
   --color-bg-light-gray:  #F5F7FA;
-  --color-text-dark-ink:  #1C1E23;
-  --color-text-ink:       #343741;
-  --color-text-subdued:   #69707D;
+  --color-text-dark-ink:  #111010;
+  --color-text-ink:       #111010;
+  --color-text-subdued:   #111010;
   --color-border: var(--black);
   --color-elastic-blue:   #0B64DD;
   --color-teal:           #00BFB3;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body:    'Inter', -apple-system, sans-serif;
-  --font-mono:    'Roboto Mono', 'Courier New', monospace;
+  --font-mono:    'Space Grotesk', sans-serif;
 
   /* ── Spacing — factor of 8 ── */
   --space-1:   4px;
@@ -164,12 +81,12 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 8px;
   margin: 0 0 var(--space-8);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-text-ink);
+  color: #111010;
   text-decoration: none;
   cursor: pointer;
   background: none;
@@ -218,18 +135,18 @@ a { text-decoration: none; color: inherit; }
 }
 .meta-group { display: flex; flex-direction: column; gap: 10px; }
 .meta-label {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-ink);
+  color: #111010;
 }
 .meta-value {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.04em;
   color: var(--black);
@@ -245,7 +162,7 @@ a { text-decoration: none; color: inherit; }
   padding: 0 12px;
   border: 1px solid var(--black);
   background: transparent;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.02em;
   color: var(--black);
@@ -275,20 +192,20 @@ a { text-decoration: none; color: inherit; }
 .nav-items { list-style: none; padding: 0; margin: 0; }
 .nav-items li { padding: 4px 0; }
 .nav-items a {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   line-height: 1.5;
-  color: var(--color-text-ink);
+  color: #111010;
   text-decoration: none;
   transition: color 0.15s;
 }
 .nav-items a:hover { color: var(--black); }
 .nav-items a.is-active { color: var(--color-elastic-blue); font-weight: 600; }
 .nav-items details summary {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   line-height: 1.5;
-  color: var(--color-text-ink);
+  color: #111010;
   cursor: pointer;
   list-style: none;
   transition: color 0.15s;
@@ -299,7 +216,7 @@ a { text-decoration: none; color: inherit; }
 .nav-items details summary::after { content: " ▾"; }
 .nav-items details:not([open]) summary::after { content: " ▸"; }
 .nav-items details ul { list-style: none; padding: 8px 0 0 16px; margin: 0; }
-.nav-items details ul li a { font-size: 12px; color: var(--color-text-subdued); }
+.nav-items details ul li a { font-size: 12px; color: #111010; }
 
 /* Right: Article content */
 .article-page__content { min-width: 0; }
@@ -314,13 +231,13 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 32px;
 }
 .article-page__article-head .meta {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #595959;
+  color: #111010;
 }
-.article-page__article-head .meta::before { content: "/ "; color: #888; }
+.article-page__article-head .meta::before { content: "/ "; color: #111010; }
 .article-page__expand-ico {
   width: 16px; height: 16px;
   display: inline-block;
@@ -363,7 +280,7 @@ a { text-decoration: none; color: inherit; }
   margin: 32px 0 12px;
 }
 .article-page__content code {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.92em;
   background: var(--cream);
   padding: 2px 6px;
@@ -427,7 +344,7 @@ footer {
   max-width: 320px;
 }
 .footer-connect-label {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -450,7 +367,7 @@ footer {
 .footer-social-link:hover { border-color: rgba(255,255,255,0.6); color: var(--white, #FAFAF8); }
 .footer-social-link svg { width: 16px; height: 16px; }
 .footer-col-label {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -502,7 +419,7 @@ footer {
 .footer-mid-links a:hover { color: var(--white, #FAFAF8); }
 .footer-mid-links a svg { width: 15px; height: 15px; opacity: 0.6; }
 .footer-copyright {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
   color: rgba(255,255,255,0.35);
   letter-spacing: 0.03em;
@@ -531,14 +448,12 @@ footer {
   .footer-inner { padding: 32px 24px 0; }
 }
 
-
-
 /* Author chip — person icon + name, no border (our author style) */
 .author-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   letter-spacing: 0.02em;
   color: var(--black);
@@ -549,7 +464,7 @@ footer {
   flex-shrink: 0;
   border-radius: 2px;
   background: #E8E9EC;
-  color: #595959;
+  color: #111010;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -581,7 +496,6 @@ footer {
 .share-icon-btn svg { width: 16px; height: 16px; }
 .share-icon-btn:hover { background: var(--black); color: var(--white); }
 
-
 /* Jump-to header — mirrors the Article header (label + corner icon + bottom rule) */
 .article-page__nav-head {
   display: flex;
@@ -594,34 +508,34 @@ footer {
 .article-page__nav-head .meta,
 .article-page__article-head .meta,
 .article-page__meta-label .meta {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-ink);
+  color: #111010;
 }
 .article-page__nav-head .meta::before,
 .article-page__article-head .meta::before,
 .article-page__meta-label .meta::before {
   content: "/ ";
-  color: var(--color-text-subdued);
+  color: #111010;
 }
 
-/* Share label inside the aside — Space Mono Caption */
+/* Share label inside the aside — Space Grotesk Caption */
 .nav-share__label {
   display: block;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-ink);
+  color: #111010;
   padding-bottom: 12px;
   border-bottom: 2px dotted var(--black);
   margin-bottom: var(--space-4);
 }
-.nav-share__label::before { content: "/ "; color: var(--color-text-subdued); }
+.nav-share__label::before { content: "/ "; color: #111010; }
 
 /* ===== PRIMARY NAV (Figma 2311:16127) ===== */
 .primary-nav {
@@ -713,7 +627,7 @@ footer {
   font-weight: 500;
   font-size: 14px;
   line-height: 18.2px;
-  color: #373A45;
+  color: #111010;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -750,7 +664,7 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #1D1F26;
+  color: #111010;
   letter-spacing: 0.08em;
 }
 .primary-nav__tabs {
@@ -763,7 +677,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 20.8px;
-  color: #1D1F26;
+  color: #111010;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -790,7 +704,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-  color: #1D1F26;
+  color: #111010;
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -930,7 +844,7 @@ footer {
 
 /* Section sub-tabs */
 .secondary-nav__section {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--black, #111010);
   position: relative;
   background: transparent;
 }
@@ -975,8 +889,6 @@ footer {
 }
 /* ===== END SECONDARY NAV ===== */
 
-
-
 /* ── Prompt library left nav: dropdown + prompt list spacing ── */
 .prompt-nav-filter {
   margin: var(--space-3, 12px) 0 var(--space-5, 20px);
@@ -1013,7 +925,7 @@ footer {
   padding: 0 var(--space-4);
   border: 1px solid var(--black);
   background: var(--white);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1048,7 +960,7 @@ footer {
 .blog-filter-opt {
   display: block;
   padding: var(--space-2) var(--space-4);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1059,9 +971,6 @@ footer {
 }
 .blog-filter-opt:last-child { border-bottom: none; }
 .blog-filter-opt:hover { background: var(--black); color: var(--white); }
-
-
-
 
 /* ── Filter selection state — X clear button appears when a filter is active ── */
 .blog-filter-clear {
@@ -1154,7 +1063,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--black, #111010);
@@ -1166,7 +1075,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 .secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
 .secondary-nav__menu-num {
   font-size: 11px;
-  color: #595959;
+  color: #111010;
   letter-spacing: 0.04em;
   font-weight: 500;
 }
@@ -1209,7 +1118,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--black, #111010);
+  color: #111010;
   max-width: 720px;
   margin: 0;
 }
@@ -1282,7 +1191,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 .glossary-az__letter:hover::after,
 .glossary-az__letter.is-active::after { background: var(--black, #111010); }
 
-/* Sidebar — tile + nav links (Space Mono uppercase, matching .nav-items pattern) */
+/* Sidebar — tile + nav links (Space Grotesk uppercase, matching .nav-items pattern) */
 .glossary-nav .glossary-tile {
   width: 68px;
   height: 68px;
@@ -1297,7 +1206,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   margin-bottom: var(--space-6, 24px);
 }
 .glossary-nav .nav-items a {
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1416,9 +1325,9 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
     </div>
     <div class="secondary-nav__bar">
       <a class="secondary-nav__section" href="sunny-elastic-results.html">Blog</a>
-      <a class="secondary-nav__section" href="sunny-elastic-tutorials.html">Tutorial</a>
-      <a class="secondary-nav__section is-active" href="sunny-elastic-examples.html">Examples</a>
-      <a class="secondary-nav__section" href="sunny-elastic-integrations.html">Integration</a>
+      <a class="secondary-nav__section" href="sunny-elastic-home.html#tutorial">Tutorial</a>
+      <a class="secondary-nav__section is-active" href="sunny-elastic-home.html#examples">Examples</a>
+      <a class="secondary-nav__section" href="sunny-elastic-home.html#integration">Integration</a>
       <a class="secondary-nav__section secondary-nav__github" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="external-icon"><path d="M3 2H10V9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 2L3 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></a>
     </div>
   </div>
@@ -1501,7 +1410,6 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   </div>
 </main>
 
-
 <!-- FOOTER -->
 <footer>
 <div class="footer-inner">
@@ -1518,7 +1426,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
     </div>
     <div>
       <div class="footer-col-label">Menu</div>
-      <div class="footer-col-links"><a href="sunny-elastic-tutorials.html">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-integrations.html">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
+      <div class="footer-col-links"><a href="sunny-elastic-home.html#tutorial">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-home.html#integration">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
     </div>
     <div>
       <div class="footer-col-label">Additional Resources</div>
