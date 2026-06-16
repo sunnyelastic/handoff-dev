@@ -8,7 +8,8 @@
   <meta http-equiv="Expires" content="0">
   <title>Prompt Library — Examples</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,15 +19,15 @@
   /* ── Elastic Design System Tokens ── */
   --color-bg-white:       #FFFFFF;
   --color-bg-light-gray:  #F5F7FA;
-  --color-text-dark-ink:  #111010;
-  --color-text-ink:       #111010;
-  --color-text-subdued:   #111010;
+  --color-text-dark-ink:  #1C1E23;
+  --color-text-ink:       #343741;
+  --color-text-subdued:   #69707D;
   --color-border: var(--black);
   --color-elastic-blue:   #0B64DD;
   --color-teal:           #00BFB3;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body:    'Inter', -apple-system, sans-serif;
-  --font-mono:    'Space Grotesk', sans-serif;
+  --font-mono:    'Roboto Mono', 'Courier New', monospace;
 
   /* ── Spacing — factor of 8 ── */
   --space-1:   4px;
@@ -81,12 +82,12 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 8px;
   margin: 0 0 var(--space-8);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #111010;
+  color: var(--color-text-ink);
   text-decoration: none;
   cursor: pointer;
   background: none;
@@ -135,18 +136,18 @@ a { text-decoration: none; color: inherit; }
 }
 .meta-group { display: flex; flex-direction: column; gap: 10px; }
 .meta-label {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #111010;
+  color: var(--color-text-ink);
 }
 .meta-value {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.04em;
   color: var(--black);
@@ -162,7 +163,7 @@ a { text-decoration: none; color: inherit; }
   padding: 0 12px;
   border: 1px solid var(--black);
   background: transparent;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.02em;
   color: var(--black);
@@ -192,20 +193,20 @@ a { text-decoration: none; color: inherit; }
 .nav-items { list-style: none; padding: 0; margin: 0; }
 .nav-items li { padding: 4px 0; }
 .nav-items a {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   line-height: 1.5;
-  color: #111010;
+  color: var(--color-text-ink);
   text-decoration: none;
   transition: color 0.15s;
 }
 .nav-items a:hover { color: var(--black); }
 .nav-items a.is-active { color: var(--color-elastic-blue); font-weight: 600; }
 .nav-items details summary {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   line-height: 1.5;
-  color: #111010;
+  color: var(--color-text-ink);
   cursor: pointer;
   list-style: none;
   transition: color 0.15s;
@@ -216,7 +217,7 @@ a { text-decoration: none; color: inherit; }
 .nav-items details summary::after { content: " ▾"; }
 .nav-items details:not([open]) summary::after { content: " ▸"; }
 .nav-items details ul { list-style: none; padding: 8px 0 0 16px; margin: 0; }
-.nav-items details ul li a { font-size: 12px; color: #111010; }
+.nav-items details ul li a { font-size: 12px; color: var(--color-text-subdued); }
 
 /* Right: Article content */
 .article-page__content { min-width: 0; }
@@ -231,13 +232,13 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 32px;
 }
 .article-page__article-head .meta {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;           /* Caption */
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #111010;
+  color: #595959;
 }
-.article-page__article-head .meta::before { content: "/ "; color: #111010; }
+.article-page__article-head .meta::before { content: "/ "; color: #888; }
 .article-page__expand-ico {
   width: 16px; height: 16px;
   display: inline-block;
@@ -256,8 +257,8 @@ a { text-decoration: none; color: inherit; }
 
 .article-page__content p {
   font-family: var(--font-body);
-  font-size: 14px;           /* P3 */
-  line-height: 1.5;
+  font-size: 16px;           /* P3 */
+  line-height: 1.6;
   color: var(--black);
   margin: 0 0 24px;
 }
@@ -280,7 +281,7 @@ a { text-decoration: none; color: inherit; }
   margin: 32px 0 12px;
 }
 .article-page__content code {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 0.92em;
   background: var(--cream);
   padding: 2px 6px;
@@ -344,7 +345,7 @@ footer {
   max-width: 320px;
 }
 .footer-connect-label {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', monospace;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -367,7 +368,7 @@ footer {
 .footer-social-link:hover { border-color: rgba(255,255,255,0.6); color: var(--white, #FAFAF8); }
 .footer-social-link svg { width: 16px; height: 16px; }
 .footer-col-label {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', monospace;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -419,7 +420,7 @@ footer {
 .footer-mid-links a:hover { color: var(--white, #FAFAF8); }
 .footer-mid-links a svg { width: 15px; height: 15px; opacity: 0.6; }
 .footer-copyright {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', monospace;
   font-size: 11px;
   color: rgba(255,255,255,0.35);
   letter-spacing: 0.03em;
@@ -448,12 +449,14 @@ footer {
   .footer-inner { padding: 32px 24px 0; }
 }
 
+
+
 /* Author chip — person icon + name, no border (our author style) */
 .author-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   letter-spacing: 0.02em;
   color: var(--black);
@@ -464,7 +467,7 @@ footer {
   flex-shrink: 0;
   border-radius: 2px;
   background: #E8E9EC;
-  color: #111010;
+  color: #595959;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -496,6 +499,7 @@ footer {
 .share-icon-btn svg { width: 16px; height: 16px; }
 .share-icon-btn:hover { background: var(--black); color: var(--white); }
 
+
 /* Jump-to header — mirrors the Article header (label + corner icon + bottom rule) */
 .article-page__nav-head {
   display: flex;
@@ -508,34 +512,34 @@ footer {
 .article-page__nav-head .meta,
 .article-page__article-head .meta,
 .article-page__meta-label .meta {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #111010;
+  color: var(--color-text-ink);
 }
 .article-page__nav-head .meta::before,
 .article-page__article-head .meta::before,
 .article-page__meta-label .meta::before {
   content: "/ ";
-  color: #111010;
+  color: var(--color-text-subdued);
 }
 
-/* Share label inside the aside — Space Grotesk Caption */
+/* Share label inside the aside — Space Mono Caption */
 .nav-share__label {
   display: block;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #111010;
+  color: var(--color-text-ink);
   padding-bottom: 12px;
   border-bottom: 2px dotted var(--black);
   margin-bottom: var(--space-4);
 }
-.nav-share__label::before { content: "/ "; color: #111010; }
+.nav-share__label::before { content: "/ "; color: var(--color-text-subdued); }
 
 /* ===== PRIMARY NAV (Figma 2311:16127) ===== */
 .primary-nav {
@@ -627,7 +631,7 @@ footer {
   font-weight: 500;
   font-size: 14px;
   line-height: 18.2px;
-  color: #111010;
+  color: #373A45;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -664,7 +668,7 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #111010;
+  color: #1D1F26;
   letter-spacing: 0.08em;
 }
 .primary-nav__tabs {
@@ -677,7 +681,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 20.8px;
-  color: #111010;
+  color: #1D1F26;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -704,7 +708,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-  color: #111010;
+  color: #1D1F26;
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -844,7 +848,7 @@ footer {
 
 /* Section sub-tabs */
 .secondary-nav__section {
-  color: var(--black, #111010);
+  color: rgba(0, 0, 0, 0.7);
   position: relative;
   background: transparent;
 }
@@ -889,6 +893,8 @@ footer {
 }
 /* ===== END SECONDARY NAV ===== */
 
+
+
 /* ── Prompt library left nav: dropdown + prompt list spacing ── */
 .prompt-nav-filter {
   margin: var(--space-3, 12px) 0 var(--space-5, 20px);
@@ -925,7 +931,7 @@ footer {
   padding: 0 var(--space-4);
   border: 1px solid var(--black);
   background: var(--white);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -960,7 +966,7 @@ footer {
 .blog-filter-opt {
   display: block;
   padding: var(--space-2) var(--space-4);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -971,6 +977,9 @@ footer {
 }
 .blog-filter-opt:last-child { border-bottom: none; }
 .blog-filter-opt:hover { background: var(--black); color: var(--white); }
+
+
+
 
 /* ── Filter selection state — X clear button appears when a filter is active ── */
 .blog-filter-clear {
@@ -1063,7 +1072,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--black, #111010);
@@ -1075,7 +1084,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 .secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
 .secondary-nav__menu-num {
   font-size: 11px;
-  color: #111010;
+  color: #595959;
   letter-spacing: 0.04em;
   font-weight: 500;
 }
@@ -1100,6 +1109,359 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 </style>
 </head>
 <body>
+<!-- Usage: <svg class="labs-icon"><use href="#icon-wave"/></svg>  + CSS: .labs-icon { width: 24px; height: 24px; color: #48EFCF; } -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+
+  <!-- 1. WAVE (hand) — 2313:4314 -->
+  <symbol id="icon-wave" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 2. DOWNLOAD / INSTALL — 2311:4112 -->
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="12" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 3. CODE BRACKETS — 2311:4151 -->
+  <symbol id="icon-code" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 4. HEART (outline) — 2313:4286 -->
+  <symbol id="icon-heart-outline" viewBox="0 0 24 24">
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 5. DOCUMENT / LIST — 2316:7129 -->
+  <symbol id="icon-doc" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="18" fill="currentColor"/>
+    <rect x="6" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="3" width="3" height="18" fill="currentColor"/>
+    <rect x="3" y="18" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="9" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="9" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 6. PIXEL SPARK / CLUSTER — 2334:4832 -->
+  <symbol id="icon-spark" viewBox="0 0 24 24">
+    <rect x="9" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="21" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 7. SINGLE DOT — 2346:3577 -->
+  <symbol id="icon-dot" viewBox="0 0 24 24">
+    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+  </symbol>
+
+  <!-- 8. ARROW LEFT — 2424:10954 -->
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+    <rect x="6" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="12" height="6" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 9. PLUG — 2346:3572 -->
+  <symbol id="icon-mouse" viewBox="0 0 24 24">
+    <rect x="9" y="0" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="12" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 10. ARROW RIGHT — 2424:10972 -->
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <rect x="3" y="9" width="12" height="6" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 11. DIAMOND — 2422:9229 -->
+  <symbol id="icon-diamond" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 12. SIGNAL / WAVES — 2335:4862 -->
+  <symbol id="icon-signal" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 13. SLIDERS / SETTINGS — 2311:4268 -->
+  <symbol id="icon-sliders" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="0" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="15" width="18" height="3" fill="currentColor"/>
+    <rect x="9" y="12" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="21" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 14. COFFEE CUP — 2311:4255 -->
+  <symbol id="icon-coffee" viewBox="0 0 24 24">
+    <rect x="6" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="9" width="9" height="9" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="15" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 15. ROBOT / CHAT — 2311:4208 -->
+  <symbol id="icon-robot" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 16. MAGNIFYING GLASS — 2311:4181 -->
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="9" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="15" width="9" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 17. FLASK / BEAKER — 2315:6860 -->
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="6" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="15" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="6" fill="currentColor"/>
+    <rect x="3" y="21" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 18. HEART FILLED — 2315:6884 -->
+  <symbol id="icon-heart" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 19. STAR / COMPASS — 2313:4993 -->
+  <symbol id="icon-star" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 20. PLUG SOCKET (2 prong) — 2316:7103 -->
+  <symbol id="icon-plug" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="6" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="6" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="18" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 21. STACKED FRAMES — 2334:4797 -->
+  <symbol id="icon-stack" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="12" fill="currentColor"/>
+    <rect x="9" y="18" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="12" fill="currentColor"/>
+  </symbol>
+
+  <!-- 22. TINY PIXEL — 2346:3351 -->
+  <symbol id="icon-pixel-sm" viewBox="0 0 24 24">
+    <rect x="10" y="10" width="4" height="4" fill="currentColor"/>
+  </symbol>
+
+  <!-- 23. THIN BAR — 2346:3361 -->
+  <symbol id="icon-bar" viewBox="0 0 24 24">
+    <rect x="6" y="11" width="12" height="2" fill="currentColor"/>
+  </symbol>
+
+  <!-- 24. CHECKER / GRID — 2346:3190 -->
+  <symbol id="icon-grid" viewBox="0 0 24 24">
+    <rect x="0" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="21" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 25. CROWN / BADGE — 2417:8999 -->
+  <symbol id="icon-crown" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+</svg>
+
 
 <!-- ============== PRIMARY NAV (Figma 2311:16127) ============== -->
 <header class="primary-nav" aria-label="Primary navigation">
@@ -1179,9 +1541,9 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
     </div>
     <div class="secondary-nav__bar">
       <a class="secondary-nav__section" href="sunny-elastic-results.html">Blog</a>
-      <a class="secondary-nav__section" href="sunny-elastic-home.html#tutorial">Tutorial</a>
-      <a class="secondary-nav__section is-active" href="sunny-elastic-home.html#examples">Examples</a>
-      <a class="secondary-nav__section" href="sunny-elastic-home.html#integration">Integration</a>
+      <a class="secondary-nav__section" href="sunny-elastic-tutorials.html">Tutorial</a>
+      <a class="secondary-nav__section is-active" href="sunny-elastic-examples.html">Examples</a>
+      <a class="secondary-nav__section" href="sunny-elastic-integrations.html">Integrations</a>
       <a class="secondary-nav__section secondary-nav__github" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="external-icon"><path d="M3 2H10V9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 2L3 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></a>
     </div>
   </div>
@@ -1302,6 +1664,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 
 </main>
 
+
 <!-- FOOTER -->
 <footer>
 <div class="footer-inner">
@@ -1318,7 +1681,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
     </div>
     <div>
       <div class="footer-col-label">Menu</div>
-      <div class="footer-col-links"><a href="sunny-elastic-home.html#tutorial">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-home.html#integration">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
+      <div class="footer-col-links"><a href="sunny-elastic-tutorials.html">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-integrations.html">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
     </div>
     <div>
       <div class="footer-col-label">Additional Resources</div>
@@ -1447,4 +1810,3 @@ function toggleExamplesDropdown(btn) { /* hover-driven now */ }
 </script>
 </body>
 </html>
-
