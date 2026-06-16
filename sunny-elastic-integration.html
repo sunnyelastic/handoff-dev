@@ -1,1 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Cohere — Integrations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+
+  /* ── Elastic Design System Tokens ── */
+  --color-bg-white:       #FFFFFF;
+  --color-bg-light-gray:  #F5F7FA;
+  --color-text-dark-ink:  #1C1E23;
+  --color-text-ink:       #343741;
+  --color-text-subdued:   #69707D;
+  --color-border: var(--black);
+  --color-elastic-blue:   #0B64DD;
+  --color-teal:           #00BFB3;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'Roboto Mono', 'Courier New', monospace;
+
+  /* ── Spacing — factor of 8 ── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ── Grid — 12 col, 96px margin, 32px gutter ── */
+  --grid-margin:  96px;
+  --grid-gutter:  32px;
+
+  /* ── Page aliases ── */
+  --black:       #111010;
+  --white:       #FAFAF8;
+  --cream:       #F5F7FA;
+  --silver:      #D3DAE6;
+  --warm-beige:  #F0BF75;
+  --border:      #D3DAE6;
+  --page-pad:    var(--grid-margin);
+}
+
+/* ===== RESET / BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ===== ARTICLE PAGE LAYOUT ===== */
+.article-page {
+  max-width: 1240px;           /* ~200px smaller than 1440 */
+  margin: 0 auto;
+  padding: 64px var(--grid-margin, 96px) 96px 0;
+  position: relative;
+}
+
+/* Back button */
+.article-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--space-8);
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.article-page__back:hover { color: var(--black); }
+.article-page__back svg { width: 14px; height: 14px; }
+
+/* Head block */
+.article-page__head { margin-bottom: 48px; }   /* 64px */
+.article-page__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;            /* H1 */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin: 0 0 24px;
+}
+.article-page__lede {
+  font-family: var(--font-body);
+  font-size: 18px;            /* P2 */
+  line-height: 1.5;
+  color: var(--black);
+  max-width: 880px;
+  margin: 0 0 var(--space-12);
+}
+
+/* Meta data label — same structure as Article / Jump-to */
+.article-page__meta-label {
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+
+/* Meta row — 4 items in ONE row */
+.article-page__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-24, 96px);
+  row-gap: var(--space-8);
+  align-items: start;
+  padding-top: 24px;
+  border-top: 2px dotted var(--black);
+  margin-top: 32px;
+}
+.meta-group { display: flex; flex-direction: column; gap: 10px; }
+.meta-label {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+}
+.meta-value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.04em;
+  color: var(--black);
+  align-items: center;
+}
+
+/* Pills (tags + share buttons) — our tag-chip style */
+.tag-pill, .meta-value .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  padding: 0 12px;
+  border: 1px solid var(--black);
+  background: transparent;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.02em;
+  color: var(--black);
+  cursor: pointer;
+  text-transform: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tag-pill:hover, .meta-value .pill:hover {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+.meta-icon-pill { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Body two-column layout */
+.article-page__body {
+  display: grid;
+  grid-template-columns: 200px 1fr;   /* Article column wider */
+  column-gap: var(--space-24, 96px);     /* 96px between nav and article */
+  align-items: start;
+  margin-top: var(--space-8);         /* 32px — tighter from meta */
+}
+
+/* Left: Jump-to nav */
+.article-page__nav { position: sticky; top: 80px; }
+/* nav-group__head--static removed — replaced by .article-page__nav-head wrapper */
+.nav-items { list-style: none; padding: 0; margin: 0; }
+.nav-items li { padding: 4px 0; }
+.nav-items a {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-items a:hover { color: var(--black); }
+.nav-items a.is-active { color: var(--color-elastic-blue); font-weight: 600; }
+.nav-items details summary {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-ink);
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.15s;
+}
+.nav-items details summary:hover { color: var(--black); }
+.nav-items details summary.is-active { color: var(--color-elastic-blue); font-weight: 600; }
+.nav-items details summary::-webkit-details-marker { display: none; }
+.nav-items details summary::after { content: " ▾"; }
+.nav-items details:not([open]) summary::after { content: " ▸"; }
+.nav-items details ul { list-style: none; padding: 8px 0 0 16px; margin: 0; }
+.nav-items details ul li a { font-size: 12px; color: var(--color-text-subdued); }
+
+/* Right: Article content */
+.article-page__content { min-width: 0; }
+.article-page__content h2, .article-page__content h3 { scroll-margin-top: 40px; }
+
+.article-page__article-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+.article-page__article-head .meta {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #595959;
+}
+.article-page__article-head .meta::before { content: "/ "; color: #888; }
+.article-page__expand-ico {
+  width: 16px; height: 16px;
+  display: inline-block;
+  border-top: 1px solid var(--black);
+  border-right: 1px solid var(--black);
+  position: relative;
+}
+.article-page__expand-ico::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: -1px;
+  width: 8px; height: 8px;
+  border-bottom: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+}
+
+.article-page__content p {
+  font-family: var(--font-body);
+  font-size: 16px;           /* P3 */
+  line-height: 1.6;
+  color: var(--black);
+  margin: 0 0 24px;
+}
+.article-page__content h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 36px;           /* H4 */
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: var(--black);
+  margin: 48px 0 24px;
+}
+.article-page__content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;           /* H5 */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin: 32px 0 12px;
+}
+.article-page__content code {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 0.92em;
+  background: var(--cream);
+  padding: 2px 6px;
+  border: 1px solid var(--silver);
+}
+.article-page__content a {
+  color: var(--black);
+  text-decoration: underline;
+  text-decoration-color: var(--color-elastic-blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.article-page__content strong { font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .article-page__title { font-size: 48px; }  /* H1 mobile */
+  .article-page__body { grid-template-columns: 1fr; row-gap: 32px; }
+  .article-page__nav { position: static; }
+  .article-page__meta { grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black, #111010);
+  color: var(--white, #FAFAF8);
+  margin-top: 120px;
+}
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 96px 0;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  align-items: start;
+}
+.footer-brand { max-width: 340px; }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  color: var(--white, #FAFAF8);
+}
+.footer-logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.footer-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  max-width: 320px;
+}
+.footer-connect-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.footer-social-link:hover { border-color: rgba(255,255,255,0.6); color: var(--white, #FAFAF8); }
+.footer-social-link svg { width: 16px; height: 16px; }
+.footer-col-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 24px;
+}
+.footer-col-links { display: flex; flex-direction: column; }
+.footer-col-links a {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.15s;
+}
+.footer-col-links a:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.footer-col-links a:hover { color: var(--white, #FAFAF8); }
+.footer-col-links .ext-icon {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-left: 5px;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+.footer-mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-mid-links { display: flex; align-items: center; gap: 24px; }
+.footer-mid-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-mid-links a:hover { color: var(--white, #FAFAF8); }
+.footer-mid-links a svg { width: 15px; height: 15px; opacity: 0.6; }
+.footer-copyright {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.03em;
+}
+.footer-legal { padding: 24px 0 48px; }
+.footer-legal-links { display: flex; gap: 24px; margin-bottom: 16px; }
+.footer-legal-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+.footer-legal-links a:hover { color: rgba(255,255,255,0.7); }
+.footer-legal-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.28);
+  max-width: 960px;
+}
+.footer-legal-text a { color: rgba(255,255,255,0.4); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-inner { padding: 32px 24px 0; }
+}
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-16) var(--grid-margin) var(--space-12);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-16);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+  letter-spacing: -0.02em;
+}
+.footer-subscribe-label {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.footer-form {
+  display: flex;
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-bottom: 12px;
+}
+.footer-input {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.footer-input::placeholder { color: rgba(255,255,255,0.35); }
+.footer-btn {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  padding: 12px 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.footer-small { font-size: 11px; color: #9e9e9e; }
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-12);
+}
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+.footer-col a {
+  display: block;
+  font-size: 12px;
+  color: #909090;
+  margin-bottom: 10px;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+}
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { color: #9e9e9e; transition: color 0.15s; }
+.footer-bottom-links a:hover { color: var(--white); }
+
+
+/* Author chip — person icon + name, no border (our author style) */
+.author-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--black);
+}
+.author-ico {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: #E8E9EC;
+  color: #595959;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-ico svg { width: 14px; height: 14px; }
+
+/* Share block under Jump-to nav */
+.nav-share { margin-top: var(--space-12); }
+.nav-share__btns {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.share-icon-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--black);
+  color: var(--black);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.share-icon-btn svg { width: 16px; height: 16px; }
+.share-icon-btn:hover { background: var(--black); color: var(--white); }
+
+
+/* Jump-to header — mirrors the Article header (label + corner icon + bottom rule) */
+.article-page__nav-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+.article-page__nav-head .meta,
+.article-page__article-head .meta,
+.article-page__meta-label .meta {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+}
+.article-page__nav-head .meta::before,
+.article-page__article-head .meta::before,
+.article-page__meta-label .meta::before {
+  content: "/ ";
+  color: var(--color-text-subdued);
+}
+
+/* Share label inside the aside — Space Mono Caption */
+.nav-share__label {
+  display: block;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: var(--space-4);
+}
+.nav-share__label::before { content: "/ "; color: var(--color-text-subdued); }
+
+/* ===== PRIMARY NAV (Figma 2311:16127) ===== */
+.primary-nav {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E4E4E4;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.primary-nav__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--grid-margin, 96px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.primary-nav__row--utility {
+  border-bottom: 1px solid #E4E4E4;
+}
+.primary-nav__row--utility .primary-nav__container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.primary-nav__row--main .primary-nav__container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* ── Utility row left: NEW badge + announce + read more ── */
+.primary-nav__announce {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.primary-nav__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #DD0A73;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15.6px;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.primary-nav__badge-star {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.primary-nav__announce-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  background: linear-gradient(90deg, #373A45 0%, #373A45 86%, #474B57 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.primary-nav__readmore {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #0B64DD;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.primary-nav__readmore:hover { text-decoration: underline; }
+
+/* ── Utility row right: links ── */
+.primary-nav__utility-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.primary-nav__utility-links a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #373A45;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.primary-nav__utility-links a:hover { color: #0B64DD; }
+.primary-nav__utility-links a svg { width: 16px; height: 16px; }
+.primary-nav__util-divider {
+  width: 1px;
+  height: 18px;
+  background: #474B57;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+/* ── Main row left: logo + tabs ── */
+.primary-nav__brand-tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+.primary-nav__logo {
+  width: 120px;          /* horizontal logo space — replace bg with logo image when ready */
+  height: 40px;
+  background: #E6ECF3;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1D1F26;
+  letter-spacing: 0.08em;
+}
+.primary-nav__tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.primary-nav__tabs a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: #1D1F26;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.primary-nav__tabs a:hover { color: #0B64DD; }
+.primary-nav__tabs a.is-active { color: #0B64DD; }
+
+/* ── Main row right: CTAs ── */
+.primary-nav__cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.primary-nav__search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  background: #FFFFFF;
+  border: 2px solid #F04E98;
+  border-radius: 22px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #1D1F26;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.primary-nav__search-btn svg { width: 18px; height: 18px; }
+.primary-nav__search-btn:hover { background: #FFF5F8; }
+
+.primary-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.primary-nav__cta--filled {
+  background: #0B64DD;
+  border: 1px solid #0B64DD;
+  color: #FFFFFF;
+}
+.primary-nav__cta--filled svg { width: 16px; height: 16px; stroke: currentColor; }
+.primary-nav__cta--filled:hover { background: #0950B0; border-color: #0950B0; }
+.primary-nav__cta--outline {
+  background: #FFFFFF;
+  border: 1px solid #0B64DD;
+  color: #0B64DD;
+}
+.primary-nav__cta--outline:hover { background: #F2F7FE; }
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .primary-nav__cta--outline { display: none; }
+  .primary-nav__announce-text { display: none; }
+}
+@media (max-width: 1024px) {
+  .primary-nav__tabs a:nth-child(n+4) { display: none; }
+  .primary-nav__utility-links a span { display: none; }
+}
+@media (max-width: 768px) {
+  .primary-nav__container { padding: 0 24px; }
+  .primary-nav__tabs { display: none; }
+  .primary-nav__readmore { display: none; }
+  .primary-nav__cta--filled { padding: 0 12px; font-size: 14px; }
+  .primary-nav__search-btn { padding: 0 12px; }
+  .primary-nav__search-btn span { display: none; }
+}
+/* ===== END PRIMARY NAV ===== */
+
+/* ===== SECONDARY NAV (Sticky Glass) ===== */
+.secondary-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  /* parent is transparent — only the bar inside has the white + border */
+}
+.secondary-nav__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--grid-margin, 96px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.secondary-nav__bar {
+  display: inline-flex;                                    /* hug the items, not full width */
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 12px;
+  /* Glass effect on the bar only — frosted, not solid */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: saturate(180%) blur(28px);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  pointer-events: auto;  /* re-enable clicks on the bar itself */
+  font-family: 'Space Grotesk', var(--font-display, sans-serif);
+}
+.secondary-nav__bar::-webkit-scrollbar { display: none; }
+
+.secondary-nav__lab,
+.secondary-nav__section {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  font-family: 'Space Grotesk', var(--font-display, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--black, #111010);
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Lab tab brand-color hovers (and active state) */
+.secondary-nav__lab--es:hover,
+.secondary-nav__lab--es.is-active {
+  background: #0B64DD;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--obs:hover {
+  background: #FA744E;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--sec:hover {
+  background: #DD0A73;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--news:hover {
+  background: #111010;
+  color: #FFFFFF;
+}
+
+/* Divider between lab tabs and section sub-tabs */
+.secondary-nav__divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.18);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* Section sub-tabs */
+.secondary-nav__section {
+  color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  background: transparent;
+}
+.secondary-nav__section::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 1.5px;
+  background: transparent;
+  transition: background 0.15s;
+}
+.secondary-nav__section:hover {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section:hover::before { background: var(--black, #111010); }
+.secondary-nav__section.is-active {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section.is-active::before { background: var(--black, #111010); }
+/* Dropdown button — kill default button chrome */
+.secondary-nav__dropdown-btn {
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.secondary-nav__dropdown-btn:focus { outline: none; }
+.secondary-nav__dropdown-btn:focus-visible { outline: 2px solid var(--color-elastic-blue, #0B64DD); outline-offset: -2px; }
+
+/* Anchor scroll-margin so sticky nav doesn't cover section headers */
+#featured, #tutorial, #examples, #integration {
+  scroll-margin-top: 140px;
+}
+
+@media (max-width: 768px) {
+  .secondary-nav__inner { padding: 0 16px; }
+  .secondary-nav__bar { padding: 0 8px; gap: 4px; }
+  .secondary-nav__lab, .secondary-nav__section { padding: 0 8px; font-size: 13px; }
+}
+/* ===== END SECONDARY NAV ===== */
+/* Lab tab brand-color hovers (and active state) */
+.secondary-nav__lab--es:hover,
+.secondary-nav__lab--es.is-active {
+  background: #0B64DD;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--obs:hover {
+  background: #FA744E;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--sec:hover {
+  background: #DD0A73;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--news:hover {
+  background: #111010;
+  color: #FFFFFF;
+}
+
+/* Divider between lab tabs and section sub-tabs */
+.secondary-nav__divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.18);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* Section sub-tabs */
+.secondary-nav__section {
+  color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  background: transparent;
+}
+.secondary-nav__section::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 1.5px;
+  background: transparent;
+  transition: background 0.15s;
+}
+.secondary-nav__section:hover {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section:hover::before { background: var(--black, #111010); }
+.secondary-nav__section.is-active {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section.is-active::before { background: var(--black, #111010); }
+/* Dropdown button — kill default button chrome */
+.secondary-nav__dropdown-btn {
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.secondary-nav__dropdown-btn:focus { outline: none; }
+.secondary-nav__dropdown-btn:focus-visible { outline: 2px solid var(--color-elastic-blue, #0B64DD); outline-offset: -2px; }
+
+/* Anchor scroll-margin so sticky nav doesn't cover section headers */
+#featured, #tutorial, #examples, #integration {
+  scroll-margin-top: 140px;
+}
+
+@media (max-width: 768px) {
+  .secondary-nav__inner { padding: 0 16px; }
+  .secondary-nav__bar { padding: 0 8px; gap: 4px; }
+  .secondary-nav__lab, .secondary-nav__section { padding: 0 8px; font-size: 13px; }
+}
+/* ===== END SECONDARY NAV ===== */
+
+
+
+/* ── Prompt library left nav: dropdown + prompt list spacing ── */
+.prompt-nav-filter {
+  margin: var(--space-3, 12px) 0 var(--space-5, 20px);
+  width: 100%;
+}
+.prompt-nav-filter .blog-filter-btn {
+  width: 100%;
+  justify-content: space-between;
+}
+.prompt-nav-filter .blog-filter-menu {
+  min-width: 100%;
+  left: 0;
+  right: auto;
+}
+.prompt-nav-items li {
+  margin-bottom: var(--space-2, 8px);
+}
+
+/* ─── Dropdown CSS ported from results.html ─── */
+/* ── BLOG FILTER DROPDOWNS ── */
+.blog-filter-row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.blog-filter {
+  position: relative;
+}
+.blog-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 32px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--black);
+  background: var(--white);
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.blog-filter-btn:hover { background: var(--black); color: var(--white); }
+.blog-filter.is-open .blog-filter-btn { background: var(--black); color: var(--white); }
+.blog-filter-chev {
+  width: 10px;
+  height: 10px;
+  transition: transform 0.18s;
+  flex-shrink: 0;
+}
+.blog-filter.is-open .blog-filter-chev { transform: rotate(180deg); }
+
+.blog-filter-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 240px;
+  white-space: nowrap;
+  background: var(--white);
+  border: 1px solid var(--black);
+  display: none;
+  flex-direction: column;
+  z-index: 20;
+}
+.blog-filter.is-open .blog-filter-menu { display: flex; }
+.blog-filter-opt {
+  display: block;
+  padding: var(--space-2) var(--space-4);
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 1px solid #E8E9EC;
+  transition: background 0.12s, color 0.12s;
+}
+.blog-filter-opt:last-child { border-bottom: none; }
+.blog-filter-opt:hover { background: var(--black); color: var(--white); }
+
+
+
+
+/* ── Filter selection state — X clear button appears when a filter is active ── */
+.blog-filter-clear {
+  display: none;
+}
+/* ── Categories flyout submenu (Windows context-menu pattern) ──
+   Parent stays a real link (clicking it filters by that category).
+   Hover reveals the children submenu to the right — separate, unambiguous interaction. */
+.blog-filter-opt-wrap {
+  position: relative;
+}
+.blog-filter-opt--has-submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* ── Dropdown link affordance — underline on hover so users see "this is clickable" ──
+   Applies to every option that is a real <a> link across Blog / Categories / Coding Language / Sort
+   AND to flyout parents and children. The existing bg-invert keeps the row highlight. */
+a.blog-filter-opt:hover,
+a.blog-filter-opt:focus-visible,
+a.blog-sort-opt:hover,
+a.blog-sort-opt:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* ── Filter area: CSS Grid 2×2 — labels share top row, controls share bottom row ── */
+.blog-filter-area {
+  max-width: 1440px;
+  margin: 0 auto var(--space-12, 48px);
+  padding: 0 var(--grid-margin, 96px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+/* Author chips are now clickable links */
+a.author-chip { color: inherit; text-decoration: none; cursor: pointer; }
+a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+/* Examples dropdown in secondary nav */
+.secondary-nav__dropdown {
+  position: relative;
+  display: inline-flex;
+}
+.secondary-nav__dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  /* inherit secondary-nav__section font/color from existing rule */
+}
+.secondary-nav__chev {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.secondary-nav__dropdown-btn[aria-expanded="true"] .secondary-nav__chev {
+  transform: rotate(180deg);
+}
+.secondary-nav__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--white, #FFF);
+  border: 1px solid var(--black, #111010);
+  z-index: 9999;
+}
+.secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
+.secondary-nav__menu-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--black, #111010);
+  text-decoration: none;
+  border-bottom: 1px solid var(--black, #111010);
+  transition: background 0.1s;
+}
+.secondary-nav__menu-opt:last-child { border-bottom: none; }
+.secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
+.secondary-nav__menu-num {
+  font-size: 11px;
+  color: #595959;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.secondary-nav__menu-label { font-weight: 500; }
+
+/* Hover/keep-open behaviour: a forgiving bridge between button and menu */
+.secondary-nav__dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 16px; /* invisible hover bridge so cursor doesn't leave the dropdown */
+  pointer-events: none;
+}
+.secondary-nav__dropdown:hover::after,
+.secondary-nav__dropdown.is-open::after { pointer-events: auto; }
+.secondary-nav__dropdown:hover .secondary-nav__menu,
+.secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
+</style>
+</head>
+<body>
+<!-- Usage: <svg class="labs-icon"><use href="#icon-wave"/></svg>  + CSS: .labs-icon { width: 24px; height: 24px; color: #48EFCF; } -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+
+  <!-- 1. WAVE (hand) — 2313:4314 -->
+  <symbol id="icon-wave" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 2. DOWNLOAD / INSTALL — 2311:4112 -->
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="12" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 3. CODE BRACKETS — 2311:4151 -->
+  <symbol id="icon-code" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 4. HEART (outline) — 2313:4286 -->
+  <symbol id="icon-heart-outline" viewBox="0 0 24 24">
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 5. DOCUMENT / LIST — 2316:7129 -->
+  <symbol id="icon-doc" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="18" fill="currentColor"/>
+    <rect x="6" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="3" width="3" height="18" fill="currentColor"/>
+    <rect x="3" y="18" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="9" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="9" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 6. PIXEL SPARK / CLUSTER — 2334:4832 -->
+  <symbol id="icon-spark" viewBox="0 0 24 24">
+    <rect x="9" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="21" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 7. SINGLE DOT — 2346:3577 -->
+  <symbol id="icon-dot" viewBox="0 0 24 24">
+    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+  </symbol>
+
+  <!-- 8. ARROW LEFT — 2424:10954 -->
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+    <rect x="6" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="12" height="6" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 9. PLUG — 2346:3572 -->
+  <symbol id="icon-mouse" viewBox="0 0 24 24">
+    <rect x="9" y="0" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="12" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 10. ARROW RIGHT — 2424:10972 -->
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <rect x="3" y="9" width="12" height="6" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 11. DIAMOND — 2422:9229 -->
+  <symbol id="icon-diamond" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 12. SIGNAL / WAVES — 2335:4862 -->
+  <symbol id="icon-signal" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 13. SLIDERS / SETTINGS — 2311:4268 -->
+  <symbol id="icon-sliders" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="0" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="15" width="18" height="3" fill="currentColor"/>
+    <rect x="9" y="12" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="21" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 14. COFFEE CUP — 2311:4255 -->
+  <symbol id="icon-coffee" viewBox="0 0 24 24">
+    <rect x="6" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="9" width="9" height="9" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="18" width="15" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 15. ROBOT / CHAT — 2311:4208 -->
+  <symbol id="icon-robot" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="12" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 16. MAGNIFYING GLASS — 2311:4181 -->
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="9" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="6" y="15" width="9" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 17. FLASK / BEAKER — 2315:6860 -->
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="3" height="6" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="15" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="6" fill="currentColor"/>
+    <rect x="3" y="21" width="18" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 18. HEART FILLED — 2315:6884 -->
+  <symbol id="icon-heart" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 19. STAR / COMPASS — 2313:4993 -->
+  <symbol id="icon-star" viewBox="0 0 24 24">
+    <rect x="9" y="3" width="6" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="6" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="6" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 20. PLUG SOCKET (2 prong) — 2316:7103 -->
+  <symbol id="icon-plug" viewBox="0 0 24 24">
+    <rect x="6" y="3" width="3" height="6" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="6" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="18" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="6" height="3" fill="currentColor"/>
+    <rect x="9" y="18" width="6" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 21. STACKED FRAMES — 2334:4797 -->
+  <symbol id="icon-stack" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="12" height="3" fill="currentColor"/>
+    <rect x="3" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="9" fill="currentColor"/>
+    <rect x="3" y="12" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="12" height="3" fill="currentColor"/>
+    <rect x="18" y="9" width="3" height="12" fill="currentColor"/>
+    <rect x="9" y="18" width="12" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="12" fill="currentColor"/>
+  </symbol>
+
+  <!-- 22. TINY PIXEL — 2346:3351 -->
+  <symbol id="icon-pixel-sm" viewBox="0 0 24 24">
+    <rect x="10" y="10" width="4" height="4" fill="currentColor"/>
+  </symbol>
+
+  <!-- 23. THIN BAR — 2346:3361 -->
+  <symbol id="icon-bar" viewBox="0 0 24 24">
+    <rect x="6" y="11" width="12" height="2" fill="currentColor"/>
+  </symbol>
+
+  <!-- 24. CHECKER / GRID — 2346:3190 -->
+  <symbol id="icon-grid" viewBox="0 0 24 24">
+    <rect x="0" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="0" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="9" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="12" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="0" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="18" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="21" width="3" height="3" fill="currentColor"/>
+    <rect x="21" y="21" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- 25. CROWN / BADGE — 2417:8999 -->
+  <symbol id="icon-crown" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="9" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="15" y="3" width="3" height="3" fill="currentColor"/>
+    <rect x="6" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="6" width="3" height="3" fill="currentColor"/>
+    <rect x="3" y="9" width="18" height="3" fill="currentColor"/>
+    <rect x="3" y="12" width="18" height="3" fill="currentColor"/>
+    <rect x="6" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="12" y="15" width="3" height="3" fill="currentColor"/>
+    <rect x="18" y="15" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+</svg>
+
+
+<!-- ============== PRIMARY NAV (Figma 2311:16127) ============== -->
+<header class="primary-nav" aria-label="Primary navigation">
+  <div class="primary-nav__row primary-nav__row--utility">
+    <div class="primary-nav__container">
+      <div class="primary-nav__announce">
+        <span class="primary-nav__badge" aria-label="New">
+          <svg class="primary-nav__badge-star" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+            <path d="M5 0 L6 4 L10 5 L6 6 L5 10 L4 6 L0 5 L4 4 Z"/>
+          </svg>
+          NEW
+        </span>
+        <span class="primary-nav__announce-text">The executive guide to Generative AI</span>
+        <a class="primary-nav__readmore" href="#">Read more</a>
+      </div>
+      <nav class="primary-nav__utility-links" aria-label="Utility">
+        <a href="#">About us</a>
+        <a href="#">Partners</a>
+        <a href="#">Support</a>
+        <span class="primary-nav__util-divider" aria-hidden="true"></span>
+        <a href="#" aria-label="Language">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <path d="M1.5 8 H14.5 M8 1.5 a10 6.5 0 0 1 0 13 M8 1.5 a10 6.5 0 0 0 0 13"/>
+          </svg>
+          <span>EN</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="8" cy="5" r="3"/>
+            <path d="M2 14 a6 6 0 0 1 12 0"/>
+          </svg>
+          <span>Login</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+  <div class="primary-nav__row primary-nav__row--main">
+    <div class="primary-nav__container">
+      <div class="primary-nav__brand-tabs">
+        <a class="primary-nav__logo" href="sunny-elastic-home.html" aria-label="Home">LOGO</a>
+        <nav class="primary-nav__tabs" aria-label="Primary">
+          <a class="primary-nav__tab is-active" href="#">Elasticsearch</a>
+          <a href="#">Solutions</a>
+          <a href="#">Enterprise</a>
+          <a href="#">Resources</a>
+          <a href="#">Docs</a>
+          <a href="#">Pricing</a>
+        </nav>
+      </div>
+      <div class="primary-nav__cta-row">
+        <button class="primary-nav__search-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="5"/>
+            <path d="M11.5 11.5 L16 16"/>
+          </svg>
+          <span>Search</span>
+        </button>
+        <a class="primary-nav__cta primary-nav__cta--filled" href="#">
+          Start free trial
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3 L10 8 L5 13"/></svg>
+        </a>
+        <a class="primary-nav__cta primary-nav__cta--outline" href="#">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== SECONDARY NAV (Sticky Glass) ============== -->
+<nav class="secondary-nav" aria-label="Secondary">
+  <div class="secondary-nav__inner">
+    <div class="secondary-nav__bar">
+      <a class="secondary-nav__lab secondary-nav__lab--es is-active" href="sunny-elastic-home.html">Elasticsearch Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--obs" href="sunny-elastic-observability.html">Observability Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--sec" href="sunny-elastic-security.html">Security Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--news" href="#">News</a>
+    </div>
+    <div class="secondary-nav__bar">
+      <a class="secondary-nav__section" href="sunny-elastic-results.html">Blog</a>
+      <a class="secondary-nav__section" href="sunny-elastic-tutorials.html">Tutorial</a>
+      <div class="secondary-nav__dropdown">
+        <button class="secondary-nav__section secondary-nav__dropdown-btn" type="button" onclick="toggleExamplesDropdown(this)" aria-haspopup="true" aria-expanded="false">Examples <svg class="secondary-nav__chev" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="2,3 8,3 5,7" fill="currentColor"/></svg></button>
+        <div class="secondary-nav__menu" role="menu">
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">01</span><span class="secondary-nav__menu-label">Apps</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">02</span><span class="secondary-nav__menu-label">Notebook</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-glossary.html" role="menuitem"><span class="secondary-nav__menu-num">03</span><span class="secondary-nav__menu-label">Glossary</span></a>
+        </div>
+      </div>
+      <a class="secondary-nav__section is-active" href="sunny-elastic-integrations.html">Integrations</a>
+      <a class="secondary-nav__section secondary-nav__github" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="external-icon"><path d="M3 2H10V9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 2L3 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<main class="article-page">
+
+  <header class="article-page__head">
+    <a class="article-page__back" href="javascript:history.back()" aria-label="Back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 3 L4 8 L10 13"/>
+        <path d="M4 8 H14"/>
+      </svg>
+      <span>Back</span>
+    </a>
+
+    <h1 class="article-page__title">Cohere</h1>
+    <p class="article-page__lede">
+      Use Cohere's embed and rerank models inside Elasticsearch — power semantic search, hybrid retrieval, and RAG pipelines with first-class API integration through the Elastic Inference service.
+    </p>
+  </header>
+
+  <div class="article-page__body">
+
+    <aside class="article-page__nav">
+      <div class="article-page__nav-head">
+        <span class="meta">Integrations</span>
+      </div>
+
+      <ul class="nav-items prompt-nav-items">
+        <li><a href="sunny-elastic-integration.html" class="is-active">Cohere</a></li>
+        <li><a href="sunny-elastic-integration.html">Hugging Face</a></li>
+        <li><a href="sunny-elastic-integration.html">OpenAI</a></li>
+        <li><a href="sunny-elastic-integration.html">LangChain</a></li>
+        <li><a href="sunny-elastic-integration.html">LlamaIndex</a></li>
+        <li><a href="sunny-elastic-integration.html">Google Vertex AI</a></li>
+        <li><a href="sunny-elastic-integration.html">Amazon Bedrock</a></li>
+        <li><a href="sunny-elastic-integration.html">Mistral</a></li>
+        <li><a href="sunny-elastic-integration.html">Microsoft Azure AI</a></li>
+        <li><a href="sunny-elastic-integration.html">Alibaba Cloud</a></li>
+        <li><a href="sunny-elastic-integration.html">Red Hat</a></li>
+        <li><a href="sunny-elastic-integration.html">Vectorize.io</a></li>
+        <li><a href="sunny-elastic-integration.html">IBM watsonx</a></li>
+        <li><a href="sunny-elastic-integration.html">Anthropic</a></li>
+        <li><a href="sunny-elastic-integration.html">Jina AI</a></li>
+        <li><a href="sunny-elastic-integration.html">Unstructured.io</a></li>
+        <li><a href="sunny-elastic-integration.html">Aryn</a></li>
+        <li><a href="sunny-elastic-integration.html">NVIDIA</a></li>
+      </ul>
+
+      <!-- Share + Copy buttons at bottom of left nav -->
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-12);">
+        <a href="#" onclick="event.preventDefault(); if (navigator.share) { navigator.share({title: document.title, url: window.location.href}); } else { navigator.clipboard.writeText(window.location.href); }" style="display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;height:36px;padding:0 var(--space-4);color:#111010;border:1px solid #111010;font-family:'Space Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='#111010';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#111010'">Share</a>
+        <a href="#" onclick="event.preventDefault(); navigator.clipboard.writeText(window.location.href); var t=this; t.textContent='Copied'; setTimeout(function(){ t.textContent='Copy'; }, 1500);" style="display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;height:36px;padding:0 var(--space-4);color:#111010;border:1px solid #111010;font-family:'Space Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='#111010';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#111010'">Copy</a>
+      </div>
+    </aside>
+
+    <div class="article-page__content">
+      <div class="article-page__article-head">
+        <span class="meta">Integration</span>
+        <span class="article-page__expand-ico" aria-hidden="true"></span>
+      </div>
+
+      <p>Cohere provides a family of production-grade large language models optimized for enterprise retrieval workloads &mdash; including embed models for dense vector search, rerank for late-stage relevance refinement, and Command-R for retrieval-augmented generation. All three are available natively from inside Elasticsearch via the Inference API, with no additional infrastructure to operate.</p>
+
+      <p>The integration ships in Elasticsearch 8.13+ and Elastic Cloud Serverless. Once configured, you can call Cohere models from ingest pipelines, search queries, or downstream retrieval stages using the same inference endpoint pattern you use for ELSER and other model providers.</p>
+
+      <h2 id="what-it-does">What it does</h2>
+      <p>The integration registers Cohere as an inference provider in your cluster. Once a model endpoint is created, Elasticsearch handles the API key, request batching, retry logic, and response parsing &mdash; so a Cohere embed call looks identical to any other inference call from the query DSL.</p>
+
+      <p>Three model families are supported out of the box: <code>embed-english-v3.0</code> and <code>embed-multilingual-v3.0</code> for dense embeddings (1024 dimensions), <code>rerank-english-v3.0</code> and <code>rerank-multilingual-v3.0</code> for cross-encoder reranking, and <code>command-r</code> / <code>command-r-plus</code> for grounded generation in RAG pipelines.</p>
+
+      <h2 id="setup">Setup</h2>
+      <p>Create the inference endpoint via the <code>PUT _inference</code> API. You'll need a Cohere API key (free tier works for evaluation) and the model name. The endpoint becomes a reusable handle &mdash; reference it from your mapping for automatic embedding at ingest, or call it explicitly from a <code>knn</code> or <code>text_similarity_reranker</code> retriever.</p>
+
+      <h2 id="usage-patterns">Usage patterns</h2>
+      <p>The most common pattern is a two-stage retrieval: first-pass BM25 or dense kNN to surface a candidate set, then Cohere rerank to reorder the top 100 or so by semantic relevance. This combination consistently outperforms either stage alone on standard IR benchmarks (BEIR, MIRACL), and the rerank call adds 50&ndash;120ms latency at typical batch sizes.</p>
+
+      <p>For RAG, embed your documents at ingest with <code>embed-multilingual-v3.0</code>, then pipe the retrieved passages into <code>command-r-plus</code> with citation tokens enabled &mdash; the returned response includes spans that link back to specific source documents, which makes auditing the model's grounding straightforward.</p>
+
+      <h2 id="cost-and-scaling">Cost and scaling</h2>
+      <p>Cohere bills per million input tokens, separate prices for embed, rerank, and generate. For high-volume ingest, batch your <code>embed</code> calls (the integration handles batching automatically up to the API limit of 96 documents per request). Rerank calls are billed per search and scale linearly with the candidate set size &mdash; tune your first-stage <code>k</code> accordingly.</p>
+
+      <p>For latency-sensitive workloads, deploy in the same cloud region as your Elasticsearch cluster (Cohere offers AWS, Azure, and GCP regional endpoints) to keep round-trip times under 100ms.</p>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg class="footer-logo-icon" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.08)"/><rect x="7" y="7" width="6" height="6" fill="#00BFB3"/><rect x="15" y="7" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="7" y="15" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="15" y="15" width="6" height="6" fill="rgba(255,255,255,0.15)"/></svg>elastic search labs</div>
+      <p class="footer-tagline">Elasticsearch Labs is the one-stop destination for developers to learn how to utilize Elasticsearch to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.</p>
+      <div class="footer-connect-label">Let's connect</div>
+      <div class="footer-social">
+        <a class="footer-social-link" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a class="footer-social-link" href="https://twitter.com/elasticseclabs" target="_blank" rel="noopener" aria-label="Twitter / X"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+        <a class="footer-social-link" href="#" aria-label="RSS"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">Menu</div>
+      <div class="footer-col-links">
+        <a href="sunny-elastic-tutorials.html">Tutorials</a>
+        <a href="sunny-elastic-home.html#examples">Examples</a>
+        <a href="sunny-elastic-integrations.html">Integrations</a>
+        <a href="sunny-elastic-results.html">Blogs</a>
+        <a href="#">Search</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">Additional Resources</div>
+      <div class="footer-col-links">
+        <a href="https://www.elastic.co/docs/api/doc/elasticsearch" target="_blank" rel="noopener">Elasticsearch API Reference <svg class="ext-icon" viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <a href="https://www.elastic.co" target="_blank" rel="noopener">Elastic.co <svg class="ext-icon" viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mid">
+    <div class="footer-mid-links">
+      <a href="#"><svg viewBox="0 0 16 16" fill="none"><rect x="1" y="2" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M1 6h14M5 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Sitemap</a>
+      <a href="#"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg> Subscribe</a>
+      <a href="https://www.elastic.co" target="_blank" rel="noopener"><svg viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Elastic.co</a>
+    </div>
+    <span class="footer-copyright">© 2026. Elasticsearch B.V. All Rights Reserved.</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="#">Trademarks</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy</a>
+    </div>
+    <p class="footer-legal-text">This website and all associated content, software, discussion forums, products, and services are intended for professional use only. No consumer use of this website or its content is intended or directed.<br>Elastic, Elasticsearch, and other related marks are trademarks, logos, or registered trademarks of Elasticsearch B.V. in the United States and other countries.<br>Apache, Apache Lucene, Apache Hadoop, Hadoop, HDFS and the yellow elephant logo are trademarks of the <a href="https://www.apache.org/" target="_blank" rel="noopener">Apache Software Foundation</a> in the United States and/or other countries. All other brand names, product names, or trademarks belong to their respective owners.</p>
+  </div>
+</div>
+</footer>
+
+<script>
+// Active section highlight on scroll (scroll-spy)
+(function() {
+  const links = Array.from(document.querySelectorAll('.nav-items a[data-jump], .nav-items summary[data-jump]'));
+  const map = {};
+  links.forEach(l => { const id = l.getAttribute('data-jump'); if (id) map[id] = l; });
+  const ids = ['analyzing-security-case','asset-inventory','ciso-incident','custom-crawl4ai','expand-eval','generate-seed','generate-test','meeting-summary','negotiation','security-policy','tech-discovery','translate-alert'];
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+
+  function onScroll() {
+    let current = null;
+    const offset = 120;
+    for (const sec of sections) {
+      if (sec.getBoundingClientRect().top <= offset) current = sec.id;
+    }
+    links.forEach(l => l.classList.remove('is-active'));
+    if (current && map[current]) map[current].classList.add('is-active');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ─── Dropdown JS ported from results.html ─── */
+function toggleBlogFilter(btn) {
+  // Works for both .blog-filter (Categories/Blog/Coding Language) and .blog-sort
+  const filter = btn.closest('.blog-filter, .blog-sort');
+  if (!filter) return;
+  // close all other open dropdowns of either type
+  document.querySelectorAll('.blog-filter.is-open, .blog-sort.is-open').forEach(f => {
+    if (f !== filter) f.classList.remove('is-open');
+  });
+  // toggle this one
+  filter.classList.toggle('is-open');
+}
+
+function selectFilter(e, name) {
+  e.preventDefault();
+  e.stopPropagation();
+  const filter = e.target.closest('.blog-filter');
+  if (!filter) return;
+  const labelEl = filter.querySelector('.blog-filter-label');
+  if (labelEl) labelEl.textContent = name;
+  filter.classList.add('is-filtered');
+  filter.classList.remove('is-open');     /* close the dropdown after selection */
+}
+
+function clearFilter(e, btn) {
+  e.preventDefault();
+  e.stopPropagation();
+  const filter = btn.closest('.blog-filter');
+  if (!filter) return;
+  const labelEl = filter.querySelector('.blog-filter-label');
+  const def = filter.dataset.defaultLabel || filter.dataset.filter || 'Filter';
+  if (labelEl) labelEl.textContent = def;
+  filter.classList.remove('is-filtered');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.blog-filter, .blog-sort')) {
+    document.querySelectorAll('.blog-filter.is-open, .blog-sort.is-open').forEach(f => f.classList.remove('is-open'));
+  }
+});
+</script>
+
+<script>
+/* Examples nav dropdown — toggle open/closed, close on outside click */
+// Hover-based dropdown with grace period so the menu stays open
+//  - opens on mouseenter (button or menu)
+//  - closes only after the cursor has been outside for 200ms
+//  - click is a no-op (no toggle), preventing the abrupt open/close glitch
+(function() {
+  var DROPDOWN_SEL = '.secondary-nav__dropdown';
+  var CLOSE_DELAY = 200;
+  document.querySelectorAll(DROPDOWN_SEL).forEach(function(wrap) {
+    var closeTimer = null;
+    var btn = wrap.querySelector('.secondary-nav__dropdown-btn');
+
+    function open() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      wrap.classList.add('is-open');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+    function scheduleClose() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function() {
+        wrap.classList.remove('is-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }, CLOSE_DELAY);
+    }
+    wrap.addEventListener('mouseenter', open);
+    wrap.addEventListener('mouseleave', scheduleClose);
+    // Keyboard focus opens too
+    wrap.addEventListener('focusin', open);
+    wrap.addEventListener('focusout', function(e) {
+      if (!wrap.contains(e.relatedTarget)) scheduleClose();
+    });
+  });
+})();
+// Legacy no-op so the inline onclick on the button doesn't error
+function toggleExamplesDropdown(btn) { /* hover-driven now */ }
+</script>
+</body>
+</html>
