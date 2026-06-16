@@ -5,93 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog &amp; Resources</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-/* ── Local Space Grotesk + Space Mono ── */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Light.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-Medium.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 600;
-  src: url('fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  font-weight: 700;
-  src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 400;
-  font-style: normal;
-  src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 400;
-  font-style: italic;
-  src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 700;
-  font-style: normal;
-  src: url('fonts/SpaceMono-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-weight: 700;
-  font-style: italic;
-  src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-weight: 400;
-  src: url('fonts/Inter-Regular.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 500;
-  src: url('fonts/Inter-Medium.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 600;
-  src: url('fonts/Inter-SemiBold.otf') format('opentype');
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  font-weight: 700;
-  src: url('fonts/Inter-Bold.otf') format('opentype');
-  font-display: swap;
-}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -100,15 +15,15 @@
   /* ── Elastic Design System Tokens ── */
   --color-bg-white:       #FFFFFF;
   --color-bg-light-gray:  #F5F7FA;
-  --color-text-dark-ink:  #1C1E23;
-  --color-text-ink:       #343741;
-  --color-text-subdued:   #69707D;
+  --color-text-dark-ink:  #111010;
+  --color-text-ink:       #111010;
+  --color-text-subdued:   #111010;
   --color-border: var(--black);
   --color-elastic-blue:   #0B64DD;
   --color-teal:           #00BFB3;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body:    'Inter', -apple-system, sans-serif;
-  --font-mono:    'Roboto Mono', 'Courier New', monospace;
+  --font-mono:    'Space Grotesk', sans-serif;
 
   /* ── Spacing — factor of 8 ── */
   --space-1:   4px;
@@ -177,7 +92,7 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;
-  color: rgba(0,0,0,0.65);
+  color: #111010;
   cursor: pointer;
   transition: color 0.15s;
 }
@@ -215,7 +130,7 @@ a { text-decoration: none; color: inherit; }
   max-width: 420px;
   font-size: 15px;
   line-height: 1.6;
-  color: rgba(0,0,0,0.55);
+  color: #111010;
   font-weight: 500;
   margin-top: 8px;
   align-self: flex-end;
@@ -245,7 +160,7 @@ a { text-decoration: none; color: inherit; }
   border: none;
   border-bottom: 2px solid transparent;
   cursor: pointer;
-  color: #595959;
+  color: #111010;
   transition: color 0.15s, border-color 0.15s;
 }
 .tab-btn.active {
@@ -372,7 +287,7 @@ a { text-decoration: none; color: inherit; }
 .card-num {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -415,7 +330,7 @@ a { text-decoration: none; color: inherit; }
 .card-category {
   font-family: var(--font-body);
   font-size: 13px;
-  color: #2f2f2f;
+  color: #111010;
   line-height: 14.31px;
 }
 .card-byline {
@@ -424,7 +339,7 @@ a { text-decoration: none; color: inherit; }
   gap: 10px;
   font-family: var(--font-body);
   font-size: 13px;
-  color: #2f2f2f;
+  color: #111010;
   line-height: 14.31px;
 }
 .card-byline-sep {
@@ -527,7 +442,7 @@ a { text-decoration: none; color: inherit; }
 }
 .subscribe-text p {
   font-size: 14px;
-  color: rgba(0,0,0,0.55);
+  color: #111010;
 }
 .subscribe-form {
   display: flex;
@@ -547,7 +462,7 @@ a { text-decoration: none; color: inherit; }
   background: transparent;
   color: var(--black);
 }
-.subscribe-input::placeholder { color: rgba(0,0,0,0.35); }
+.subscribe-input::placeholder { color: #111010; }
 .subscribe-btn {
   background: var(--black);
   color: var(--white);
@@ -602,7 +517,7 @@ footer {
   max-width: 320px;
 }
 .footer-connect-label {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -625,7 +540,7 @@ footer {
 .footer-social-link:hover { border-color: rgba(255,255,255,0.6); color: var(--white, #FAFAF8); }
 .footer-social-link svg { width: 16px; height: 16px; }
 .footer-col-label {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -677,7 +592,7 @@ footer {
 .footer-mid-links a:hover { color: var(--white, #FAFAF8); }
 .footer-mid-links a svg { width: 15px; height: 15px; opacity: 0.6; }
 .footer-copyright {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
   color: rgba(255,255,255,0.35);
   letter-spacing: 0.03em;
@@ -705,7 +620,6 @@ footer {
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .footer-inner { padding: 32px 24px 0; }
 }
-
 
 /* ── PLACEHOLDER ILLUSTRATIONS ── */
 .ph-figure {
@@ -818,10 +732,10 @@ footer {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 14.31px;
-  color: #595959;
+  color: #111010;
   margin-bottom: var(--space-3);
 }
-.kb-card:hover .kb-meta { color: #2f2f2f; }
+.kb-card:hover .kb-meta { color: #111010; }
 .kb-av {
   width: 22px; height: 22px;
   border-radius: 50%;
@@ -841,13 +755,11 @@ footer {
 .kb-card:hover .kb-title { color: var(--black); }
 .kb-excerpt {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
-  color: #2f2f2f;
+  color: #111010;
 }
-.kb-card:hover .kb-excerpt { color: #2f2f2f; }
-
-
+.kb-card:hover .kb-excerpt { color: #111010; }
 
 /* ── FEATURED CARD — Figma 22:24632 ── */
 .featured-row {
@@ -888,7 +800,7 @@ footer {
   font-size: 9.5px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -928,14 +840,13 @@ footer {
   padding: 3px 0;
 }
 
-
 /* ── TAG CHIP — clickable grey badge ── */
 .card-tag-chip {
   display: inline-flex;
   align-items: center;
   background: #E8E9EC;
   color: var(--black);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 14.31px;
@@ -946,7 +857,6 @@ footer {
   transition: background 0.15s;
   flex-shrink: 0;
 }
-
 
 /* ── CARD AUTHOR — below title ── */
 .card-author {
@@ -964,17 +874,16 @@ footer {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #595959;
+  color: #111010;
   overflow: hidden;
 }
 .card-author-avatar svg { width: 14px; height: 14px; }
 .card-author-name {
   font-family: var(--font-body);
   font-size: 13px;
-  color: #595959;
+  color: #111010;
   line-height: 14.31px;
 }
-
 
 /* ── CLEAN CARD — no dots/dash/number ── */
 .clean-card {
@@ -990,7 +899,6 @@ footer {
 }
 .clean-card:hover { opacity: 0.75; }
 
-
 /* ── CATEGORY TAG WITH SQUARE ICON — clickable ── */
 .cat-tag {
   display: inline-flex;
@@ -998,7 +906,7 @@ footer {
   gap: 6px;
   text-decoration: none;
   color: var(--black);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   line-height: 14.31px;
   cursor: pointer;
@@ -1013,14 +921,12 @@ footer {
 }
 .cat-tag:hover .cat-tag-icon { background: #595959; }
 
-
-
 /* ── CLEAN CARD HIERARCHY ── */
 .card-excerpt {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: #595959;
+  color: #111010;
   margin: 0;
 }
 .card-author-row {
@@ -1038,7 +944,7 @@ footer {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #595959;
+  color: #111010;
   overflow: hidden;
 }
 .card-author-row .card-author-avatar svg { width: 14px; height: 14px; }
@@ -1058,7 +964,7 @@ footer {
 .card-date {
   font-family: var(--font-body);
   font-size: 12px;
-  color: #2f2f2f;
+  color: #111010;
 }
 /* card-body uses flex-col, add gap */
 .clean-card .card-body {
@@ -1066,7 +972,6 @@ footer {
   flex-direction: column;
   gap: 10px;
 }
-
 
 /* ══ FIGMA CARDS 22:24848 + 22:24879 ══ */
 .fig-card {
@@ -1113,7 +1018,7 @@ footer {
   font-family: var(--font-body);
   font-size: 10px;
   line-height: 12px;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -1154,17 +1059,16 @@ footer {
   padding: 0 var(--space-3);
   display: inline-flex;
   align-items: center;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   line-height: 14.31px;
-  color: #2f2f2f;
+  color: #111010;
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.15s;
   text-transform: uppercase;
 }
-
 
 /* Body: title + para + author row */
 .fig-body {
@@ -1192,7 +1096,7 @@ footer {
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.5;
-  color: #2f2f2f;
+  color: #111010;
   margin: 0;
 }
 .fig-author-row {
@@ -1217,7 +1121,7 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #595959;
+  color: #111010;
   overflow: hidden;
 }
 .fig-avatar svg { width: 14px; height: 14px; }
@@ -1225,7 +1129,7 @@ footer {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 14.31px;
-  color: #2f2f2f;
+  color: #111010;
 }
 .fig-divider {
   width: 1px;
@@ -1238,10 +1142,8 @@ footer {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 14.31px;
-  color: #2f2f2f;
+  color: #111010;
 }
-
-
 
 /* ── NO-LABEL card variant ── */
 .fig-card-clean {
@@ -1273,11 +1175,10 @@ footer {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
   flex-shrink: 0;
 }
-
 
 /* ── HERO LAYOUT: featured left + list right ── */
 .hero-layout {
@@ -1292,13 +1193,13 @@ footer {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #595959;
+  color: #111010;
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: var(--space-6);
 }
-.hero-label-slash { color: #595959; }
+.hero-label-slash { color: #111010; }
 .hero-label-dash {
   flex: 1;
   border-top: 1px solid var(--black);
@@ -1333,9 +1234,9 @@ footer {
   padding: 0 10px;
   display: inline-flex;
   align-items: center;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
 }
 .hero-title {
@@ -1356,7 +1257,7 @@ footer {
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.65;
-  color: #2f2f2f;
+  color: #111010;
   margin: 0;
 }
 /* Vertical divider */
@@ -1411,9 +1312,9 @@ footer {
 .hero-list-tag {
   border: 1px solid var(--black);
   padding: 2px 8px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
 }
 .hero-list-date {
@@ -1421,7 +1322,7 @@ footer {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #595959;
+  color: #111010;
 }
 .hero-list-title {
   font-family: var(--font-display);
@@ -1431,7 +1332,6 @@ footer {
   color: var(--black);
   margin: 0;
 }
-
 
 /* ── HERO SECTION WRAPPER ── */
 .hero-section-wrap {
@@ -1446,13 +1346,13 @@ footer {
   margin-bottom: var(--space-6);
   width: 100%;
 }
-.hero-label-slash { font-family: var(--font-mono); font-size: 10px; color: #595959; }
+.hero-label-slash { font-family: var(--font-mono); font-size: 10px; color: #111010; }
 .hero-label-text-main {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #595959;
+  color: #111010;
   white-space: nowrap;
 }
 .hero-full-label .hero-label-dash {
@@ -1502,7 +1402,7 @@ footer {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #2f2f2f;
+  color: #111010;
   padding: 0 12px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1510,7 +1410,7 @@ footer {
 .pod-top-ep {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #2f2f2f;
+  color: #111010;
   white-space: nowrap;
   flex-shrink: 0;
   margin-left: 12px;
@@ -1559,7 +1459,7 @@ footer {
   gap: 12px;
   font-family: var(--font-body);
   font-size: 14px;
-  color: #2f2f2f;
+  color: #111010;
   padding-top: var(--space-8);
 }
 .pod-meta-sep {
@@ -1599,7 +1499,7 @@ footer {
   padding: 2px 8px;
   font-family: var(--font-body);
   font-size: 11px;
-  color: #2f2f2f;
+  color: #111010;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -1617,9 +1517,8 @@ footer {
   gap: 8px;
   font-family: var(--font-body);
   font-size: 13px;
-  color: #595959;
+  color: #111010;
 }
-
 
 /* ── SECTION DIVIDERS — match page background ── */
 .section-strip {
@@ -1640,7 +1539,7 @@ footer {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--black, #111010);
+  color: #111010;
   max-width: 720px;
   margin: 0;
 }
@@ -1682,9 +1581,6 @@ footer {
   font-size: 16px;
   transform: translateY(-1px);
 }
-
-
-
 
 /* ── FEATURED PROJECTS — Figma 29:25714 ── */
 .fp-section {
@@ -1761,14 +1657,6 @@ footer {
   opacity: 0.7;
 }
 
-
-
-
-
-
-
-
-
 /* ── KB icon retro teal flicker on hover ── */
 @keyframes kb-shimmer {
   0%   { color: var(--black); }
@@ -1781,7 +1669,6 @@ footer {
   animation: kb-shimmer 1.2s steps(4, end) infinite;
   image-rendering: pixelated;
 }
-
 
 /* ── EXAMPLES — dark grey grid background with floating panels ── */
 .examples-bg-section {
@@ -1882,7 +1769,7 @@ footer {
   padding: 0 8px;
   border: 1px solid var(--black);
   background: transparent;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   color: var(--black);
   white-space: nowrap;
@@ -1927,10 +1814,9 @@ footer {
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: #2f2f2f;
+  color: #111010;
 }
 .ex-row-summary p { margin: 0; }
-
 
 /* ── Section title + view-all button row ── */
 .section-strip-titlerow {
@@ -1946,7 +1832,7 @@ footer {
   gap: var(--space-3);
   background: transparent;
   color: #0B64DD;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   font-weight: 400;
   text-transform: none;
@@ -1964,7 +1850,6 @@ footer {
   image-rendering: pixelated;
   flex-shrink: 0;
 }
-
 
 /* Prompt Library hidden rows */
 .ex-rows-more {
@@ -1990,7 +1875,7 @@ footer {
   background: transparent;
   border: 1px solid #0B64DD;
   padding: var(--space-2) var(--space-4);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: none;
   letter-spacing: 0.02em;
@@ -2008,7 +1893,6 @@ footer {
 /* Center the View all button inside the rows container */
 .ex-rows { align-items: stretch; }
 
-
 /* Make panel headers grab-cursor to indicate draggability */
 .ex-panel-hd {
   cursor: grab;
@@ -2018,7 +1902,6 @@ footer {
 /* When a panel enters dragging-mode, the inner-grid still allows positioning */
 .examples-bg-inner { position: relative; }
 .ex-link-wrap.is-dragging-mode { grid-area: unset; }
-
 
 /* ── Flat offset shadow blocks behind each panel ── */
 .ex-panel {
@@ -2038,8 +1921,6 @@ footer {
 .ex-draggable[data-pos="1"] .ex-panel::before { background: #FA744E; }  /* Prompt Library — coral */
 .ex-draggable[data-pos="2"] .ex-panel::before { background: #36B9FF; }  /* Apps — sky blue */
 .ex-draggable[data-pos="3"] .ex-panel::before { background: #00BFB3; }  /* Notebook — teal */
-
-
 
 /* ── Prompt Library row — flat link with pixel arrow (no accordion) ── */
 .ex-row-link {
@@ -2077,7 +1958,6 @@ footer {
   image-rendering: pixelated;
 }
 .ex-row-link:hover .ex-row-arrow { transform: translateX(3px); }
-
 
 /* ── INTEGRATION GRID — 5x5 cards ── */
 .int-grid-wrap {
@@ -2173,7 +2053,7 @@ footer {
   font-family: var(--font-body);
   font-size: 12px;
   line-height: 1.5;
-  color: #595959;
+  color: #111010;
   margin: 0;
   max-height: 0;
   opacity: 0;
@@ -2188,7 +2068,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: none;
   letter-spacing: 0.02em;
@@ -2225,7 +2105,7 @@ footer {
   padding: 0 var(--space-4);
   border: 1px solid var(--black);
   background: var(--white);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2236,7 +2116,6 @@ footer {
 }
 .int-tab:hover { background: var(--black); color: var(--white); }
 .int-tab.is-active { background: var(--black); color: var(--white); }
-
 
 /* ── BLOG FILTER DROPDOWNS ── */
 .blog-filter-row {
@@ -2255,7 +2134,7 @@ footer {
   padding: 0 var(--space-4);
   border: 1px solid var(--black);
   background: var(--white);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2291,7 +2170,7 @@ footer {
 .blog-filter-opt {
   display: block;
   padding: var(--space-2) var(--space-4);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2303,8 +2182,6 @@ footer {
 .blog-filter-opt:last-child { border-bottom: none; }
 .blog-filter-opt:hover { background: var(--black); color: var(--white); }
 
-
-
 /* ── BLOG RESULTS — unified 3x3 grid ── */
 .results-grid-9 {
   display: grid;
@@ -2312,7 +2189,6 @@ footer {
   gap: var(--space-6) var(--grid-gutter);
   padding: 0 0 var(--space-16);
 }
-
 
 /* ── BLOG / SERIES BIG TEXT TABS ── */
 .blog-section-tabs {
@@ -2340,7 +2216,7 @@ footer {
   font-size: 24px;
   font-weight: 600;
   line-height: 1.2;
-  color: #595959;
+  color: #111010;
   text-decoration: none;
   position: relative;
   transition: color 0.15s;
@@ -2358,7 +2234,6 @@ footer {
   height: 3px;
   background: var(--black);
 }
-
 
 /* ── Tag hover + selected states (invert to black) ── */
 .fig-pill-tag, .hero-list-tag, .hero-tag, .cat-tag, .card-tag-chip {
@@ -2462,7 +2337,7 @@ footer {
   font-weight: 500;
   font-size: 14px;
   line-height: 18.2px;
-  color: #373A45;
+  color: #111010;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -2499,7 +2374,7 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #1D1F26;
+  color: #111010;
   letter-spacing: 0.08em;
 }
 .primary-nav__tabs {
@@ -2512,7 +2387,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 20.8px;
-  color: #1D1F26;
+  color: #111010;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -2539,7 +2414,7 @@ footer {
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-  color: #1D1F26;
+  color: #111010;
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -2679,7 +2554,7 @@ footer {
 
 /* Section sub-tabs */
 .secondary-nav__section {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--black, #111010);
   position: relative;
   background: transparent;
 }
@@ -2724,10 +2599,6 @@ footer {
 }
 /* ===== END SECONDARY NAV ===== */
 
-
-
-
-
 /* First 3 cards — title in Space Grotesk, paragraph stays Inter */
 .fig-card-clean.font-test-grotesk .fig-title {
   font-family: 'Space Grotesk', sans-serif;
@@ -2742,7 +2613,7 @@ footer {
   background: transparent;
   border: none;
   padding: 8px 12px;
-  font-family: 'Space Mono', var(--font-mono), monospace;   /* matches .blog-filter-btn */
+  font-family: 'Space Grotesk', sans-serif;   /* matches .blog-filter-btn */
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2780,7 +2651,7 @@ footer {
 .blog-sort-opt {
   display: block;
   padding: var(--space-2, 8px) var(--space-4, 16px);
-  font-family: 'Space Mono', var(--font-mono), monospace;  /* matches .blog-filter-opt */
+  font-family: 'Space Grotesk', sans-serif;  /* matches .blog-filter-opt */
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2793,7 +2664,6 @@ footer {
 .blog-sort-opt:hover { background: var(--black); color: var(--white); }
 .blog-sort-opt.is-active { background: var(--black); color: var(--white); }
 
-
 /* Author name — clickable link inside cards */
 .fig-author-name {
   cursor: pointer;
@@ -2805,8 +2675,6 @@ footer {
   text-decoration-thickness: 1px;
   /* keeps the black color — no color change on hover */
 }
-
-
 
 /* ── Categories flyout submenu (Windows context-menu pattern) ──
    Parent stays a real link (clicking it filters by that category).
@@ -2874,7 +2742,7 @@ footer {
   height: 100%;
   /* deliberately no background — it's invisible but still hoverable */
 }
-/* Children: Space Mono but NOT uppercase — clear visual difference from parents */
+/* Children: Space Grotesk but NOT uppercase — clear visual difference from parents */
 .blog-filter-opt--child {
   text-transform: none;
   letter-spacing: 0.02em;
@@ -2938,7 +2806,7 @@ a.blog-filter-opt--has-submenu:focus-visible span {
 .blog-filter-by-label {
   grid-column: 1;
   grid-row: 1;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -2950,7 +2818,7 @@ a.blog-filter-opt--has-submenu:focus-visible span {
 }
 .blog-filter-by-label::before {
   content: '/';
-  color: var(--color-text-subdued, #69707D);
+  color: #111010;
 }
 /* Row 2, col 1 — filter dropdowns */
 .blog-filter-row { grid-column: 1; grid-row: 2; }
@@ -2968,7 +2836,6 @@ a.blog-filter-opt--has-submenu:focus-visible span {
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
 }
-
 
 /* Precise hover on hero list — title and author underline independently */
 .hero-list-item .hero-list-title:hover {
@@ -3015,11 +2882,11 @@ a.blog-filter-opt--has-submenu:focus-visible span {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: #595959;
+  color: #111010;
 }
 .blog-series-count { color: #00BFB3; font-weight: 700; }
 .blog-series-dash {
@@ -3041,13 +2908,12 @@ a.blog-filter-opt--has-submenu:focus-visible span {
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.5;
-  color: #2f2f2f;
+  color: #111010;
   margin: 0;
 }
 @media (max-width: 768px) {
   .blog-series-wrap { grid-template-columns: 1fr; }
 }
-
 
 /* GitHub external link in secondary nav */
 .secondary-nav__github {
@@ -3102,7 +2968,7 @@ a.blog-filter-opt--has-submenu:focus-visible span {
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--black, #111010);
@@ -3114,7 +2980,7 @@ a.blog-filter-opt--has-submenu:focus-visible span {
 .secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
 .secondary-nav__menu-num {
   font-size: 11px;
-  color: #595959;
+  color: #111010;
   letter-spacing: 0.04em;
   font-weight: 500;
 }
@@ -3136,27 +3002,6 @@ a.blog-filter-opt--has-submenu:focus-visible span {
 .secondary-nav__dropdown.is-open::after { pointer-events: auto; }
 .secondary-nav__dropdown:hover .secondary-nav__menu,
 .secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
-
-/* ── PAGE TITLE BANNER — ready for a background later ── */
-.page-title-banner {
-  width: 100%;
-  background: transparent;        /* swap to a colour/image when ready */
-  padding: 64px 0 80px;            /* top breathing, bottom break to module */
-  margin-bottom: 48px;             /* spacing before the content below */
-}
-.page-title-banner .section-strip { margin: 0; }   /* reset since banner owns spacing */
-.page-title-banner .section-strip:first-of-type { margin-top: 0; }
-
-
-/* Grid background variant for page-title-banner */
-.page-title-banner--grid {
-  background-color: transparent;
-  background-image:
-    radial-gradient(circle, rgba(0, 0, 0, 0.12) 1px, transparent 1.5px);
-  background-size: 24px 24px;
-  background-position: 0 0;
-}
-
 </style>
 </head>
 <body>
@@ -3239,39 +3084,34 @@ a.blog-filter-opt--has-submenu:focus-visible span {
     </div>
     <div class="secondary-nav__bar">
       <a class="secondary-nav__section is-active" href="sunny-elastic-results.html">Blog</a>
-      <a class="secondary-nav__section" href="sunny-elastic-tutorials.html">Tutorial</a>
+      <a class="secondary-nav__section" href="sunny-elastic-home.html#tutorial">Tutorial</a>
       <div class="secondary-nav__dropdown">
         <button class="secondary-nav__section secondary-nav__dropdown-btn" type="button" onclick="toggleExamplesDropdown(this)" aria-haspopup="true" aria-expanded="false">Examples <svg class="secondary-nav__chev" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="2,3 8,3 5,7" fill="currentColor"/></svg></button>
         <div class="secondary-nav__menu" role="menu">
-          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">01</span><span class="secondary-nav__menu-label">Apps</span></a>
-          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">02</span><span class="secondary-nav__menu-label">Notebook</span></a>
-          <a class="secondary-nav__menu-opt" href="sunny-elastic-glossary.html" role="menuitem"><span class="secondary-nav__menu-num">03</span><span class="secondary-nav__menu-label">Glossary</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-home.html#examples" role="menuitem"><span class="secondary-nav__menu-num">01</span><span class="secondary-nav__menu-label">Apps</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-home.html#examples" role="menuitem"><span class="secondary-nav__menu-num">02</span><span class="secondary-nav__menu-label">Notebook</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-home.html#examples" role="menuitem"><span class="secondary-nav__menu-num">03</span><span class="secondary-nav__menu-label">Glossary</span></a>
         </div>
       </div>
-      <a class="secondary-nav__section" href="sunny-elastic-integrations.html">Integration</a>
+      <a class="secondary-nav__section" href="sunny-elastic-home.html#integration">Integration</a>
       <a class="secondary-nav__section secondary-nav__github" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="external-icon"><path d="M3 2H10V9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 2L3 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></a>
     </div>
   </div>
 </nav>
 
 <!-- SECTION: Observability -->
-<div class="page-title-banner page-title-banner--grid">
 <div class="section-strip">
   <div class="section-strip-inner">
     <h2 class="section-strip-title"><span class="section-strip-slash">//</span>Blog</h2>
     <p class="section-strip-desc">Developer insights and practical how-to articles from our experts to inspire and empower your search experience.</p>
   </div>
 </div>
-</div>
-
-
 
 <!-- BLOG / SERIES TABS -->
 <div class="blog-section-tabs">
   <a href="#" class="blog-section-tab is-active" data-target="blog" onclick="switchBlogPane(event, 'blog')">Blog</a>
   <a href="#" class="blog-section-tab" data-target="series" onclick="switchBlogPane(event, 'series')">Series</a>
 </div>
-
 
 <!-- BLOG PANE -->
 <div class="tab-pane" data-pane="blog">
@@ -3841,7 +3681,6 @@ a.blog-filter-opt--has-submenu:focus-visible span {
   </div>
 </div><!-- /tab-pane series -->
 
-
 <!-- FOOTER -->
 <footer>
 <div class="footer-inner">
@@ -3858,7 +3697,7 @@ a.blog-filter-opt--has-submenu:focus-visible span {
     </div>
     <div>
       <div class="footer-col-label">Menu</div>
-      <div class="footer-col-links"><a href="sunny-elastic-tutorials.html">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-integrations.html">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
+      <div class="footer-col-links"><a href="sunny-elastic-home.html#tutorial">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-home.html#integration">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
     </div>
     <div>
       <div class="footer-col-label">Additional Resources</div>
@@ -3900,8 +3739,6 @@ function switchBlogPane(e, target) {
     }
   });
 }
-
-
 
 function selectFilter(e, name) {
   e.preventDefault();
