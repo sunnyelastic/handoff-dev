@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Install Elasticsearch with Docker — Tutorial</title>
+<style>
+
+/* ── Local Space Grotesk + Space Mono ── */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600;
+  src: url('fonts/SpaceGrotesk-Light.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600;
+  src: url('fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600;
+  src: url('fonts/SpaceGrotesk-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 600;
+  src: url('fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-weight: 700;
+  src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: normal;
+  src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: italic;
+  src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  font-style: normal;
+  src: url('fonts/SpaceMono-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 700;
+  font-style: italic;
+  src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url('fonts/Inter-Regular.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  src: url('fonts/Inter-Medium.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('fonts/Inter-SemiBold.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  src: url('fonts/Inter-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+
+  /* ── Elastic Design System Tokens ── */
+  --color-bg-white:       #FFFFFF;
+  --color-bg-light-gray:  #F5F7FA;
+  --color-text-dark-ink:  #1C1E23;
+  --color-text-ink:       #343741;
+  --color-text-subdued:   #69707D;
+  --color-border: var(--black);
+  --color-elastic-blue:   #0B64DD;
+  --color-teal:           #00BFB3;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'Roboto Mono', 'Courier New', monospace;
+
+  /* ── Spacing — factor of 8 ── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ── Grid — 12 col, 96px margin, 32px gutter ── */
+  --grid-margin:  96px;
+  --grid-gutter:  32px;
+
+  /* ── Page aliases ── */
+  --black:       #111010;
+  --white:       #FAFAF8;
+  --cream:       #F5F7FA;
+  --silver:      #D3DAE6;
+  --warm-beige:  #F0BF75;
+  --border:      #D3DAE6;
+  --page-pad:    var(--grid-margin);
+}
+
+/* ===== RESET / BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ===== ARTICLE PAGE LAYOUT ===== */
+.article-page {
+  max-width: 1240px;           /* ~200px smaller than 1440 */
+  margin: 0 auto;
+  padding: 64px var(--grid-margin, 96px) 96px 0;
+  position: relative;
+}
+
+/* Back button */
+.article-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--space-8);
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.article-page__back:hover { color: var(--black); }
+.article-page__back svg { width: 14px; height: 14px; }
+
+/* Head block */
+.article-page__head { margin-bottom: 48px; }   /* 64px */
+.article-page__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;            /* H1 */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin: 0 0 24px;
+}
+.article-page__lede {
+  font-family: var(--font-body);
+  font-size: 18px;            /* P2 */
+  line-height: 1.5;
+  color: var(--black);
+  max-width: 880px;
+  margin: 0 0 var(--space-12);
+}
+
+/* Meta data label — same structure as Article / Jump-to */
+.article-page__meta-label {
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+
+/* Meta row — 4 items in ONE row */
+.article-page__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-24, 96px);
+  row-gap: var(--space-8);
+  align-items: start;
+  padding-top: 24px;
+  border-top: 2px dotted var(--black);
+  margin-top: 32px;
+}
+.meta-group { display: flex; flex-direction: column; gap: 10px; }
+.meta-label {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+}
+.meta-value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.04em;
+  color: var(--black);
+  align-items: center;
+}
+
+/* Pills (tags + share buttons) — our tag-chip style */
+.tag-pill, .meta-value .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  padding: 0 12px;
+  border: 1px solid var(--black);
+  background: transparent;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.02em;
+  color: var(--black);
+  cursor: pointer;
+  text-transform: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tag-pill:hover, .meta-value .pill:hover {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+.meta-icon-pill { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Body two-column layout */
+.article-page__body {
+  display: grid;
+  grid-template-columns: 200px 1fr;   /* Article column wider */
+  column-gap: var(--space-24, 96px);     /* 96px between nav and article */
+  align-items: start;
+  margin-top: var(--space-8);         /* 32px — tighter from meta */
+}
+
+/* Left: Jump-to nav */
+.article-page__nav { position: sticky; top: 80px; }
+/* nav-group__head--static removed — replaced by .article-page__nav-head wrapper */
+.nav-items { list-style: none; padding: 0; margin: 0; }
+.nav-items li { padding: 4px 0; }
+.nav-items a {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-items a:hover { color: var(--black); }
+.nav-items a.is-active { color: var(--color-elastic-blue); font-weight: 600; }
+.nav-items details summary {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-ink);
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.15s;
+}
+.nav-items details summary:hover { color: var(--black); }
+.nav-items details summary.is-active { color: var(--color-elastic-blue); font-weight: 600; }
+.nav-items details summary::-webkit-details-marker { display: none; }
+.nav-items details summary::after { content: " ▾"; }
+.nav-items details:not([open]) summary::after { content: " ▸"; }
+.nav-items details ul { list-style: none; padding: 8px 0 0 16px; margin: 0; }
+.nav-items details ul li a { font-size: 12px; color: var(--color-text-subdued); }
+
+/* Right: Article content */
+.article-page__content { min-width: 0; }
+.article-page__content h2, .article-page__content h3 { scroll-margin-top: 40px; }
+
+.article-page__article-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+.article-page__article-head .meta {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;           /* Caption */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #595959;
+}
+.article-page__article-head .meta::before { content: "/ "; color: #888; }
+.article-page__expand-ico {
+  width: 16px; height: 16px;
+  display: inline-block;
+  border-top: 1px solid var(--black);
+  border-right: 1px solid var(--black);
+  position: relative;
+}
+.article-page__expand-ico::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: -1px;
+  width: 8px; height: 8px;
+  border-bottom: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+}
+
+.article-page__content p {
+  font-family: var(--font-body);
+  font-size: 14px;           /* P3 */
+  line-height: 1.5;
+  color: var(--black);
+  margin: 0 0 24px;
+}
+.article-page__content h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 36px;           /* H4 */
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: var(--black);
+  margin: 48px 0 24px;
+}
+.article-page__content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;           /* H5 */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin: 32px 0 12px;
+}
+.article-page__content code {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 0.92em;
+  background: var(--cream);
+  padding: 2px 6px;
+  border: 1px solid var(--silver);
+}
+.article-page__content a {
+  color: var(--black);
+  text-decoration: underline;
+  text-decoration-color: var(--color-elastic-blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.article-page__content strong { font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .article-page__title { font-size: 48px; }  /* H1 mobile */
+  .article-page__body { grid-template-columns: 1fr; row-gap: 32px; }
+  .article-page__nav { position: static; }
+  .article-page__meta { grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black, #111010);
+  color: var(--white, #FAFAF8);
+  margin-top: 120px;
+}
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 96px 0;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  align-items: start;
+}
+.footer-brand { max-width: 340px; }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  color: var(--white, #FAFAF8);
+}
+.footer-logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.footer-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+  max-width: 320px;
+}
+.footer-connect-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.footer-social-link:hover { border-color: rgba(255,255,255,0.6); color: var(--white, #FAFAF8); }
+.footer-social-link svg { width: 16px; height: 16px; }
+.footer-col-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 24px;
+}
+.footer-col-links { display: flex; flex-direction: column; }
+.footer-col-links a {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.15s;
+}
+.footer-col-links a:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.footer-col-links a:hover { color: var(--white, #FAFAF8); }
+.footer-col-links .ext-icon {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-left: 5px;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+.footer-mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-mid-links { display: flex; align-items: center; gap: 24px; }
+.footer-mid-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-mid-links a:hover { color: var(--white, #FAFAF8); }
+.footer-mid-links a svg { width: 15px; height: 15px; opacity: 0.6; }
+.footer-copyright {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.03em;
+}
+.footer-legal { padding: 24px 0 48px; }
+.footer-legal-links { display: flex; gap: 24px; margin-bottom: 16px; }
+.footer-legal-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+.footer-legal-links a:hover { color: rgba(255,255,255,0.7); }
+.footer-legal-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.28);
+  max-width: 960px;
+}
+.footer-legal-text a { color: rgba(255,255,255,0.4); text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-inner { padding: 32px 24px 0; }
+}
+
+
+
+/* Author chip — person icon + name, no border (our author style) */
+.author-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--black);
+}
+.author-ico {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  background: #E8E9EC;
+  color: #595959;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-ico svg { width: 14px; height: 14px; }
+
+/* Share block under Jump-to nav */
+.nav-share { margin-top: var(--space-12); }
+.nav-share__btns {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.share-icon-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--black);
+  color: var(--black);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.share-icon-btn svg { width: 16px; height: 16px; }
+.share-icon-btn:hover { background: var(--black); color: var(--white); }
+
+
+/* Jump-to header — mirrors the Article header (label + corner icon + bottom rule) */
+.article-page__nav-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: 32px;
+}
+.article-page__nav-head .meta,
+.article-page__article-head .meta,
+.article-page__meta-label .meta {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+}
+.article-page__nav-head .meta::before,
+.article-page__article-head .meta::before,
+.article-page__meta-label .meta::before {
+  content: "/ ";
+  color: var(--color-text-subdued);
+}
+
+/* Share label inside the aside — Space Mono Caption */
+.nav-share__label {
+  display: block;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-ink);
+  padding-bottom: 12px;
+  border-bottom: 2px dotted var(--black);
+  margin-bottom: var(--space-4);
+}
+.nav-share__label::before { content: "/ "; color: var(--color-text-subdued); }
+
+/* ===== PRIMARY NAV (Figma 2311:16127) ===== */
+.primary-nav {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E4E4E4;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.primary-nav__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--grid-margin, 96px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.primary-nav__row--utility {
+  border-bottom: 1px solid #E4E4E4;
+}
+.primary-nav__row--utility .primary-nav__container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.primary-nav__row--main .primary-nav__container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* ── Utility row left: NEW badge + announce + read more ── */
+.primary-nav__announce {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.primary-nav__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #DD0A73;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15.6px;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.primary-nav__badge-star {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.primary-nav__announce-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  background: linear-gradient(90deg, #373A45 0%, #373A45 86%, #474B57 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.primary-nav__readmore {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #0B64DD;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.primary-nav__readmore:hover { text-decoration: underline; }
+
+/* ── Utility row right: links ── */
+.primary-nav__utility-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.primary-nav__utility-links a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #373A45;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.primary-nav__utility-links a:hover { color: #0B64DD; }
+.primary-nav__utility-links a svg { width: 16px; height: 16px; }
+.primary-nav__util-divider {
+  width: 1px;
+  height: 18px;
+  background: #474B57;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+/* ── Main row left: logo + tabs ── */
+.primary-nav__brand-tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+.primary-nav__logo {
+  width: 120px;          /* horizontal logo space — replace bg with logo image when ready */
+  height: 40px;
+  background: #E6ECF3;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1D1F26;
+  letter-spacing: 0.08em;
+}
+.primary-nav__tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.primary-nav__tabs a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: #1D1F26;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.primary-nav__tabs a:hover { color: #0B64DD; }
+.primary-nav__tabs a.is-active { color: #0B64DD; }
+
+/* ── Main row right: CTAs ── */
+.primary-nav__cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.primary-nav__search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  background: #FFFFFF;
+  border: 2px solid #F04E98;
+  border-radius: 22px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #1D1F26;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.primary-nav__search-btn svg { width: 18px; height: 18px; }
+.primary-nav__search-btn:hover { background: #FFF5F8; }
+
+.primary-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.primary-nav__cta--filled {
+  background: #0B64DD;
+  border: 1px solid #0B64DD;
+  color: #FFFFFF;
+}
+.primary-nav__cta--filled svg { width: 16px; height: 16px; stroke: currentColor; }
+.primary-nav__cta--filled:hover { background: #0950B0; border-color: #0950B0; }
+.primary-nav__cta--outline {
+  background: #FFFFFF;
+  border: 1px solid #0B64DD;
+  color: #0B64DD;
+}
+.primary-nav__cta--outline:hover { background: #F2F7FE; }
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .primary-nav__cta--outline { display: none; }
+  .primary-nav__announce-text { display: none; }
+}
+@media (max-width: 1024px) {
+  .primary-nav__tabs a:nth-child(n+4) { display: none; }
+  .primary-nav__utility-links a span { display: none; }
+}
+@media (max-width: 768px) {
+  .primary-nav__container { padding: 0 24px; }
+  .primary-nav__tabs { display: none; }
+  .primary-nav__readmore { display: none; }
+  .primary-nav__cta--filled { padding: 0 12px; font-size: 14px; }
+  .primary-nav__search-btn { padding: 0 12px; }
+  .primary-nav__search-btn span { display: none; }
+}
+/* ===== END PRIMARY NAV ===== */
+
+/* ===== SECONDARY NAV (Sticky Glass) ===== */
+.secondary-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  /* parent is transparent — only the bar inside has the white + border */
+}
+.secondary-nav__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--grid-margin, 96px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.secondary-nav__bar {
+  display: inline-flex;                                    /* hug the items, not full width */
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 12px;
+  /* Glass effect on the bar only — frosted, not solid */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: saturate(180%) blur(28px);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  pointer-events: auto;  /* re-enable clicks on the bar itself */
+  font-family: 'Space Grotesk', var(--font-display, sans-serif);
+}
+.secondary-nav__bar::-webkit-scrollbar { display: none; }
+
+.secondary-nav__lab,
+.secondary-nav__section {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  font-family: 'Space Grotesk', var(--font-display, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--black, #111010);
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Lab tab brand-color hovers (and active state) */
+.secondary-nav__lab--es:hover,
+.secondary-nav__lab--es.is-active {
+  background: #0B64DD;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--obs:hover {
+  background: #FA744E;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--sec:hover {
+  background: #DD0A73;
+  color: #FFFFFF;
+}
+.secondary-nav__lab--news:hover {
+  background: #111010;
+  color: #FFFFFF;
+}
+
+/* Divider between lab tabs and section sub-tabs */
+.secondary-nav__divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.18);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* Section sub-tabs */
+.secondary-nav__section {
+  color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  background: transparent;
+}
+.secondary-nav__section::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 1.5px;
+  background: transparent;
+  transition: background 0.15s;
+}
+.secondary-nav__section:hover {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section:hover::before { background: var(--black, #111010); }
+.secondary-nav__section.is-active {
+  color: var(--black, #111010);
+  background: transparent;
+}
+.secondary-nav__section.is-active::before { background: var(--black, #111010); }
+/* Dropdown button — kill default button chrome */
+.secondary-nav__dropdown-btn {
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.secondary-nav__dropdown-btn:focus { outline: none; }
+.secondary-nav__dropdown-btn:focus-visible { outline: 2px solid var(--color-elastic-blue, #0B64DD); outline-offset: -2px; }
+
+/* Anchor scroll-margin so sticky nav doesn't cover section headers */
+#featured, #tutorial, #examples, #integration {
+  scroll-margin-top: 140px;
+}
+
+@media (max-width: 768px) {
+  .secondary-nav__inner { padding: 0 16px; }
+  .secondary-nav__bar { padding: 0 8px; gap: 4px; }
+  .secondary-nav__lab, .secondary-nav__section { padding: 0 8px; font-size: 13px; }
+}
+/* ===== END SECONDARY NAV ===== */
+
+
+/* ── Tutorial Previous / Next footer ── */
+.tutorial-prevnext {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1.5px solid var(--black, #111010);
+  margin: var(--space-12, 48px) 0 var(--space-16, 64px);
+}
+.tutorial-prevnext__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+  text-decoration: none;
+  color: var(--black, #111010);
+  background: var(--white, #FFF);
+  transition: background 0.15s, color 0.15s;
+}
+.tutorial-prevnext__cell + .tutorial-prevnext__cell {
+  border-left: 1.5px solid var(--black, #111010);
+}
+.tutorial-prevnext__cell:hover {
+  background: var(--black, #111010);
+  color: var(--white, #FFF);
+}
+.tutorial-prevnext__cell--next { align-items: flex-end; text-align: right; }
+.tutorial-prevnext__label {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subdued, #69707D);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tutorial-prevnext__cell:hover .tutorial-prevnext__label { color: rgba(255,255,255,0.7); }
+.tutorial-prevnext__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.tutorial-prevnext__arrow {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+@media (max-width: 800px) {
+  .tutorial-prevnext { grid-template-columns: 1fr; }
+  .tutorial-prevnext__cell + .tutorial-prevnext__cell { border-left: none; border-top: 1.5px solid var(--black, #111010); }
+  .tutorial-prevnext__cell--next { align-items: flex-start; text-align: left; }
+}
+
+/* Author chips are now clickable links */
+a.author-chip { color: inherit; text-decoration: none; cursor: pointer; }
+a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+/* GitHub external link in secondary nav */
+.secondary-nav__github {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.secondary-nav__github .external-icon {
+  width: 11px;
+  height: 11px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.secondary-nav__github:hover .external-icon { opacity: 1; }
+
+/* Examples dropdown in secondary nav */
+.secondary-nav__dropdown {
+  position: relative;
+  display: inline-flex;
+}
+.secondary-nav__dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  /* inherit secondary-nav__section font/color from existing rule */
+}
+.secondary-nav__chev {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+.secondary-nav__dropdown-btn[aria-expanded="true"] .secondary-nav__chev {
+  transform: rotate(180deg);
+}
+.secondary-nav__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--white, #FFF);
+  border: 1px solid var(--black, #111010);
+  z-index: 9999;
+}
+.secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
+.secondary-nav__menu-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--black, #111010);
+  text-decoration: none;
+  border-bottom: 1px solid var(--black, #111010);
+  transition: background 0.1s;
+}
+.secondary-nav__menu-opt:last-child { border-bottom: none; }
+.secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
+.secondary-nav__menu-num {
+  font-size: 11px;
+  color: #595959;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.secondary-nav__menu-label { font-weight: 500; }
+
+/* Allow secondary-nav dropdown to escape the bar's overflow trap */
+.secondary-nav__bar { overflow-x: visible !important; overflow-y: visible !important; }
+/* Hover/keep-open behaviour: a forgiving bridge between button and menu */
+.secondary-nav__dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 16px; /* invisible hover bridge so cursor doesn't leave the dropdown */
+  pointer-events: none;
+}
+.secondary-nav__dropdown:hover::after,
+.secondary-nav__dropdown.is-open::after { pointer-events: auto; }
+.secondary-nav__dropdown:hover .secondary-nav__menu,
+.secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ============== PRIMARY NAV (Figma 2311:16127) ============== -->
+<header class="primary-nav" aria-label="Primary navigation">
+  <div class="primary-nav__row primary-nav__row--utility">
+    <div class="primary-nav__container">
+      <div class="primary-nav__announce">
+        <span class="primary-nav__badge" aria-label="New">
+          <svg class="primary-nav__badge-star" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+            <path d="M5 0 L6 4 L10 5 L6 6 L5 10 L4 6 L0 5 L4 4 Z"/>
+          </svg>
+          NEW
+        </span>
+        <span class="primary-nav__announce-text">The executive guide to Generative AI</span>
+        <a class="primary-nav__readmore" href="#">Read more</a>
+      </div>
+      <nav class="primary-nav__utility-links" aria-label="Utility">
+        <a href="#">About us</a>
+        <a href="#">Partners</a>
+        <a href="#">Support</a>
+        <span class="primary-nav__util-divider" aria-hidden="true"></span>
+        <a href="#" aria-label="Language">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <path d="M1.5 8 H14.5 M8 1.5 a10 6.5 0 0 1 0 13 M8 1.5 a10 6.5 0 0 0 0 13"/>
+          </svg>
+          <span>EN</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <circle cx="8" cy="5" r="3"/>
+            <path d="M2 14 a6 6 0 0 1 12 0"/>
+          </svg>
+          <span>Login</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+  <div class="primary-nav__row primary-nav__row--main">
+    <div class="primary-nav__container">
+      <div class="primary-nav__brand-tabs">
+        <a class="primary-nav__logo" href="sunny-elastic-home.html" aria-label="Home">LOGO</a>
+        <nav class="primary-nav__tabs" aria-label="Primary">
+          <a class="primary-nav__tab is-active" href="#">Elasticsearch</a>
+          <a href="#">Solutions</a>
+          <a href="#">Enterprise</a>
+          <a href="#">Resources</a>
+          <a href="#">Docs</a>
+          <a href="#">Pricing</a>
+        </nav>
+      </div>
+      <div class="primary-nav__cta-row">
+        <button class="primary-nav__search-btn" type="button" aria-label="Search">
+          <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="5"/>
+            <path d="M11.5 11.5 L16 16"/>
+          </svg>
+          <span>Search</span>
+        </button>
+        <a class="primary-nav__cta primary-nav__cta--filled" href="#">
+          Start free trial
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3 L10 8 L5 13"/></svg>
+        </a>
+        <a class="primary-nav__cta primary-nav__cta--outline" href="#">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== SECONDARY NAV (Sticky Glass) ============== -->
+<nav class="secondary-nav" aria-label="Secondary">
+  <div class="secondary-nav__inner">
+    <div class="secondary-nav__bar">
+      <a class="secondary-nav__lab secondary-nav__lab--es is-active" href="sunny-elastic-home.html">Elasticsearch Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--obs" href="sunny-elastic-observability.html">Observability Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--sec" href="sunny-elastic-security.html">Security Labs</a>
+      <a class="secondary-nav__lab secondary-nav__lab--news" href="#">News</a>
+    </div>
+    <div class="secondary-nav__bar">
+      <a class="secondary-nav__section" href="sunny-elastic-results.html">Blog</a>
+      <a class="secondary-nav__section is-active" href="sunny-elastic-tutorials.html">Tutorial</a>
+      <div class="secondary-nav__dropdown">
+        <button class="secondary-nav__section secondary-nav__dropdown-btn" type="button" onclick="toggleExamplesDropdown(this)" aria-haspopup="true" aria-expanded="false">Examples <svg class="secondary-nav__chev" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="2,3 8,3 5,7" fill="currentColor"/></svg></button>
+        <div class="secondary-nav__menu" role="menu">
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">01</span><span class="secondary-nav__menu-label">Apps</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-examples.html" role="menuitem"><span class="secondary-nav__menu-num">02</span><span class="secondary-nav__menu-label">Notebook</span></a>
+          <a class="secondary-nav__menu-opt" href="sunny-elastic-glossary.html" role="menuitem"><span class="secondary-nav__menu-num">03</span><span class="secondary-nav__menu-label">Glossary</span></a>
+        </div>
+      </div>
+      <a class="secondary-nav__section" href="sunny-elastic-integrations.html">Integration</a>
+      <a class="secondary-nav__section secondary-nav__github" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="external-icon"><path d="M3 2H10V9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M10 2L3 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<main class="article-page">
+
+  <header class="article-page__head">
+    <a class="article-page__back" href="javascript:history.back()" aria-label="Back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 3 L4 8 L10 13"/>
+        <path d="M4 8 H14"/>
+      </svg>
+      <span>Back</span>
+    </a>
+
+    <h1 class="article-page__title">Install Elasticsearch with Docker</h1>
+    <p class="article-page__lede">
+      Run Elasticsearch locally in a few minutes with the official Docker image. This guide walks through pulling the image, running a single-node cluster, and confirming everything is healthy before you start indexing.
+    </p>
+  </header>
+
+  <div class="article-page__body">
+
+    <aside class="article-page__nav">
+      <div class="article-page__nav-head">
+        <span class="meta">In this series</span>
+      </div>
+      <ul class="nav-items">
+        <li><a href="#overview" class="is-active" data-jump="overview">Overview</a></li>
+        <li><a href="#docker" data-jump="docker">Docker</a></li>
+        <li><a href="#start-local" data-jump="start-local">Start-local</a></li>
+        <li><a href="#cloud" data-jump="cloud">Elastic Cloud</a></li>
+        <li><a href="#self-managed" data-jump="self-managed">Self-managed binary</a></li>
+        <li><a href="#kubernetes" data-jump="kubernetes">Kubernetes (ECK)</a></li>
+      </ul>
+
+      <div class="nav-share">
+        <span class="meta nav-share__label">Share</span>
+        <div class="nav-share__btns">
+          <button class="share-icon-btn" type="button" aria-label="Share on X">
+            <svg viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M13.5 2h2.4l-5.25 6 6.18 8H12.1l-3.78-4.95L4 16H1.6l5.6-6.4L1.3 2h4.86l3.42 4.52L13.5 2zm-.84 12.4h1.33L5.4 3.5H3.97l8.69 10.9z"/>
+            </svg>
+          </button>
+          <button class="share-icon-btn" type="button" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4.4 3a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8zM3.2 6.8h2.4V15H3.2V6.8zM7.2 6.8h2.3v1.12h.03c.32-.6 1.1-1.24 2.27-1.24 2.43 0 2.88 1.6 2.88 3.68V15h-2.4v-3.68c0-.88-.02-2.01-1.22-2.01-1.23 0-1.42.96-1.42 1.95V15h-2.4V6.8z"/>
+            </svg>
+          </button>
+          <button class="share-icon-btn" type="button" aria-label="Subscribe">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 14 a2 2 0 1 0 2 -2"/>
+              <path d="M3 9 a6 6 0 0 1 6 6"/>
+              <path d="M3 4 a11 11 0 0 1 11 11"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="article-page__content">
+      <div class="article-page__article-head">
+        <span class="meta">Tutorial</span>
+        <span class="article-page__expand-ico" aria-hidden="true"></span>
+      </div>
+
+      <p>Docker is the fastest way to spin up Elasticsearch for local development, demos, or CI. You get a clean, reproducible environment without polluting your machine with JDKs, config files, or service definitions.</p>
+
+      <p>This tutorial assumes Docker Desktop (or Docker Engine) is already installed and running. If you'd rather not manage the container yourself, jump to <a href="#start-local">Start-local</a> in the next part of this series &mdash; it bundles the same image behind a single script.</p>
+
+      <h2 id="overview">Overview</h2>
+      <p>By the end of this guide you'll have a single-node Elasticsearch cluster reachable on <code>https://localhost:9200</code>, with TLS enabled and a generated <code>elastic</code> user password ready for your client.</p>
+
+      <p>The total install footprint is roughly 1.2 GB once the image is pulled. Expect the first run to take 30&ndash;90 seconds while the cluster initialises and writes its certificate bundle.</p>
+
+      <h2 id="docker">Pull the image</h2>
+      <p>The image is published to the Elastic Docker registry under <code>docker.elastic.co/elasticsearch/elasticsearch</code>. Always pin to a specific version &mdash; the <code>:latest</code> tag is intentionally not published, so a typo doesn't roll you onto a major release you weren't ready for.</p>
+
+      <p><code>docker pull docker.elastic.co/elasticsearch/elasticsearch:8.15.0</code></p>
+
+      <p>If you're on Apple Silicon, the image is multi-arch &mdash; no special flags needed. Older Intel hosts work identically.</p>
+
+      <h2 id="run-node">Run a single node</h2>
+      <p>Start the container with sensible defaults: a named volume for data, exposed HTTP and transport ports, and enough heap to actually do something. The <code>-Xms1g -Xmx1g</code> heap is generous for a laptop dev cluster but small enough that other apps can breathe.</p>
+
+      <h2 id="verify">Verify the cluster is healthy</h2>
+      <p>Grab the generated password and root CA on first start, then hit the health endpoint. A <code>green</code> or <code>yellow</code> status (yellow is normal on single-node since replicas can't be allocated) means you're ready to index.</p>
+
+      <h2 id="start-local">Next: Start-local</h2>
+      <p>You now have a working cluster. If you'd rather a single-command installer that handles the certificate dance for you, the next part of this series covers <strong>Start-local</strong> &mdash; it's the fastest path from zero to a working dev environment without writing a single Docker flag.</p>
+
+    </div>
+
+  </div>
+
+  <nav class="tutorial-prevnext" aria-label="Series navigation">
+    <a class="tutorial-prevnext__cell tutorial-prevnext__cell--prev" href="https://www.elastic.co/search-labs/tutorials/install-elasticsearch/docker">
+      <span class="tutorial-prevnext__label">
+        <svg class="tutorial-prevnext__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 3 L4 8 L10 13"/>
+          <path d="M4 8 H14"/>
+        </svg>
+        Previously
+      </span>
+      <span class="tutorial-prevnext__title">Docker</span>
+    </a>
+    <a class="tutorial-prevnext__cell tutorial-prevnext__cell--next" href="https://www.elastic.co/search-labs/tutorials/install-elasticsearch/start-local">
+      <span class="tutorial-prevnext__label">
+        Next
+        <svg class="tutorial-prevnext__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 3 L12 8 L6 13"/>
+          <path d="M12 8 H2"/>
+        </svg>
+      </span>
+      <span class="tutorial-prevnext__title">Start-local</span>
+    </a>
+  </nav>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg class="footer-logo-icon" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.08)"/><rect x="7" y="7" width="6" height="6" fill="#00BFB3"/><rect x="15" y="7" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="7" y="15" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="15" y="15" width="6" height="6" fill="rgba(255,255,255,0.15)"/></svg>elastic search labs</div>
+      <p class="footer-tagline">Elasticsearch Labs is the one-stop destination for developers to learn how to utilize Elasticsearch to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.</p>
+      <div class="footer-connect-label">Let's connect</div>
+      <div class="footer-social">
+        <a class="footer-social-link" href="https://github.com/elastic/elasticsearch-labs" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a class="footer-social-link" href="https://twitter.com/elasticseclabs" target="_blank" rel="noopener" aria-label="Twitter / X"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+        <a class="footer-social-link" href="#" aria-label="RSS"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">Menu</div>
+      <div class="footer-col-links"><a href="sunny-elastic-tutorials.html">Tutorials</a><a href="sunny-elastic-home.html#examples">Examples</a><a href="sunny-elastic-integrations.html">Integrations</a><a href="sunny-elastic-results.html">Blogs</a><a href="#">Search</a></div>
+    </div>
+    <div>
+      <div class="footer-col-label">Additional Resources</div>
+      <div class="footer-col-links"><a href="https://www.elastic.co/docs/api/doc/elasticsearch" target="_blank" rel="noopener">Elasticsearch API Reference <svg class="ext-icon" viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a><a href="https://www.elastic.co" target="_blank" rel="noopener">Elastic.co <svg class="ext-icon" viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a></div>
+    </div>
+  </div>
+
+  <div class="footer-mid">
+    <div class="footer-mid-links">
+      <a href="#"><svg viewBox="0 0 16 16" fill="none"><rect x="1" y="2" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M1 6h14M5 2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Sitemap</a>
+      <a href="#"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg> Subscribe</a>
+      <a href="https://www.elastic.co" target="_blank" rel="noopener"><svg viewBox="0 0 10 10" fill="none"><path d="M2 2h6v6M8 2 2 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Elastic.co</a>
+    </div>
+    <span class="footer-copyright">© 2026. Elasticsearch B.V. All Rights Reserved.</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="#">Trademarks</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy</a>
+    </div>
+    <p class="footer-legal-text">This website and all associated content, software, discussion forums, products, and services are intended for professional use only. No consumer use of this website or its content is intended or directed.<br>Elastic, Elasticsearch, and other related marks are trademarks, logos, or registered trademarks of Elasticsearch B.V. in the United States and other countries.<br>Apache, Apache Lucene, Apache Hadoop, Hadoop, HDFS and the yellow elephant logo are trademarks of the <a href="https://www.apache.org/" target="_blank" rel="noopener">Apache Software Foundation</a> in the United States and/or other countries. All other brand names, product names, or trademarks belong to their respective owners.</p>
+  </div>
+</div>
+</footer>
+
+<script>
+// Active section highlight on scroll (scroll-spy)
+(function() {
+  const links = Array.from(document.querySelectorAll('.nav-items a[data-jump], .nav-items summary[data-jump]'));
+  const map = {};
+  links.forEach(l => { const id = l.getAttribute('data-jump'); if (id) map[id] = l; });
+  const ids = ['overview','docker','run-node','verify','start-local'];
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+
+  function onScroll() {
+    let current = null;
+    const offset = 120;
+    for (const sec of sections) {
+      if (sec.getBoundingClientRect().top <= offset) current = sec.id;
+    }
+    links.forEach(l => l.classList.remove('is-active'));
+    if (current && map[current]) map[current].classList.add('is-active');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+<script>
+/* Examples nav dropdown — toggle open/closed, close on outside click */
+// Hover-based dropdown with grace period so the menu stays open
+//  - opens on mouseenter (button or menu)
+//  - closes only after the cursor has been outside for 200ms
+//  - click is a no-op (no toggle), preventing the abrupt open/close glitch
+(function() {
+  var DROPDOWN_SEL = '.secondary-nav__dropdown';
+  var CLOSE_DELAY = 200;
+  document.querySelectorAll(DROPDOWN_SEL).forEach(function(wrap) {
+    var closeTimer = null;
+    var btn = wrap.querySelector('.secondary-nav__dropdown-btn');
+
+    function open() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      wrap.classList.add('is-open');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+    function scheduleClose() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function() {
+        wrap.classList.remove('is-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }, CLOSE_DELAY);
+    }
+    wrap.addEventListener('mouseenter', open);
+    wrap.addEventListener('mouseleave', scheduleClose);
+    // Keyboard focus opens too
+    wrap.addEventListener('focusin', open);
+    wrap.addEventListener('focusout', function(e) {
+      if (!wrap.contains(e.relatedTarget)) scheduleClose();
+    });
+  });
+})();
+// Legacy no-op so the inline onclick on the button doesn't error
+function toggleExamplesDropdown(btn) { /* hover-driven now */ }
+</script>
+</body>
+</html>
