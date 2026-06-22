@@ -329,7 +329,7 @@ a { text-decoration: none; color: inherit; }
 }
 .card-category {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: #2f2f2f;
   line-height: 14.31px;
 }
@@ -338,7 +338,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 10px;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: #2f2f2f;
   line-height: 14.31px;
 }
@@ -510,7 +510,7 @@ footer {
 .footer-logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
 .footer-tagline {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.65;
   color: rgba(255,255,255,0.5);
   margin-bottom: 32px;
@@ -730,7 +730,7 @@ footer {
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 14.31px;
   color: #595959;
   margin-bottom: var(--space-3);
@@ -755,7 +755,7 @@ footer {
 .kb-card:hover .kb-title { color: var(--black); }
 .kb-excerpt {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   color: #2f2f2f;
 }
@@ -884,7 +884,7 @@ footer {
 .card-author-avatar svg { width: 14px; height: 14px; }
 .card-author-name {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: #595959;
   line-height: 14.31px;
 }
@@ -932,7 +932,7 @@ footer {
 /* ── CLEAN CARD HIERARCHY ── */
 .card-excerpt {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   color: #595959;
   margin: 0;
@@ -1057,7 +1057,7 @@ footer {
   padding: var(--space-2) 0;
 }
 .fig-pill-tag {
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   height: 24px;
   padding: 0 var(--space-3);
   display: inline-flex;
@@ -1080,6 +1080,7 @@ footer {
   flex-direction: column;
   gap: var(--space-2);
   width: 100%;
+  flex: 1 1 auto;   /* grow so the author/date row can sit at the card bottom */
 }
 .fig-title {
   font-family: var(--font-display);
@@ -1108,7 +1109,8 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 0;
-  margin-top: var(--space-1);
+  margin-top: auto;   /* push author/date to the bottom of the card, aligned across the row */
+  padding-top: var(--space-3);
 }
 /* Tight inside one author: 4px between avatar and its name */
 .fig-author-row .fig-avatar + .fig-author-name { margin-left: 4px; }
@@ -1131,7 +1133,7 @@ footer {
 .fig-avatar svg { width: 14px; height: 14px; }
 .fig-author-name {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 14.31px;
   color: #2f2f2f;
 }
@@ -1144,7 +1146,7 @@ footer {
 }
 .fig-date {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 14.31px;
   color: #2f2f2f;
 }
@@ -1236,7 +1238,7 @@ footer {
   margin-bottom: var(--space-2);
 }
 .hero-tag {
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   height: 24px;
   padding: 0 10px;
   display: inline-flex;
@@ -1245,6 +1247,7 @@ footer {
   font-size: 12px;
   color: #2f2f2f;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 .hero-title {
   font-family: var(--font-display);
@@ -1317,12 +1320,13 @@ footer {
   flex-wrap: wrap;
 }
 .hero-list-tag {
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   padding: 2px 8px;
   font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
   color: #2f2f2f;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 .hero-list-date {
   font-family: var(--font-mono);
@@ -1503,7 +1507,7 @@ footer {
   flex-wrap: wrap;
 }
 .pod-right-tag {
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   padding: 2px 8px;
   font-family: var(--font-body);
   font-size: 11px;
@@ -1524,7 +1528,7 @@ footer {
   align-items: center;
   gap: 8px;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: #595959;
 }
 
@@ -1546,10 +1550,10 @@ footer {
 }
 .section-strip-desc {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6;
   color: var(--black, #111010);
-  max-width: 720px;
+  max-width: 900px;
   margin: 0;
 }
 .section-strip-title {
@@ -1663,7 +1667,7 @@ footer {
 }
 .fp-desc {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: #cec0ad;
   opacity: 0.7;
@@ -1749,7 +1753,7 @@ footer {
 }
 .ex-panel-title {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--black);
   margin: 0 0 var(--space-3);
@@ -1774,7 +1778,7 @@ footer {
   text-align: left;
   cursor: pointer;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: var(--black);
   transition: background 0.15s;
 }
@@ -1806,7 +1810,7 @@ footer {
   align-items: center;
   height: 24px;
   padding: 0 var(--space-3);
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   background: transparent;
   font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
@@ -1877,7 +1881,7 @@ footer {
   background: transparent;
   color: #0B64DD;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0.02em;
@@ -1992,7 +1996,7 @@ footer {
 .ex-row-link__main { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .ex-row-link .ex-row-title {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   color: var(--black);
 }
 .ex-row-arrow {
@@ -2085,7 +2089,7 @@ footer {
 }
 .int-card-title {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.25;
   color: var(--black);
@@ -2099,7 +2103,7 @@ footer {
 }
 .int-card-desc {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   color: #595959;
   margin: 0;
@@ -2367,6 +2371,36 @@ footer {
 
 /* ── Responsive ── */
 @media (max-width: 1280px) {
+  /* "New to Elastic?" callout — go in-flow as a boxed paragraph below 1280px
+     (desktop side-positioning overlaps the paragraph at narrower widths) */
+  .intro-callout {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 24px var(--grid-margin) 0 !important;
+    --callout-top: 0 !important;
+    --callout-right: 0 !important;
+    --callout-width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1px solid var(--black, #111010) !important;
+    background: #fff !important;
+    padding: 20px !important;
+    text-decoration: none !important;
+  }
+  .intro-callout__arrow,
+  .intro-callout__arrow--left { display: none !important; }
+  .intro-callout__content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .intro-callout__title-row { display: flex !important; align-items: center !important; gap: 8px !important; }
+  .intro-callout__body { margin: 0 !important; word-break: normal !important; overflow-wrap: anywhere; }
+
   .primary-nav__cta--outline { display: none; }
   .primary-nav__announce-text { display: none; }
 }
@@ -2375,6 +2409,103 @@ footer {
   .primary-nav__utility-links a span { display: none; }
 }
 @media (max-width: 768px) {
+  /* hero/section tightened on mobile — sit closer to the module below */
+  .section-strip { margin-top: 28px !important; margin-bottom: 16px !important; }
+  .page-title-banner--grid { padding: 20px 0 20px !important; }
+
+  /* Examples module — mobile stack: [ title ........ + ] on row 1, tags below the title */
+  .ex-row-trigger {
+    grid-template-columns: 1fr auto !important;   /* title | toggle */
+    grid-template-areas: "title toggle" "tags tags" !important;
+    row-gap: 10px !important;
+    align-items: start !important;
+  }
+  .ex-row-toggle {
+    grid-area: toggle !important; align-self: start !important;
+    position: relative !important; z-index: 3 !important;
+    min-width: 36px !important; min-height: 36px !important; cursor: pointer !important;
+  }
+  .ex-row-title {
+    grid-area: title !important; font-size: 16px !important; line-height: 1.3 !important;
+    justify-self: start !important; position: relative !important; z-index: 1 !important;
+  }
+  .ex-row-tags { grid-area: tags !important; flex-wrap: wrap !important; }
+
+  /* ★ "New to Elastic?" callout — proper boxed paragraph callout on mobile */
+  .intro-callout {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 24px var(--grid-margin) 0 !important;   /* inset to match the padded content above */
+    --callout-top: 0 !important;
+    --callout-right: 0 !important;
+    --callout-width: 100% !important;
+    box-sizing: border-box !important;
+    border: 1px solid var(--black, #111010) !important;
+    background: #fff !important;
+    padding: 20px !important;
+    text-decoration: none !important;
+  }
+  .intro-callout__arrow,
+  .intro-callout__arrow--left { display: none !important; }   /* decorative arrow only for desktop side layout */
+  .intro-callout__content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .intro-callout__title-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .intro-callout__title { font-size: 17px !important; }
+  .intro-callout__body {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+
+  :root { --grid-margin: 20px; --section-gap: 56px; }
+
+  /* ── Mobile type scale: clear hierarchy ── */
+  .section-strip-title { font-size: 64px !important; line-height: 1.1; }
+  .section-strip-slash { font-size: 30px !important; }
+  .section-strip-desc { font-size: 20px; }
+  .fig-title { font-size: 20px !important; line-height: 1.25; }
+  .blog-series-title { font-size: 22px !important; }
+  .pod-title, .hero-card-title { font-size: 22px !important; line-height: 1.2; }
+  .kb-title { font-size: 16px !important; }
+
+  /* ── Universal mobile stacking: collapse multi-column grids to single column ── */
+  .pod-body { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .pod-divider, .pod-body > .pod-divider { display: none !important; }
+  .results-grid-9, .results-grid-3, .results-grid-3x2 { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .featured-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .kb-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .blog-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .blog-series-wrap { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .int-grid { grid-template-columns: 1fr !important; }
+  .hero-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .hero-divider { display: none !important; }
+  .examples-bg-inner { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .examples-bg-grid { display: none !important; }
+  .ex-row-body-inner { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .footer-top, .footer-cols { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* generous edge padding + section rhythm */
+  .results-grid-9, .featured-row, .kb-grid, .blog-grid { padding-left: 0 !important; padding-right: 0 !important; }
+
+  /* Blog cards: hide the image on mobile, keep title/tags/author/date/excerpt */
+  .fig-img, .fig-img-border { display: none !important; }
+
+
+
   .primary-nav__container { padding: 0 24px; }
   .primary-nav__tabs { display: none; }
   .primary-nav__readmore { display: none; }
@@ -2385,11 +2516,16 @@ footer {
 /* ===== END PRIMARY NAV ===== */
 
 /* ===== SECONDARY NAV (Sticky Glass) ===== */
+.secondary-nav__mobilebar { display: none; }   /* desktop: no mobile trigger bar */
 .secondary-nav {
   position: sticky;
   top: 0;
   z-index: 90;
-  /* parent is transparent — only the bar inside has the white + border */
+  /* Full-width single bar (edge to edge) — content is inset by __inner padding */
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: saturate(180%) blur(28px);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  border-bottom: 1px solid #E4E4E4;
 }
 .secondary-nav__inner {
   max-width: 1440px;
@@ -2399,23 +2535,19 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  height: 52px;
 }
 .secondary-nav__bar {
-  display: inline-flex;                                    /* hug the items, not full width */
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 52px;
-  padding: 0 12px;
-  /* Glass effect on the bar only — frosted, not solid */
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: saturate(180%) blur(28px);
-  -webkit-backdrop-filter: saturate(180%) blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
-  overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  pointer-events: auto;  /* re-enable clicks on the bar itself */
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow-x: visible;
+  pointer-events: auto;
   font-family: 'Space Grotesk', var(--font-display, sans-serif);
 }
 .secondary-nav__bar::-webkit-scrollbar { display: none; }
@@ -2441,7 +2573,7 @@ footer {
 /* Lab tab brand-color hovers (and active state) */
 .secondary-nav__lab--es:hover,
 .secondary-nav__lab--es.is-active {
-  background: #0B64DD;
+  background: #128D91;
   color: #FFFFFF;
 }
 .secondary-nav__lab--obs:hover {
@@ -2468,7 +2600,7 @@ footer {
 
 /* Section sub-tabs */
 .secondary-nav__section {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--black, #111010);
   position: relative;
   background: transparent;
 }
@@ -2507,9 +2639,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .secondary-nav__inner { padding: 0 16px; }
-  .secondary-nav__bar { padding: 0 8px; gap: 4px; }
-  .secondary-nav__lab, .secondary-nav__section { padding: 0 8px; font-size: 13px; }
 }
 /* ===== END SECONDARY NAV ===== */
 
@@ -2544,7 +2673,7 @@ footer {
   margin-top: var(--space-6, 24px);
   padding: var(--space-3, 12px) 0;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
@@ -2613,7 +2742,7 @@ footer {
 }
 .cta-callout-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 44px;
+  font-size: 48px;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.4;        /* keeps space between the white highlight blocks */
@@ -2685,7 +2814,7 @@ footer {
 
 @media (max-width: 900px) {
   .cta-callout { padding: var(--space-10, 40px) var(--space-8, 32px); }
-  .cta-callout-title { font-size: 32px; }
+  .cta-callout-title { font-size: 48px; }
   .cta-callout-row { flex-direction: column; }
   .cta-callout-buttons { width: 100%; flex-wrap: wrap; }
   .cta-btn { flex: 1 1 auto; justify-content: center; }
@@ -2882,7 +3011,7 @@ body.preload .int-card::after {
 }
 .intro-callout__title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: normal;
   color: var(--black, #111010);
@@ -2900,20 +3029,15 @@ body.preload .int-card::after {
 }
 .intro-callout__body {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--black, #111010);
   margin: 0;
   word-break: break-word;
 }
 @media (max-width: 900px) {
   /* On narrow screens, drop the callout into the normal flow so it doesn't overlap */
-  .intro-callout {
-    position: static;
-    width: 100%;
-    margin: var(--space-6, 24px) var(--grid-margin) 0;
-  }
 }
 
 
@@ -2993,7 +3117,7 @@ body.preload .int-card::after {
   gap: 12px;
   padding: 10px 16px;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--black, #111010);
   text-decoration: none;
@@ -3047,9 +3171,231 @@ body.preload .int-card::after {
   background-position: 0 0;
 }
 
+
+/* ════════ SHARED PRIMARY-NAV MOBILE (≤ 768px) — logo + hamburger ════════ */
+.primary-nav__hamburger { display: none; }   /* desktop: hidden */
+@media (max-width: 768px) {
+  /* Hide the utility/announce row entirely */
+  .primary-nav__row--utility { display: none; }
+  /* Main row: logo left, hamburger right; hide tabs + cta cluster */
+  .primary-nav__row--main { padding: 0; }
+  .primary-nav__container { padding: 0 var(--grid-margin, 20px); }
+  .primary-nav__tabs { display: none; }
+  .primary-nav__cta-row { display: none; }
+  .primary-nav__brand-tabs { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .primary-nav__logo { width: auto; font-size: 18px; }
+  /* Hamburger button — visible, touch-friendly */
+  .primary-nav__hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: var(--black, #111010);
+    cursor: pointer;
+    padding: 0;
+  }
+}
+
+
+/* Footer logo placeholder rectangle */
+.footer-logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE NAV DRAWER (≤768px) — Palantir layout; EXACT desktop secondary-nav styling in list form.
+   We do NOT restyle the links — the original .secondary-nav__lab / __section
+   colors, hover fills and underline-reveal apply unchanged. We only change layout.
+   ════════════════════════════════════════════════════════════════ */
+.mnav-launch, .mnav-drawer { display: none; }
+
+@media (max-width: 768px) {
+  .primary-nav { position: sticky; top: 0; z-index: 100; }
+
+  /* Launcher */
+  .mnav-launch {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; left: 16px; bottom: 16px; z-index: 1002;
+    width: 48px; height: 48px;
+    background: var(--black, #111010); color: #fff;
+    border: none; box-shadow: 0 4px 18px rgba(0,0,0,0.28); cursor: pointer;
+  }
+  /* Launcher icon swap: hamburger when closed, X when open — button stays in place */
+  .mnav-launch__close { display: none; }
+  body.mnav-open .mnav-launch__open { display: none; }
+  body.mnav-open .mnav-launch__close { display: block; }
+
+  /* Full-screen light drawer */
+  .mnav-drawer {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0; z-index: 1001;
+    background: #fff; color: var(--black, #111010);
+    opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+  }
+  body.mnav-open .mnav-drawer { opacity: 1; pointer-events: auto; }
+  body.mnav-open { overflow: hidden; }
+
+  /* Tabs */
+  .mnav-tabs { display: flex; flex-shrink: 0; padding: 24px 20px 0; gap: 28px; border-bottom: 1px solid #E4E4E4; }
+  .mnav-tab {
+    background: transparent; border: none; cursor: pointer; color: #767676;
+    font-family: var(--font-mono, monospace); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0 0 14px; margin-bottom: -1px;
+    border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s;
+  }
+  .mnav-tab.is-active { color: var(--black, #111010); border-bottom-color: var(--black, #111010); }
+
+  /* Panels */
+  .mnav-panels { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 20px; }
+  .mnav-panel { display: none; }
+  .mnav-panel.is-active { display: block; }
+  .mnav-panel ul { list-style: none; margin: 0; padding: 0; }
+  .mnav-panel li { display: block; width: 100%; margin: 0; }
+  .mnav-panel .secondary-nav__dropdown { display: block; width: 100%; }
+
+  /* Container chrome reset: bars become vertical columns, drop glass/borders */
+  .mnav-panel .secondary-nav__inner,
+  .mnav-panel .secondary-nav__bar {
+    display: flex !important; flex-direction: column; align-items: stretch;
+    width: 100%; height: auto !important; gap: 0;
+    padding: 0 !important; margin: 0 !important;
+    background: transparent !important; backdrop-filter: none !important;
+    border: none !important; box-shadow: none !important;
+    max-height: none !important; overflow: visible !important; opacity: 1 !important;
+  }
+  .mnav-panel .secondary-nav__bar + .secondary-nav__bar {
+    border-top: 1px solid #E4E4E4; margin-top: 4px !important; padding-top: 4px !important;
+  }
+  .mnav-panel .secondary-nav__divider { display: none !important; }
+
+  /* Links: keep desktop styling (colors/hover/underline) — only make each a full-width left-aligned row.
+     position:relative + height auto so the ::before underline still renders. */
+  .mnav-panel .secondary-nav__lab,
+  .mnav-panel .secondary-nav__section,
+  .mnav-panel .secondary-nav__dropdown-btn {
+    position: relative;
+    display: flex !important; align-items: center; justify-content: flex-start;
+    width: 100%; height: auto !important; min-height: 44px;
+    padding: 8px 12px !important; margin: 0 !important;
+    white-space: normal !important;
+  }
+  /* underline ::before spans the row left/right with a small inset (like desktop) */
+  .mnav-panel .secondary-nav__section::before {
+    left: 12px; right: auto; width: calc(100% - 24px); bottom: 6px;
+  }
+
+  /* Examples dropdown: COLLAPSED by default; tap the row (chevron) to expand */
+  .mnav-panel .secondary-nav__chev {
+    display: inline-block !important; width: 12px; height: 12px;
+    margin-left: auto; transition: transform 0.25s ease;
+  }
+  .mnav-panel .secondary-nav__dropdown.is-open .secondary-nav__chev { transform: rotate(180deg); }
+  .mnav-panel .secondary-nav__dropdown-btn { gap: 8px; }
+  .mnav-panel .secondary-nav__menu {
+    display: flex !important; flex-direction: column;
+    position: static !important; visibility: visible !important; transform: none !important;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    margin: 0 !important; padding: 0 0 0 12px !important; min-width: 0;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+  .mnav-panel .secondary-nav__dropdown.is-open .secondary-nav__menu { max-height: 320px; opacity: 1; }
+  .mnav-panel .secondary-nav__menu-opt { width: 100%; justify-content: flex-start; min-height: 40px; padding: 8px 12px !important; }
+
+  /* Hide share block; keep purely navigational */
+  .mnav-panel .nav-share { display: none !important; }
+
+  /* "Jump to" TOC: reset its box, keep its own link styling */
+  .mnav-panel .article-page__nav,
+  .mnav-panel .glossary-nav,
+  .mnav-panel .article-page__nav-head {
+    position: static !important; display: block !important; width: 100%;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    padding: 0 !important; margin: 0 !important; max-height: none !important;
+  }
+  /* TOC "Jump to" links — match the DESKTOP TOC exactly: Space Grotesk, black default,
+     black on hover, BLUE (#0B64DD) when active (same as .nav-items a.is-active on desktop). */
+  .mnav-panel .nav-items a, .mnav-panel .nav-items summary {
+    position: relative;
+    display: flex; align-items: center; width: 100%;
+    min-height: 44px; padding: 8px 12px !important;
+    font-family: var(--font-display, 'Space Grotesk', sans-serif) !important;
+    font-size: 14px !important; font-weight: 600 !important;
+    color: var(--black, #111010) !important; text-decoration: none;
+    transition: color 0.15s;
+  }
+  .mnav-panel .nav-items a:hover { color: var(--color-elastic-blue, #0B64DD) !important; }
+  .mnav-panel .nav-items a.is-active {
+    color: var(--color-elastic-blue, #0B64DD) !important;
+    font-weight: 700 !important;
+  }
+  /* nested TOC children indent */
+  .mnav-panel .nav-items ul a { padding-left: 24px !important; font-size: 12px !important; font-weight: 500 !important; }
+
+  /* "Jump to" expandable summary: push the disclosure arrow to the far right */
+  .mnav-panel .nav-items details summary { justify-content: flex-start; }
+  .mnav-panel .nav-items details summary::after { margin-left: auto; padding-left: 12px; }
+  .mnav-panel .article-page__nav-head .meta,
+  .mnav-panel .glossary-tile {
+    display: block; color: #767676 !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 11px !important; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0 0 8px !important; background: transparent !important;
+  }
+
+  /* Footer */
+  .mnav-footer { flex-shrink: 0; display: flex; border-top: 1px solid #E4E4E4; }
+  .mnav-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border: none; cursor: pointer;
+  }
+  .mnav-close { background: var(--black, #111010); color: #fff; }
+
+  /* Hide in-flow navs on mobile */
+  .secondary-nav { display: none !important; }
+  .article-page__nav, .glossary-nav { display: none !important; }
+}
+
+
 </style>
 </head>
 <body class="preload">
+
+<!-- Mobile floating nav launcher (bottom-left). Hidden on desktop. -->
+<button class="mnav-launch" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mnavDrawer" onclick="toggleMobileNav(this)">
+  <svg class="mnav-launch__open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+  <svg class="mnav-launch__close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
+  </svg>
+</button>
+
+<!-- Full-screen mobile nav drawer with two tabs (Palantir-style). Hidden on desktop. -->
+<div class="mnav-drawer" id="mnavDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mnav-tabs" role="tablist">
+    <button class="mnav-tab is-active" role="tab" aria-selected="true" data-tab="secondary" onclick="switchMobileNavTab('secondary')">Secondary Nav</button>
+    <button class="mnav-tab mnav-tab--jump" role="tab" aria-selected="false" data-tab="jump" onclick="switchMobileNavTab('jump')">Jump to</button>
+  </div>
+  <div class="mnav-panels">
+    <div class="mnav-panel is-active" data-panel="secondary"></div>
+    <div class="mnav-panel" data-panel="jump"></div>
+  </div>
+</div>
+
 <!-- Usage: <svg class="labs-icon"><use href="#icon-wave"/></svg>  + CSS: .labs-icon { width: 24px; height: 24px; color: #48EFCF; } -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 
@@ -3460,6 +3806,13 @@ body.preload .int-card::after {
           <a href="#">Docs</a>
           <a href="#">Pricing</a>
         </nav>
+        <button class="primary-nav__hamburger" type="button" aria-label="Menu" aria-expanded="false" onclick="togglePrimaryMenu(this)">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
       </div>
       <div class="primary-nav__cta-row">
         <button class="primary-nav__search-btn" type="button" aria-label="Search">
@@ -3481,7 +3834,7 @@ body.preload .int-card::after {
 
 <!-- ============== SECONDARY NAV (Sticky Glass) ============== -->
 <nav class="secondary-nav" aria-label="Secondary">
-  <div class="secondary-nav__inner">
+  <div class="secondary-nav__inner" id="secondaryNavPanel">
     <div class="secondary-nav__bar">
       <a class="secondary-nav__lab secondary-nav__lab--es is-active" href="sunny-elastic-home.html">Elasticsearch Labs</a>
       <a class="secondary-nav__lab secondary-nav__lab--obs" href="sunny-elastic-observability.html">Observability Labs</a>
@@ -3502,7 +3855,7 @@ body.preload .int-card::after {
 <div class="page-title-banner">
 <div class="section-strip" id="examples">
   <div class="section-strip-inner">
-    <h2 class="section-strip-title"><span class="section-strip-slash">//</span>Examples</h2>
+    <h1 class="section-strip-title"><span class="section-strip-slash">//</span>Examples</h1>
     <p class="section-strip-desc">Practical how-to guides, interactive notebooks, and sample apps to get you started.</p>
   </div>
 </div>
@@ -3553,14 +3906,14 @@ body.preload .int-card::after {
       <div class="ex-panel">
         <div class="ex-panel-hd"><span class="ex-panel-square"></span></div>
         <div class="ex-panel-body">
-          <h3 class="ex-panel-title">Apps</h3>
+          <h6 class="ex-panel-title">Apps</h6>
           <div class="ex-rows">
       
       <div class="ex-row" data-row="a0">
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="https://github.com/elastic/elasticsearch-labs/tree/main/example-apps/chatbot-rag-app" target="_blank" rel="noopener" onclick="event.stopPropagation()">Chatbot RAG Reference App</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span></div>
-          <span class="ex-row-toggle">
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg>
           </span>
         </button>
@@ -3576,7 +3929,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="https://github.com/elastic/elasticsearch-labs/tree/main/example-apps/openai-embeddings" target="_blank" rel="noopener" onclick="event.stopPropagation()">OpenAI embeddings in Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle">
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg>
           </span>
         </button>
@@ -3592,7 +3945,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="https://github.com/elastic/elasticsearch-labs/tree/main/example-apps/relevance-workbench" target="_blank" rel="noopener" onclick="event.stopPropagation()">Relevance Workbench</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span><span class="ex-row-tag ex-row-tag--more" onclick="toggleMoreTags(event, this)">+1<span class="ex-row-tag-popover"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Hybrid Search')">Hybrid Search</span></span></span></div>
-          <span class="ex-row-toggle">
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg>
           </span>
         </button>
@@ -3613,7 +3966,7 @@ body.preload .int-card::after {
       <div class="ex-panel">
         <div class="ex-panel-hd"><span class="ex-panel-square"></span></div>
         <div class="ex-panel-body">
-          <h3 class="ex-panel-title"><a href="sunny-elastic-glossary.html" style="color:inherit;text-decoration:none;" onclick="event.stopPropagation()">Glossary</a></h3>
+          <h6 class="ex-panel-title"><a href="sunny-elastic-glossary.html" style="color:inherit;text-decoration:none;" onclick="event.stopPropagation()">Glossary</a></h6>
           <p class="ex-glossary-desc">Definitions and reference material for every term, concept, and acronym used across the Elasticsearch Labs library.</p>
           <a href="sunny-elastic-glossary.html" class="ex-glossary-cta" aria-label="Open glossary">
             <svg class="ex-arrow" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="3" height="3" fill="currentColor"/><rect x="12" y="6" width="3" height="3" fill="currentColor"/><rect x="0" y="9" width="3" height="3" fill="currentColor"/><rect x="3" y="9" width="3" height="3" fill="currentColor"/><rect x="6" y="9" width="3" height="3" fill="currentColor"/><rect x="9" y="9" width="3" height="3" fill="currentColor"/><rect x="12" y="9" width="3" height="3" fill="currentColor"/><rect x="15" y="9" width="3" height="3" fill="currentColor"/><rect x="12" y="12" width="3" height="3" fill="currentColor"/><rect x="9" y="15" width="3" height="3" fill="currentColor"/></svg>
@@ -3628,13 +3981,13 @@ body.preload .int-card::after {
       <div class="ex-panel">
         <div class="ex-panel-hd"><span class="ex-panel-square"></span></div>
         <div class="ex-panel-body">
-          <h3 class="ex-panel-title">Notebook</h3>
+          <h6 class="ex-panel-title">Notebook</h6>
           <div class="ex-rows">
       <div class="ex-row" data-row="n0">
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Semantic search using the Inference API with the OpenAI service</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3650,7 +4003,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Load an Embedding Model into Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Lucene')">Lucene</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3666,7 +4019,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Load and search with a multilingual model</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3682,7 +4035,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Semantic search with ELSER in Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Relevance')">Relevance</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3698,7 +4051,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Question Answering with LangChain and OpenAI</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3714,7 +4067,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Integrate LangChain Bedrock LLM and Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3730,7 +4083,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Semantic search using the Inference API with the Cohere service</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3746,7 +4099,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Using Cohere for RAG and Rerank in Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3762,7 +4115,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">RAG chatbot with LangChain and Elasticsearch</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3778,7 +4131,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Integrations LangChain question answering with self query retriever</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('AI')">AI</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3794,7 +4147,7 @@ body.preload .int-card::after {
         <button class="ex-row-trigger" onclick="toggleExRow(this)">
           <a class="ex-row-title" href="sunny-elastic-examples-notebook.html" onclick="event.stopPropagation()">Semantic search quick start</a>
           <div class="ex-row-tags"><span role="link" class="ex-row-tag" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='sunny-elastic-tag.html?tag=' + encodeURIComponent('Vector Database')">Vector Database</span></div>
-          <span class="ex-row-toggle"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
+          <span class="ex-row-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleExRow(this);"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="2" height="12" fill="currentColor"/><rect x="2" y="7" width="12" height="2" fill="currentColor"/></svg></span>
         </button>
         <div class="ex-row-body">
           <div class="ex-row-body-inner">
@@ -3823,7 +4176,7 @@ body.preload .int-card::after {
 <div class="footer-inner">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo"><svg class="footer-logo-icon" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.08)"/><rect x="7" y="7" width="6" height="6" fill="#00BFB3"/><rect x="15" y="7" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="7" y="15" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="15" y="15" width="6" height="6" fill="rgba(255,255,255,0.15)"/></svg>elastic search labs</div>
+      <div class="footer-logo"><span class="footer-logo-placeholder">Logo here</span></div>
       <p class="footer-tagline">Elasticsearch Labs is the one-stop destination for developers to learn how to utilize Elasticsearch to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.</p>
       <div class="footer-connect-label">Let's connect</div>
       <div class="footer-social">
@@ -4021,17 +4374,110 @@ document.addEventListener('click', function(e) {
         if (btn) btn.setAttribute('aria-expanded', 'false');
       }, CLOSE_DELAY);
     }
-    wrap.addEventListener('mouseenter', open);
-    wrap.addEventListener('mouseleave', scheduleClose);
-    // Keyboard focus opens too
-    wrap.addEventListener('focusin', open);
-    wrap.addEventListener('focusout', function(e) {
-      if (!wrap.contains(e.relatedTarget)) scheduleClose();
-    });
+    // Hover/focus opening is DESKTOP ONLY. On mobile (touch) the dropdown is
+    // click-driven via toggleExamplesDropdown and stays open until tapped again.
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      wrap.addEventListener('mouseenter', open);
+      wrap.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('focusin', open);
+      wrap.addEventListener('focusout', function(e) {
+        if (!wrap.contains(e.relatedTarget)) scheduleClose();
+      });
+    }
   });
 })();
 // Legacy no-op so the inline onclick on the button doesn't error
-function toggleExamplesDropdown(btn) { /* hover-driven now */ }
+function toggleExamplesDropdown(btn) {
+  var dd = btn.closest('.secondary-nav__dropdown');
+  if (!dd) return;
+  var open = dd.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+</script>
+<script>
+// Primary-nav hamburger (mobile). Contents intentionally hidden behind it for now.
+function togglePrimaryMenu(btn) {
+  var open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+  // Placeholder: panel contents to be wired up later.
+}
+</script>
+
+<script>
+// ── Mobile nav drawer (Palantir-style, two tabs) ──
+(function () {
+  var drawer = document.getElementById('mnavDrawer');
+  if (!drawer) return;
+  var secPanel  = drawer.querySelector('.mnav-panel[data-panel="secondary"]');
+  var jumpPanel = drawer.querySelector('.mnav-panel[data-panel="jump"]');
+  var jumpTab   = drawer.querySelector('.mnav-tab--jump');
+
+  // Source nodes
+  var secInner = document.querySelector('.secondary-nav .secondary-nav__inner');
+  var leftNav  = document.querySelector('.article-page__nav, .glossary-nav');
+
+  // Remember original homes for desktop restore
+  var secHome = secInner ? { parent: secInner.parentNode, next: secInner.nextSibling } : null;
+  var leftHome = leftNav ? { parent: leftNav.parentNode, next: leftNav.nextSibling } : null;
+  var placed = false;
+
+  function placeIntoDrawer() {
+    if (secInner && secPanel && secInner.parentNode !== secPanel) secPanel.appendChild(secInner);
+    if (leftNav && jumpPanel && leftNav.parentNode !== jumpPanel) jumpPanel.appendChild(leftNav);
+    // If there's no in-page left nav, hide the "Jump to" tab and keep one panel
+    if (!leftNav && jumpTab) { jumpTab.style.display = 'none'; }
+    placed = true;
+  }
+  function restoreToPage() {
+    if (secInner && secHome) {
+      if (secHome.next && secHome.next.parentNode === secHome.parent) secHome.parent.insertBefore(secInner, secHome.next);
+      else secHome.parent.appendChild(secInner);
+    }
+    if (leftNav && leftHome) {
+      if (leftHome.next && leftHome.next.parentNode === leftHome.parent) leftHome.parent.insertBefore(leftNav, leftHome.next);
+      else leftHome.parent.appendChild(leftNav);
+    }
+    placed = false;
+  }
+  function sync() {
+    if (window.innerWidth <= 768) { if (!placed) placeIntoDrawer(); }
+    else { if (placed) restoreToPage(); closeMobileNav(); }
+  }
+
+  window.openMobileNav = function () {
+    if (!placed) placeIntoDrawer();
+    document.body.classList.add('mnav-open');
+    var l = document.querySelector('.mnav-launch'); if (l) l.setAttribute('aria-expanded','true');
+  };
+  window.toggleMobileNav = function (btn) {
+    if (document.body.classList.contains('mnav-open')) { window.closeMobileNav(); }
+    else { window.openMobileNav(); }
+  };
+  window.closeMobileNav = function () {
+    document.body.classList.remove('mnav-open');
+    var l = document.querySelector('.mnav-launch'); if (l) l.setAttribute('aria-expanded','false');
+  };
+  window.switchMobileNavTab = function (which) {
+    drawer.querySelectorAll('.mnav-tab').forEach(function (t) {
+      var on = t.dataset.tab === which;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    drawer.querySelectorAll('.mnav-panel').forEach(function (p) {
+      p.classList.toggle('is-active', p.dataset.panel === which);
+    });
+  };
+
+  // close when tapping a link inside the drawer
+  drawer.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeMobileNav();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileNav(); });
+
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(sync, 150); });
+  sync();
+})();
 </script>
 </body>
 </html>
