@@ -83,7 +83,7 @@ a { text-decoration: none; color: inherit; }
   gap: 8px;
   margin: 0 0 var(--space-8);
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -109,7 +109,7 @@ a { text-decoration: none; color: inherit; }
 }
 .article-page__lede {
   font-family: var(--font-body);
-  font-size: 18px;            /* P2 */
+  font-size: 20px;            /* P2 */
   line-height: 1.5;
   color: var(--black);
   max-width: 880px;
@@ -119,7 +119,7 @@ a { text-decoration: none; color: inherit; }
 /* Meta data label — same structure as Article / Jump-to */
 .article-page__meta-label {
   padding-bottom: 12px;
-  border-bottom: 2px dotted var(--black);
+  border-bottom: 1px dashed var(--black);
   margin-bottom: 32px;
 }
 
@@ -131,13 +131,13 @@ a { text-decoration: none; color: inherit; }
   row-gap: var(--space-8);
   align-items: start;
   padding-top: 24px;
-  border-top: 2px dotted var(--black);
+  border-top: 1px dashed var(--black);
   margin-top: 32px;
 }
 .meta-group { display: flex; flex-direction: column; gap: 10px; }
 .meta-label {
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -148,7 +148,7 @@ a { text-decoration: none; color: inherit; }
   flex-wrap: wrap;
   gap: 8px;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;           /* Caption */
+  font-size: 12px;           /* Caption */
   letter-spacing: 0.04em;
   color: var(--black);
   align-items: center;
@@ -161,14 +161,14 @@ a { text-decoration: none; color: inherit; }
   gap: 8px;
   height: 24px;
   padding: 0 12px;
-  border: 1px solid var(--black);
+  border: 1.5px dotted var(--black, #111010);
   background: transparent;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;           /* Caption */
+  font-size: 12px;           /* Caption */
   letter-spacing: 0.02em;
   color: var(--black);
   cursor: pointer;
-  text-transform: none;
+  text-transform: uppercase;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .tag-pill:hover, .meta-value .pill:hover {
@@ -194,17 +194,17 @@ a { text-decoration: none; color: inherit; }
 .nav-items li { padding: 4px 0; }
 .nav-items a {
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--color-text-ink);
   text-decoration: none;
   transition: color 0.15s;
 }
-.nav-items a:hover { color: var(--black); }
+.nav-items a:hover { color: var(--color-elastic-blue, #0B64DD); }
 .nav-items a.is-active { color: var(--color-elastic-blue); font-weight: 600; }
 .nav-items details summary {
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--color-text-ink);
   cursor: pointer;
@@ -228,12 +228,12 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding-bottom: 12px;
-  border-bottom: 2px dotted var(--black);
+  border-bottom: 1px dashed var(--black);
   margin-bottom: 32px;
 }
 .article-page__article-head .meta {
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;           /* Caption */
+  font-size: 12px;           /* Caption */
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #595959;
@@ -338,7 +338,7 @@ footer {
 .footer-logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
 .footer-tagline {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.65;
   color: rgba(255,255,255,0.5);
   margin-bottom: 32px;
@@ -457,7 +457,7 @@ footer {
   align-items: center;
   gap: 6px;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.02em;
   color: var(--black);
 }
@@ -506,14 +506,14 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 12px;
-  border-bottom: 2px dotted var(--black);
+  border-bottom: 1px dashed var(--black);
   margin-bottom: 32px;
 }
 .article-page__nav-head .meta,
 .article-page__article-head .meta,
 .article-page__meta-label .meta {
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -530,13 +530,13 @@ footer {
 .nav-share__label {
   display: block;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-ink);
   padding-bottom: 12px;
-  border-bottom: 2px dotted var(--black);
+  border-bottom: 1px dashed var(--black);
   margin-bottom: var(--space-4);
 }
 .nav-share__label::before { content: "/ "; color: var(--color-text-subdued); }
@@ -755,6 +755,32 @@ footer {
   .primary-nav__utility-links a span { display: none; }
 }
 @media (max-width: 768px) {
+  /* hero/section tightened on mobile — sit closer to the module below */
+  .section-strip { margin-top: 28px !important; margin-bottom: 16px !important; }
+  .page-title-banner--grid { padding: 20px 0 20px !important; }
+
+  :root { --grid-margin: 20px; --section-gap: 56px; }
+
+  /* ── Universal mobile stacking: collapse multi-column grids to single column ── */
+  .pod-body { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .pod-divider, .pod-body > .pod-divider { display: none !important; }
+  .results-grid-9, .results-grid-3, .results-grid-3x2 { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .featured-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .kb-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .blog-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .blog-series-wrap { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .int-grid { grid-template-columns: 1fr !important; }
+  .hero-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .hero-divider { display: none !important; }
+  .examples-bg-inner { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .examples-bg-grid { display: none !important; }
+  .ex-row-body-inner { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .footer-top, .footer-cols { grid-template-columns: 1fr !important; gap: 32px !important; }
+  /* generous edge padding + section rhythm */
+  .results-grid-9, .featured-row, .kb-grid, .blog-grid { padding-left: 0 !important; padding-right: 0 !important; }
+
+
+
   .primary-nav__container { padding: 0 24px; }
   .primary-nav__tabs { display: none; }
   .primary-nav__readmore { display: none; }
@@ -765,11 +791,16 @@ footer {
 /* ===== END PRIMARY NAV ===== */
 
 /* ===== SECONDARY NAV (Sticky Glass) ===== */
+.secondary-nav__mobilebar { display: none; }   /* desktop: no mobile trigger bar */
 .secondary-nav {
   position: sticky;
   top: 0;
   z-index: 90;
-  /* parent is transparent — only the bar inside has the white + border */
+  /* Full-width single bar (edge to edge) — content is inset by __inner padding */
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: saturate(180%) blur(28px);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  border-bottom: 1px solid #E4E4E4;
 }
 .secondary-nav__inner {
   max-width: 1440px;
@@ -779,23 +810,19 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  height: 52px;
 }
 .secondary-nav__bar {
-  display: inline-flex;                                    /* hug the items, not full width */
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   height: 52px;
-  padding: 0 12px;
-  /* Glass effect on the bar only — frosted, not solid */
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: saturate(180%) blur(28px);
-  -webkit-backdrop-filter: saturate(180%) blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
-  overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  pointer-events: auto;  /* re-enable clicks on the bar itself */
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow-x: visible;
+  pointer-events: auto;
   font-family: 'Space Grotesk', var(--font-display, sans-serif);
 }
 .secondary-nav__bar::-webkit-scrollbar { display: none; }
@@ -821,7 +848,7 @@ footer {
 /* Lab tab brand-color hovers (and active state) */
 .secondary-nav__lab--es:hover,
 .secondary-nav__lab--es.is-active {
-  background: #0B64DD;
+  background: #128D91;
   color: #FFFFFF;
 }
 .secondary-nav__lab--obs:hover {
@@ -848,7 +875,7 @@ footer {
 
 /* Section sub-tabs */
 .secondary-nav__section {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--black, #111010);
   position: relative;
   background: transparent;
 }
@@ -887,9 +914,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .secondary-nav__inner { padding: 0 16px; }
-  .secondary-nav__bar { padding: 0 8px; gap: 4px; }
-  .secondary-nav__lab, .secondary-nav__section { padding: 0 8px; font-size: 13px; }
 }
 /* ===== END SECONDARY NAV ===== */
 
@@ -923,8 +947,8 @@ footer {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
-.blog-filter-btn:hover { background: var(--black); color: var(--white); }
-.blog-filter.is-open .blog-filter-btn { background: var(--black); color: var(--white); }
+.blog-filter-btn:hover { background: #DCE2EA; color: var(--black, #111010); text-decoration: none; }
+.blog-filter.is-open .blog-filter-btn { background: #DCE2EA; color: var(--black, #111010); }
 .blog-filter-chev {
   width: 10px;
   height: 10px;
@@ -959,7 +983,7 @@ footer {
   transition: background 0.12s, color 0.12s;
 }
 .blog-filter-opt:last-child { border-bottom: none; }
-.blog-filter-opt:hover { background: var(--black); color: var(--white); }
+.blog-filter-opt:hover { background: #DCE2EA; color: var(--black, #111010); text-decoration: none; }
 
 
 
@@ -982,14 +1006,7 @@ footer {
 /* ── Dropdown link affordance — underline on hover so users see "this is clickable" ──
    Applies to every option that is a real <a> link across Blog / Categories / Coding Language / Sort
    AND to flyout parents and children. The existing bg-invert keeps the row highlight. */
-a.blog-filter-opt:hover,
-a.blog-filter-opt:focus-visible,
-a.blog-sort-opt:hover,
-a.blog-sort-opt:focus-visible {
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-}
+
 
 /* ── Filter area: CSS Grid 2×2 — labels share top row, controls share bottom row ── */
 .blog-filter-area {
@@ -1104,7 +1121,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   gap: 12px;
   padding: 10px 16px;
   font-family: 'Space Mono', var(--font-mono), monospace;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--black, #111010);
   text-decoration: none;
@@ -1137,9 +1154,359 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 .secondary-nav__dropdown.is-open::after { pointer-events: auto; }
 .secondary-nav__dropdown:hover .secondary-nav__menu,
 .secondary-nav__dropdown.is-open .secondary-nav__menu { display: block; }
+
+/* ════════ SHARED PRIMARY-NAV MOBILE (≤ 768px) — logo + hamburger ════════ */
+.primary-nav__hamburger { display: none; }   /* desktop: hidden */
+@media (max-width: 768px) {
+  /* Hide the utility/announce row entirely */
+  .primary-nav__row--utility { display: none; }
+  /* Main row: logo left, hamburger right; hide tabs + cta cluster */
+  .primary-nav__row--main { padding: 0; }
+  .primary-nav__container { padding: 0 var(--grid-margin, 20px); }
+  .primary-nav__tabs { display: none; }
+  .primary-nav__cta-row { display: none; }
+  .primary-nav__brand-tabs { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .primary-nav__logo { width: auto; font-size: 18px; }
+  /* Hamburger button — visible, touch-friendly */
+  .primary-nav__hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: var(--black, #111010);
+    cursor: pointer;
+    padding: 0;
+  }
+}
+
+
+/* Footer logo placeholder rectangle */
+.footer-logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE VIEW — BLOG ARTICLE PAGE (≤ 768px)
+   Best-practice reading layout: single column, 16px+ body text,
+   strong heading hierarchy, TOC collapses to top, touch-friendly.
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  :root { --grid-margin: 20px; }
+
+  /* ── Page container: comfortable edge padding, no right-only gutter ── */
+  .article-page {
+    padding: 32px var(--grid-margin) 64px;
+    max-width: 100%;
+  }
+
+  /* ── Back link ── */
+  .article-page__back { margin-bottom: 24px; }
+
+  /* ── Header / title hierarchy ── */
+  .article-page__article-head { margin-bottom: 24px; }
+  .article-page__head { margin-bottom: 32px; }
+  .article-page__title {
+    font-size: 64px;            /* H1 — dominant but fits narrow screens */
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .article-page__lede {
+    font-size: 20px;            /* lede slightly larger than body */
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  /* ── Meta (author / date / tags): stack into a single column ── */
+  .article-page__meta {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    column-gap: 0;
+    padding-top: 20px;
+    margin-top: 24px;
+  }
+
+  /* ── Body layout: drop the 200px sidebar → single column ── */
+  .article-page__body {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    margin-top: 32px;
+  }
+
+  /* ── Table of contents ("Jump to"): move to TOP, collapsible, not sticky ── */
+  .article-page__nav {
+    position: static;
+    margin-bottom: 32px;
+    padding: 16px;
+    border: 1px solid var(--black, #111010);
+    background: var(--cream, #F5F7FA);
+  }
+  .article-page__nav-head { margin-bottom: 16px; padding-bottom: 8px; }
+  .nav-items { font-size: 15px; }
+  .nav-items li { margin-bottom: 10px; }
+  .nav-items a, .nav-items summary { min-height: 32px; display: flex; align-items: center; }
+
+  /* ── Body copy: 16px per mobile readability best practice ──
+     (Google mobile-friendly minimum, WCAG-friendly, avoids Lighthouse "small font"
+     flag and iOS tap-zoom. 14px is reserved for captions/meta/code, not long-form body.)
+     Line-height 1.6 and the single-column width keep line length in the 50–75 char range. */
+  .article-page__content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  /* In-article headings — clear descending scale under the H1 */
+  .article-page__content h2 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 36px 0 16px;
+    letter-spacing: -0.02em;
+  }
+  .article-page__content h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin: 28px 0 12px;
+  }
+  .article-page__content ul,
+  .article-page__content ol { font-size: 16px; line-height: 1.6; padding-left: 20px; }
+  .article-page__content li { margin-bottom: 10px; }
+
+  /* ── Code blocks: full-bleed-ish, horizontal scroll, smaller text ── */
+  .code-block {
+    padding: 16px;
+    margin: 24px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+  .code-block pre, .code-block code { white-space: pre; }
+
+  /* ── Share buttons: comfortable touch targets ── */
+  .nav-share { gap: 8px; }
+  .share-icon-btn { width: 40px; height: 40px; }
+
+  /* ── Tags ── */
+  .tag-pill { font-size: 12px; }
+
+  /* ── Feedback box ── */
+  .article-feedback { padding: 20px; margin-top: 32px; }
+  .article-feedback__buttons { flex-wrap: wrap; gap: 8px; }
+
+  /* ── Recommended / Related ── */
+  .article-recommended { margin-top: 40px; padding-top: 24px; }
+  .article-related__grid { grid-template-columns: 1fr; gap: 24px; }
+  .related-card__title { font-size: 18px; }
+
+  /* ── Author chip ── */
+  .author-chip { font-size: 12px; }
+
+  /* ── Footer: single column ── */
+  .footer-cols, .footer-mid-links, .footer-legal-links { grid-template-columns: 1fr; }
+}
+
+/* Extra-small phones (≤ 380px) — tighten the hierarchy one more step */
+@media (max-width: 380px) {
+  .article-page__title { font-size: 28px; }
+  .article-page__lede { font-size: 20px; }
+  .article-page__content h2 { font-size: 23px; }
+  .article-page__content h3 { font-size: 18px; }
+  .code-block { font-size: 12px; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE NAV DRAWER (≤768px) — Palantir layout; EXACT desktop secondary-nav styling in list form.
+   We do NOT restyle the links — the original .secondary-nav__lab / __section
+   colors, hover fills and underline-reveal apply unchanged. We only change layout.
+   ════════════════════════════════════════════════════════════════ */
+.mnav-launch, .mnav-drawer { display: none; }
+
+@media (max-width: 768px) {
+  .primary-nav { position: sticky; top: 0; z-index: 100; }
+
+  /* Launcher */
+  .mnav-launch {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; left: 16px; bottom: 16px; z-index: 1002;
+    width: 48px; height: 48px;
+    background: var(--black, #111010); color: #fff;
+    border: none; box-shadow: 0 4px 18px rgba(0,0,0,0.28); cursor: pointer;
+  }
+  /* Launcher icon swap: hamburger when closed, X when open — button stays in place */
+  .mnav-launch__close { display: none; }
+  body.mnav-open .mnav-launch__open { display: none; }
+  body.mnav-open .mnav-launch__close { display: block; }
+
+  /* Full-screen light drawer */
+  .mnav-drawer {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0; z-index: 1001;
+    background: #fff; color: var(--black, #111010);
+    opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+  }
+  body.mnav-open .mnav-drawer { opacity: 1; pointer-events: auto; }
+  body.mnav-open { overflow: hidden; }
+
+  /* Tabs */
+  .mnav-tabs { display: flex; flex-shrink: 0; padding: 24px 20px 0; gap: 28px; border-bottom: 1px solid #E4E4E4; }
+  .mnav-tab {
+    background: transparent; border: none; cursor: pointer; color: #767676;
+    font-family: var(--font-mono, monospace); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0 0 14px; margin-bottom: -1px;
+    border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s;
+  }
+  .mnav-tab.is-active { color: var(--black, #111010); border-bottom-color: var(--black, #111010); }
+
+  /* Panels */
+  .mnav-panels { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 20px; }
+  .mnav-panel { display: none; }
+  .mnav-panel.is-active { display: block; }
+  .mnav-panel ul { list-style: none; margin: 0; padding: 0; }
+  .mnav-panel li { display: block; width: 100%; margin: 0; }
+  .mnav-panel .secondary-nav__dropdown { display: block; width: 100%; }
+
+  /* Container chrome reset: bars become vertical columns, drop glass/borders */
+  .mnav-panel .secondary-nav__inner,
+  .mnav-panel .secondary-nav__bar {
+    display: flex !important; flex-direction: column; align-items: stretch;
+    width: 100%; height: auto !important; gap: 0;
+    padding: 0 !important; margin: 0 !important;
+    background: transparent !important; backdrop-filter: none !important;
+    border: none !important; box-shadow: none !important;
+    max-height: none !important; overflow: visible !important; opacity: 1 !important;
+  }
+  .mnav-panel .secondary-nav__bar + .secondary-nav__bar {
+    border-top: 1px solid #E4E4E4; margin-top: 4px !important; padding-top: 4px !important;
+  }
+  .mnav-panel .secondary-nav__divider { display: none !important; }
+
+  /* Links: keep desktop styling (colors/hover/underline) — only make each a full-width left-aligned row.
+     position:relative + height auto so the ::before underline still renders. */
+  .mnav-panel .secondary-nav__lab,
+  .mnav-panel .secondary-nav__section,
+  .mnav-panel .secondary-nav__dropdown-btn {
+    position: relative;
+    display: flex !important; align-items: center; justify-content: flex-start;
+    width: 100%; height: auto !important; min-height: 44px;
+    padding: 8px 12px !important; margin: 0 !important;
+    white-space: normal !important;
+  }
+  /* underline ::before spans the row left/right with a small inset (like desktop) */
+  .mnav-panel .secondary-nav__section::before {
+    left: 12px; right: auto; width: calc(100% - 24px); bottom: 6px;
+  }
+
+  /* Examples dropdown: COLLAPSED by default; tap the row (chevron) to expand */
+  .mnav-panel .secondary-nav__chev {
+    display: inline-block !important; width: 12px; height: 12px;
+    margin-left: auto; transition: transform 0.25s ease;
+  }
+  .mnav-panel .secondary-nav__dropdown.is-open .secondary-nav__chev { transform: rotate(180deg); }
+  .mnav-panel .secondary-nav__dropdown-btn { gap: 8px; }
+  .mnav-panel .secondary-nav__menu {
+    display: flex !important; flex-direction: column;
+    position: static !important; visibility: visible !important; transform: none !important;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    margin: 0 !important; padding: 0 0 0 12px !important; min-width: 0;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+  .mnav-panel .secondary-nav__dropdown.is-open .secondary-nav__menu { max-height: 320px; opacity: 1; }
+  .mnav-panel .secondary-nav__menu-opt { width: 100%; justify-content: flex-start; min-height: 40px; padding: 8px 12px !important; }
+
+  /* Hide share block; keep purely navigational */
+  .mnav-panel .nav-share { display: none !important; }
+
+  /* "Jump to" TOC: reset its box, keep its own link styling */
+  .mnav-panel .article-page__nav,
+  .mnav-panel .glossary-nav,
+  .mnav-panel .article-page__nav-head {
+    position: static !important; display: block !important; width: 100%;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    padding: 0 !important; margin: 0 !important; max-height: none !important;
+  }
+  /* TOC "Jump to" links — match the DESKTOP TOC exactly: Space Grotesk, black default,
+     black on hover, BLUE (#0B64DD) when active (same as .nav-items a.is-active on desktop). */
+  .mnav-panel .nav-items a, .mnav-panel .nav-items summary {
+    position: relative;
+    display: flex; align-items: center; width: 100%;
+    min-height: 44px; padding: 8px 12px !important;
+    font-family: var(--font-display, 'Space Grotesk', sans-serif) !important;
+    font-size: 14px !important; font-weight: 600 !important;
+    color: var(--black, #111010) !important; text-decoration: none;
+    transition: color 0.15s;
+  }
+  .mnav-panel .nav-items a:hover { color: var(--color-elastic-blue, #0B64DD) !important; }
+  .mnav-panel .nav-items a.is-active {
+    color: var(--color-elastic-blue, #0B64DD) !important;
+    font-weight: 700 !important;
+  }
+  /* nested TOC children indent */
+  .mnav-panel .nav-items ul a { padding-left: 24px !important; font-size: 12px !important; font-weight: 500 !important; }
+
+  /* "Jump to" expandable summary: push the disclosure arrow to the far right */
+  .mnav-panel .nav-items details summary { justify-content: flex-start; }
+  .mnav-panel .nav-items details summary::after { margin-left: auto; padding-left: 12px; }
+  .mnav-panel .article-page__nav-head .meta,
+  .mnav-panel .glossary-tile {
+    display: block; color: #767676 !important;
+    font-family: var(--font-mono, monospace) !important;
+    font-size: 11px !important; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0 0 8px !important; background: transparent !important;
+  }
+
+  /* Footer */
+  .mnav-footer { flex-shrink: 0; display: flex; border-top: 1px solid #E4E4E4; }
+  .mnav-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border: none; cursor: pointer;
+  }
+  .mnav-close { background: var(--black, #111010); color: #fff; }
+
+  /* Hide in-flow navs on mobile */
+  .secondary-nav { display: none !important; }
+  .article-page__nav, .glossary-nav { display: none !important; }
+}
+
+
 </style>
 </head>
 <body>
+
+<!-- Mobile floating nav launcher (bottom-left). Hidden on desktop. -->
+<button class="mnav-launch" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mnavDrawer" onclick="toggleMobileNav(this)">
+  <svg class="mnav-launch__open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+  <svg class="mnav-launch__close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>
+  </svg>
+</button>
+
+<!-- Full-screen mobile nav drawer with two tabs (Palantir-style). Hidden on desktop. -->
+<div class="mnav-drawer" id="mnavDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mnav-tabs" role="tablist">
+    <button class="mnav-tab is-active" role="tab" aria-selected="true" data-tab="secondary" onclick="switchMobileNavTab('secondary')">Secondary Nav</button>
+    <button class="mnav-tab mnav-tab--jump" role="tab" aria-selected="false" data-tab="jump" onclick="switchMobileNavTab('jump')">Jump to</button>
+  </div>
+  <div class="mnav-panels">
+    <div class="mnav-panel is-active" data-panel="secondary"></div>
+    <div class="mnav-panel" data-panel="jump"></div>
+  </div>
+</div>
+
 <!-- Usage: <svg class="labs-icon"><use href="#icon-wave"/></svg>  + CSS: .labs-icon { width: 24px; height: 24px; color: #48EFCF; } -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 
@@ -1542,6 +1909,13 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
           <a href="#">Docs</a>
           <a href="#">Pricing</a>
         </nav>
+        <button class="primary-nav__hamburger" type="button" aria-label="Menu" aria-expanded="false" onclick="togglePrimaryMenu(this)">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
       </div>
       <div class="primary-nav__cta-row">
         <button class="primary-nav__search-btn" type="button" aria-label="Search">
@@ -1563,7 +1937,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 
 <!-- ============== SECONDARY NAV (Sticky Glass) ============== -->
 <nav class="secondary-nav" aria-label="Secondary">
-  <div class="secondary-nav__inner">
+  <div class="secondary-nav__inner" id="secondaryNavPanel">
     <div class="secondary-nav__bar">
       <a class="secondary-nav__lab secondary-nav__lab--es is-active" href="sunny-elastic-home.html">Elasticsearch Labs</a>
       <a class="secondary-nav__lab secondary-nav__lab--obs" href="sunny-elastic-observability.html">Observability Labs</a>
@@ -1599,7 +1973,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 
   <div class="article-page__body">
 
-    <aside class="article-page__nav">
+    <aside class="article-page__nav" id="articleToc">
       <div class="article-page__nav-head">
         <span class="meta">About this notebook</span>
       </div>
@@ -1658,7 +2032,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
 <div class="footer-inner">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo"><svg class="footer-logo-icon" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,0.08)"/><rect x="7" y="7" width="6" height="6" fill="#00BFB3"/><rect x="15" y="7" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="7" y="15" width="6" height="6" fill="rgba(255,255,255,0.4)"/><rect x="15" y="15" width="6" height="6" fill="rgba(255,255,255,0.15)"/></svg>elastic search labs</div>
+      <div class="footer-logo"><span class="footer-logo-placeholder">Logo here</span></div>
       <p class="footer-tagline">Elasticsearch Labs is the one-stop destination for developers to learn how to utilize Elasticsearch to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.</p>
       <div class="footer-connect-label">Let's connect</div>
       <div class="footer-social">
@@ -1784,17 +2158,111 @@ document.addEventListener('click', function(e) {
         if (btn) btn.setAttribute('aria-expanded', 'false');
       }, CLOSE_DELAY);
     }
-    wrap.addEventListener('mouseenter', open);
-    wrap.addEventListener('mouseleave', scheduleClose);
-    // Keyboard focus opens too
-    wrap.addEventListener('focusin', open);
-    wrap.addEventListener('focusout', function(e) {
-      if (!wrap.contains(e.relatedTarget)) scheduleClose();
-    });
+    // Hover/focus opening is DESKTOP ONLY. On mobile (touch) the dropdown is
+    // click-driven via toggleExamplesDropdown and stays open until tapped again.
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      wrap.addEventListener('mouseenter', open);
+      wrap.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('focusin', open);
+      wrap.addEventListener('focusout', function(e) {
+        if (!wrap.contains(e.relatedTarget)) scheduleClose();
+      });
+    }
   });
 })();
 // Legacy no-op so the inline onclick on the button doesn't error
-function toggleExamplesDropdown(btn) { /* hover-driven now */ }
+function toggleExamplesDropdown(btn) {
+  var dd = btn.closest('.secondary-nav__dropdown');
+  if (!dd) return;
+  var open = dd.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+</script>
+<script>
+// Primary-nav hamburger (mobile). Contents intentionally hidden behind it for now.
+function togglePrimaryMenu(btn) {
+  var open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+  // Placeholder: panel contents to be wired up later.
+}
+</script>
+
+
+<script>
+// ── Mobile nav drawer (Palantir-style, two tabs) ──
+(function () {
+  var drawer = document.getElementById('mnavDrawer');
+  if (!drawer) return;
+  var secPanel  = drawer.querySelector('.mnav-panel[data-panel="secondary"]');
+  var jumpPanel = drawer.querySelector('.mnav-panel[data-panel="jump"]');
+  var jumpTab   = drawer.querySelector('.mnav-tab--jump');
+
+  // Source nodes
+  var secInner = document.querySelector('.secondary-nav .secondary-nav__inner');
+  var leftNav  = document.querySelector('.article-page__nav, .glossary-nav');
+
+  // Remember original homes for desktop restore
+  var secHome = secInner ? { parent: secInner.parentNode, next: secInner.nextSibling } : null;
+  var leftHome = leftNav ? { parent: leftNav.parentNode, next: leftNav.nextSibling } : null;
+  var placed = false;
+
+  function placeIntoDrawer() {
+    if (secInner && secPanel && secInner.parentNode !== secPanel) secPanel.appendChild(secInner);
+    if (leftNav && jumpPanel && leftNav.parentNode !== jumpPanel) jumpPanel.appendChild(leftNav);
+    // If there's no in-page left nav, hide the "Jump to" tab and keep one panel
+    if (!leftNav && jumpTab) { jumpTab.style.display = 'none'; }
+    placed = true;
+  }
+  function restoreToPage() {
+    if (secInner && secHome) {
+      if (secHome.next && secHome.next.parentNode === secHome.parent) secHome.parent.insertBefore(secInner, secHome.next);
+      else secHome.parent.appendChild(secInner);
+    }
+    if (leftNav && leftHome) {
+      if (leftHome.next && leftHome.next.parentNode === leftHome.parent) leftHome.parent.insertBefore(leftNav, leftHome.next);
+      else leftHome.parent.appendChild(leftNav);
+    }
+    placed = false;
+  }
+  function sync() {
+    if (window.innerWidth <= 768) { if (!placed) placeIntoDrawer(); }
+    else { if (placed) restoreToPage(); closeMobileNav(); }
+  }
+
+  window.openMobileNav = function () {
+    if (!placed) placeIntoDrawer();
+    document.body.classList.add('mnav-open');
+    var l = document.querySelector('.mnav-launch'); if (l) l.setAttribute('aria-expanded','true');
+  };
+  window.toggleMobileNav = function (btn) {
+    if (document.body.classList.contains('mnav-open')) { window.closeMobileNav(); }
+    else { window.openMobileNav(); }
+  };
+  window.closeMobileNav = function () {
+    document.body.classList.remove('mnav-open');
+    var l = document.querySelector('.mnav-launch'); if (l) l.setAttribute('aria-expanded','false');
+  };
+  window.switchMobileNavTab = function (which) {
+    drawer.querySelectorAll('.mnav-tab').forEach(function (t) {
+      var on = t.dataset.tab === which;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    drawer.querySelectorAll('.mnav-panel').forEach(function (p) {
+      p.classList.toggle('is-active', p.dataset.panel === which);
+    });
+  };
+
+  // close when tapping a link inside the drawer
+  drawer.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeMobileNav();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileNav(); });
+
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(sync, 150); });
+  sync();
+})();
 </script>
 </body>
 </html>
