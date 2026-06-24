@@ -2169,8 +2169,8 @@ footer {
   gap: var(--space-2);
   height: 32px;
   padding: 0 var(--space-4);
-  border: 1px solid var(--black);
-  background: var(--white);
+  border: 1px solid #000;
+  background: #FFF;
   font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
   text-transform: uppercase;
@@ -2179,6 +2179,7 @@ footer {
   text-decoration: none;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
+  box-shadow: 0 2px 0 0 #000;
 }
 .blog-filter-btn:hover { background: #DCE2EA; color: var(--black, #111010); text-decoration: none; }
 .blog-filter.is-open .blog-filter-btn { background: #DCE2EA; color: var(--black, #111010); }
@@ -2894,15 +2895,19 @@ footer {
 }
 /* Row 1, col 1 — "/ FILTER BY" */
 .blog-filter-by-label {
-  grid-column: 1;
+  grid-column: 1 / -1;
   grid-row: 1;
+  width: 100%;
+  padding-bottom: var(--space-4, 16px);
+  margin-bottom: var(--space-2, 8px);
+  border-bottom: 1px solid var(--black, #111010);
   font-family: 'Space Mono', var(--font-mono), monospace;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--black, #111010);
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
 }
@@ -3050,7 +3055,7 @@ footer {
   transition: background 0.1s;
 }
 .secondary-nav__menu-opt:last-child { border-bottom: none; }
-.secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
+.secondary-nav__menu-opt:hover { background: #DCE2EA; }
 .secondary-nav__menu-num {
   font-size: 11px;
   color: #595959;
@@ -3273,6 +3278,179 @@ footer {
   .article-page__nav, .glossary-nav { display: none !important; }
 }
 
+
+
+/* ════════════════════════════════════════════════════════
+   VARIANT 2 — horizontal cards + Stay Updated sidebar
+   ════════════════════════════════════════════════════════ */
+.tag-v2 { padding: var(--space-12, 48px) 0; }
+.tag-v2-inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--grid-margin, 96px); }
+/* Variant 2 header (title + description) — same spacing as top section header */
+.tag-v2-header { display: flex; flex-direction: column; gap: var(--space-4, 16px); margin-bottom: var(--space-12, 48px); }
+.tag-v2-title { margin: 0; }
+.tag-v2-desc { margin: 0; }
+
+/* Variant 2 filter wrapper */
+.tag-v2-filter { margin-bottom: var(--space-8, 32px); }
+
+/* "Filters" header bar with full-width border underneath (spans the inner content width) */
+.v2-filter-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: var(--space-4, 16px);
+  margin-bottom: var(--space-6, 24px);
+  border-bottom: 1px solid var(--black, #111010);
+}
+.v2-filter-head__icon { width: 20px; height: 20px; color: var(--black, #111010); flex-shrink: 0; }
+.v2-filter-head__label {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--black, #111010);
+}
+/* Variant 2 filter: strip the standalone area's own max-width/padding so it
+   aligns with the v2 title and cards (parent .tag-v2-inner already provides them) */
+.tag-v2-filter .blog-filter-area {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+/* hide the inline "Filter by" label inside v2 (we use the Filters header bar above instead) */
+.tag-v2-filter .blog-filter-by-label { display: none; }
+/* let the dropdown row take the full width on its own line */
+.tag-v2-filter .blog-filter-area { display: block; }
+.tag-v2-filter .blog-filter-row { gap: var(--space-4, 16px); }
+
+.tag-v2-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--space-12, 48px);
+  align-items: start;
+}
+
+/* Cards column */
+.tag-v2-cards { display: flex; flex-direction: column; }
+
+.v2-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-6, 24px);
+  align-items: start;
+  padding: var(--space-5, 20px) 0;
+  border-bottom: 1px solid #dddddd;
+  text-decoration: none;
+}
+.v2-card:first-child { padding-top: 0; }
+.v2-card__img {
+  display: block;
+  width: 200px;
+  aspect-ratio: 16 / 9;
+  text-decoration: none;
+}
+.v2-card__img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #B4BCC7;
+}
+.v2-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  min-width: 0;
+}
+.v2-card__topmeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4, 16px);
+  flex-wrap: wrap;
+}
+.v2-card__lab { display: inline-flex; align-items: center; gap: 8px; height: auto; }
+.v2-card__lab-dot { display: inline-block; width: 12px; height: 12px; background: #00BFB3; flex-shrink: 0; }
+.v2-card__lab-text { font-family: var(--font-body); font-size: 12px; line-height: 14px; color: #2f2f2f; white-space: nowrap; }
+.v2-card__author-line { display: inline-flex; align-items: center; gap: 0; }
+.v2-card__avatar { width: 18px; height: 18px; background: #E8E9EC; border-radius: 2px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: #595959; overflow: hidden; margin-right: 4px; }
+.v2-card__avatar svg { width: 14px; height: 14px; }
+.v2-card__date { font-family: var(--font-body); font-size: 12px; line-height: 14.31px; color: #2f2f2f; }
+.v2-card__sep { display: inline-block; width: 1px; height: 11px; background: #a3a3a3; margin: 0 var(--space-2, 8px); flex-shrink: 0; }
+.v2-card__author-name { font-family: var(--font-body); font-size: 12px; line-height: 14.31px; color: #2f2f2f; text-decoration: none; transition: color 0.15s ease; }
+.v2-card__author-name:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+/* Title — Space Grotesk, no blue */
+.v2-card__title { font-family: var(--font-display); font-size: 20px; font-weight: 600; line-height: 24px; letter-spacing: 0; color: var(--black); margin: 0; }
+.v2-card__title a { color: var(--black, #111010); text-decoration: none; }
+.v2-card:hover .v2-card__title a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+/* Tag chips — same dotted style as related-card tags */
+.v2-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.v2-card__tag {
+  display: inline-flex; align-items: center;
+  height: 24px; padding: 0 var(--space-3, 12px);
+  border: 1.5px dotted var(--black, #111010);
+  background: transparent;
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.06em;
+  text-transform: uppercase; text-decoration: none; color: var(--black, #111010);
+  cursor: pointer; transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.v2-card__tag:hover { background: var(--black, #111010); color: var(--white, #FFF); }
+
+/* Sidebar — Stay updated box */
+.tag-v2-sidebar { position: sticky; top: 80px; }
+.stay-updated {
+  border: 1px dashed var(--black, #111010);
+  padding: var(--space-5, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+}
+.stay-updated__head { display: flex; align-items: center; gap: 8px; }
+.stay-updated__icon { width: 18px; height: 14px; color: var(--black, #111010); flex-shrink: 0; }
+.stay-updated__label {
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--black, #111010);
+}
+.stay-updated__link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px; font-weight: 600; color: var(--black, #111010);
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+.stay-updated__link:hover { text-decoration-thickness: 2px; }
+
+/* Mobile: stack everything */
+@media (max-width: 768px) {
+  .tag-v2-layout { grid-template-columns: 1fr; gap: 24px; }
+  .v2-card { grid-template-columns: 1fr; gap: 14px; }
+  .v2-card__img, .v2-card__img-placeholder { width: 100% !important; aspect-ratio: 16/9 !important; }
+  .v2-card__topmeta { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .v2-card__title { font-size: 20px; }
+  .tag-v2-sidebar { position: static; }
+}
+
+
+/* Variant 1 header subscribe button */
+.v1-subscribe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: var(--space-2, 8px);
+  padding: 10px 16px;
+  border: 1px solid var(--black, #111010);
+  font-family: 'Space Mono', var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black, #111010);
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.v1-subscribe-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.v1-subscribe-btn:hover { background: #DCE2EA; color: var(--black, #111010); }
 
 </style>
 </head>
@@ -3758,7 +3936,11 @@ footer {
 <div class="section-strip">
   <div class="section-strip-inner">
     <h1 class="section-strip-title" id="tag-title"><span class="section-strip-slash">//</span>Category: AI</h1>
-    <p class="section-strip-desc" id="tag-desc">Articles tagged AI</p>
+    <p class="section-strip-desc" id="tag-desc">Stay updated by clicking the subscribe button</p>
+    <a href="#" class="v1-subscribe-btn"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="2" y="3" width="12" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <polyline points="2,4 8,9 14,4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </svg> Subscribe</a>
   </div>
 </div>
 
@@ -3889,14 +4071,6 @@ footer {
     </div>
   </div>
   </div>
-  <span class="blog-subscribe-label">Stay updated</span>
-  <a href="#" class="blog-subscribe-btn">
-    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="2" y="3" width="12" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-      <polyline points="2,4 8,9 14,4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-    Subscribe
-  </a>
 </div>
 
 <div class="recent-section">
@@ -3972,7 +4146,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Marcus Webb</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Apr 28, 2025</span>
+          <span class="fig-date">April 28, 2025</span>
         </div>
       </div>
     </a>
@@ -3997,7 +4171,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Sarah Chen</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Apr 21, 2025</span>
+          <span class="fig-date">April 21, 2025</span>
         </div>
       </div>
     </a>
@@ -4022,7 +4196,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">William Parker</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Apr 14, 2025</span>
+          <span class="fig-date">April 14, 2025</span>
         </div>
       </div>
     </a>
@@ -4047,7 +4221,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Jacob Anderson</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Apr 7, 2025</span>
+          <span class="fig-date">April 7, 2025</span>
         </div>
       </div>
     </a>
@@ -4072,7 +4246,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Emily Johnson</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Mar 31, 2025</span>
+          <span class="fig-date">March 31, 2025</span>
         </div>
       </div>
     </a>
@@ -4097,7 +4271,7 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Marcus Webb</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Mar 24, 2025</span>
+          <span class="fig-date">March 24, 2025</span>
         </div>
       </div>
     </a>
@@ -4122,13 +4296,402 @@ footer {
           <div class="fig-avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <span class="fig-author-name">Sarah Chen</span>
           <div class="fig-divider"></div>
-          <span class="fig-date">Mar 17, 2025</span>
+          <span class="fig-date">March 17, 2025</span>
         </div>
       </div>
     </a>
 
   </div>
 </div>
+
+
+
+<!-- ────────────────────────  VARIANT 2 ──────────────────────── -->
+<section class="tag-v2">
+  <div class="tag-v2-inner">
+    <div class="tag-v2-header">
+      <h1 class="section-strip-title tag-v2-title"><span class="section-strip-slash">//</span>Variant 2</h1>
+      <p class="section-strip-desc tag-v2-desc">Articles tagged AI</p>
+    </div>
+    <div class="tag-v2-filter">
+      <div class="v2-filter-head">
+        <svg class="v2-filter-head__icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 4h16M5 10h10M8 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="v2-filter-head__label">Filters</span>
+      </div>
+      <div class="blog-filter-area">
+  <span class="blog-filter-by-label">Filter by</span>
+  <div class="blog-filter-row">
+    <div class="blog-filter is-filtered" data-filter="blog" data-default-label="All blogs">
+    <button class="blog-filter-btn" onclick="toggleBlogFilter(this)">
+      <span class="blog-filter-clear" onclick="clearFilter(event, this)" role="button" aria-label="Clear filter" tabindex="0">
+        <svg viewBox="0 0 10 10" width="8" height="8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 2 L8 8 M8 2 L2 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="blog-filter-label">All blogs</span>
+      <svg class="blog-filter-chev" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><polygon points="2,4 10,4 6,9" fill="currentColor"/></svg>
+    </button>
+    <div class="blog-filter-menu">
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Elasticsearch Labs&#39;)">Elasticsearch Labs</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Observability Labs&#39;)">Observability Labs</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Security Labs&#39;)">Security Labs</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;News&#39;)">News</a>
+      <a href="#" class="blog-filter-opt is-active" onclick="selectFilter(event, &#39;All blogs&#39;)">All blogs</a>
+    </div>
+  </div>
+    <div class="blog-filter is-filtered" data-filter="categories" data-default-label="Categories">
+    <button class="blog-filter-btn" onclick="toggleBlogFilter(this)">
+      <span class="blog-filter-clear" onclick="clearFilter(event, this)" role="button" aria-label="Clear filter" tabindex="0">
+        <svg viewBox="0 0 10 10" width="8" height="8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 2 L8 8 M8 2 L2 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="blog-filter-label">AI</span>
+      <svg class="blog-filter-chev" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><polygon points="2,4 10,4 6,9" fill="currentColor"/></svg>
+    </button>
+    <div class="blog-filter-menu">
+      <div class="blog-filter-opt-wrap">
+        <a href="#" class="blog-filter-opt blog-filter-opt--has-submenu is-active" onclick="selectFilter(event, &#39;AI&#39;)">
+          <span>AI</span>
+          <svg class="blog-filter-opt-flyarrow" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,2 8,5 3,8" fill="currentColor"/></svg>
+        </a>
+        <div class="blog-filter-submenu" role="menu">
+          <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Generative AI&#39;)">Generative AI</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Embeddings&#39;)">Embeddings</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;LLMs&#39;)">LLMs</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;RAG&#39;)">RAG</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Semantic Search&#39;)">Semantic Search</a>
+        </div>
+      </div>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Developer Experience&#39;)">Developer Experience</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Elastic Cloud Hosted&#39;)">Elastic Cloud Hosted</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Elastic Cloud Serverless&#39;)">Elastic Cloud Serverless</a>
+      <div class="blog-filter-opt-wrap">
+        <a href="#" class="blog-filter-opt blog-filter-opt--has-submenu" onclick="selectFilter(event, &#39;Hybrid Search&#39;)">
+          <span>Hybrid Search</span>
+          <svg class="blog-filter-opt-flyarrow" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,2 8,5 3,8" fill="currentColor"/></svg>
+        </a>
+        <div class="blog-filter-submenu" role="menu">
+          <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Sparse Vectors&#39;)">Sparse Vectors</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Dense Vectors&#39;)">Dense Vectors</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;BM25&#39;)">BM25</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Reranking&#39;)">Reranking</a>
+        </div>
+      </div>
+      <div class="blog-filter-opt-wrap">
+        <a href="#" class="blog-filter-opt blog-filter-opt--has-submenu" onclick="selectFilter(event, &#39;Index Data&#39;)">
+          <span>Index Data</span>
+          <svg class="blog-filter-opt-flyarrow" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,2 8,5 3,8" fill="currentColor"/></svg>
+        </a>
+        <div class="blog-filter-submenu" role="menu">
+          <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Mappings&#39;)">Mappings</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Ingest Pipelines&#39;)">Ingest Pipelines</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Bulk API&#39;)">Bulk API</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Reindex&#39;)">Reindex</a>
+        </div>
+      </div>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Inside Elastic&#39;)">Inside Elastic</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Integrations&#39;)">Integrations</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Jina AI&#39;)">Jina AI</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Kubernetes&#39;)">Kubernetes</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Lucene&#39;)">Lucene</a>
+      <div class="blog-filter-opt-wrap">
+        <a href="#" class="blog-filter-opt blog-filter-opt--has-submenu" onclick="selectFilter(event, &#39;Operations&#39;)">
+          <span>Operations</span>
+          <svg class="blog-filter-opt-flyarrow" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,2 8,5 3,8" fill="currentColor"/></svg>
+        </a>
+        <div class="blog-filter-submenu" role="menu">
+          <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Monitoring&#39;)">Monitoring</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Backup & Restore&#39;)">Backup & Restore</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Performance Tuning&#39;)">Performance Tuning</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Sharding&#39;)">Sharding</a>
+        </div>
+      </div>
+      <div class="blog-filter-opt-wrap">
+        <a href="#" class="blog-filter-opt blog-filter-opt--has-submenu" onclick="selectFilter(event, &#39;Query Languages&#39;)">
+          <span>Query Languages</span>
+          <svg class="blog-filter-opt-flyarrow" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,2 8,5 3,8" fill="currentColor"/></svg>
+        </a>
+        <div class="blog-filter-submenu" role="menu">
+          <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;ES|QL&#39;)">ES|QL</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;Query DSL&#39;)">Query DSL</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;KQL&#39;)">KQL</a>
+        <a href="#" class="blog-filter-opt blog-filter-opt--child" onclick="selectFilter(event, &#39;SQL&#39;)">SQL</a>
+        </div>
+      </div>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Vector Database&#39;)">Vector Database</a>
+    </div>
+  </div>
+    <div class="blog-filter" data-filter="lang" data-default-label="Coding Language">
+    <button class="blog-filter-btn" onclick="toggleBlogFilter(this)">
+      <span class="blog-filter-clear" onclick="clearFilter(event, this)" role="button" aria-label="Clear filter" tabindex="0">
+        <svg viewBox="0 0 10 10" width="8" height="8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 2 L8 8 M8 2 L2 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="blog-filter-label">Coding Language</span>
+      <svg class="blog-filter-chev" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><polygon points="2,4 10,4 6,9" fill="currentColor"/></svg>
+    </button>
+    <div class="blog-filter-menu">
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;.NET&#39;)">.NET</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Go&#39;)">Go</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Java&#39;)">Java</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;JavaScript&#39;)">JavaScript</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;PHP&#39;)">PHP</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Python&#39;)">Python</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;Ruby&#39;)">Ruby</a>
+      <a href="#" class="blog-filter-opt" onclick="selectFilter(event, &#39;All coding languages&#39;)">All coding languages</a>
+    </div>
+  </div>
+  </div>
+</div>
+    </div>
+    <div class="tag-v2-layout">
+
+      <div class="tag-v2-cards">
+        <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Sarah+Chen">Sarah Chen</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">May 12, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Build a smarter RAG pipeline with Elasticsearch and Anthropic Claude</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Vector+Database&quot;">Vector Database</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Marcus+Webb">Marcus Webb</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">May 5, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Inference API deep dive: bring your own model to Elasticsearch</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Integrations&quot;">Integrations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Marcus+Webb">Marcus Webb</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">April 28, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Monitoring AI workloads: token usage, latency, and cost tracking</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Operations&quot;">Operations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Sarah+Chen">Sarah Chen</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">April 21, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Hybrid RAG: combining BM25 with dense vectors for accurate retrieval</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Hybrid+Search&quot;">Hybrid Search</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=William+Parker">William Parker</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">April 14, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Comparing embedding models: OpenAI vs Cohere vs ELSER vs open-source</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Vector+Database&quot;">Vector Database</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Jacob+Anderson">Jacob Anderson</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">April 7, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Detecting model drift in production with Elastic ML</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Operations&quot;">Operations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #f35d00;"></span>
+                  <span class="v2-card__lab-text">Observability Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Emily+Johnson">Emily Johnson</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">March 31, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Multilingual semantic search with Jina embeddings v3</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Jina+AI&quot;">Jina AI</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #f35d00;"></span>
+                  <span class="v2-card__lab-text">Observability Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Marcus+Webb">Marcus Webb</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">March 24, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">Production patterns for LangChain + Elasticsearch</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Developer+Experience&quot;">Developer Experience</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="v2-card">
+            <a class="v2-card__img" href="sunny-elastic-article.html" aria-hidden="true" tabindex="-1">
+              <div class="v2-card__img-placeholder"></div>
+            </a>
+            <div class="v2-card__content">
+              <div class="v2-card__topmeta">
+                <span class="v2-card__lab">
+                  <span class="v2-card__lab-dot" style="background: #00BFB3;"></span>
+                  <span class="v2-card__lab-text">Elasticsearch Labs</span>
+                </span>
+                <span class="v2-card__author-line">
+                  <span class="v2-card__avatar"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6.5" r="3" stroke="currentColor" stroke-width="1.2"/><path d="M2.5 16c0-3.038 2.91-5.5 6.5-5.5s6.5 2.462 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                  <a class="v2-card__author-name" href="sunny-elastic-author.html?author=Sarah+Chen">Sarah Chen</a>
+                  <span class="v2-card__sep"></span>
+                  <time class="v2-card__date">March 17, 2025</time>
+                </span>
+              </div>
+              <h5 class="v2-card__title"><a href="sunny-elastic-article.html">End-to-end tracing for AI applications with OpenTelemetry</a></h5>
+              <div class="v2-card__tags">
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=AI&quot;">AI</span>
+              <span class="v2-card__tag" role="link" tabindex="0" onclick="event.preventDefault(); window.location.href=&quot;sunny-elastic-tag.html?tag=Operations&quot;">Operations</span>
+              </div>
+            </div>
+          </article>
+      </div>
+
+      <aside class="tag-v2-sidebar">
+        <div class="stay-updated">
+          <div class="stay-updated__head">
+            <svg class="stay-updated__icon" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0.6" y="0.6" width="16.8" height="12.8" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M1 1L9 7.5L17 1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            <span class="stay-updated__label">Stay updated</span>
+          </div>
+          <a class="stay-updated__link" href="#">Subscribe</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+<!-- ──────────────────── end Variant 2 ──────────────────── -->
 
 <!-- FOOTER -->
 <footer>
