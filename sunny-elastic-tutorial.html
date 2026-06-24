@@ -288,11 +288,15 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid var(--silver);
 }
 .article-page__content a {
-  color: var(--black);
+  color: var(--color-elastic-blue, #0B64DD);
   text-decoration: underline;
-  text-decoration-color: var(--color-elastic-blue);
+  text-decoration-color: var(--color-elastic-blue, #0B64DD);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: inherit;
+}
+.article-page__content a:hover {
   text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
 }
 .article-page__content strong { font-weight: 600; }
 
@@ -1041,7 +1045,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   transition: background 0.1s;
 }
 .secondary-nav__menu-opt:last-child { border-bottom: none; }
-.secondary-nav__menu-opt:hover { background: var(--cream, #F5F7FA); }
+.secondary-nav__menu-opt:hover { background: #DCE2EA; }
 .secondary-nav__menu-num {
   font-size: 11px;
   color: #595959;
