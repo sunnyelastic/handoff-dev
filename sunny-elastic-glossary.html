@@ -25,9 +25,9 @@
   --color-border: var(--black);
   --color-elastic-blue:   #0B64DD;
   --color-teal:           #00BFB3;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', -apple-system, sans-serif;
-  --font-mono:    'Roboto Mono', 'Courier New', monospace;
+  --font-display: 'Space Grotesk', 'Trebuchet MS', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-mono:    'Space Mono', 'Roboto Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
 
   /* ── Spacing — factor of 8 ── */
   --space-1:   4px;
@@ -211,13 +211,14 @@ a { text-decoration: none; color: inherit; }
   list-style: none;
   transition: color 0.15s;
 }
-.nav-items details summary:hover { color: var(--black); }
+.nav-items details summary:hover { color: var(--color-elastic-blue, #0B64DD); }
 .nav-items details summary.is-active { color: var(--color-elastic-blue); font-weight: 600; }
 .nav-items details summary::-webkit-details-marker { display: none; }
 .nav-items details summary::after { content: " ▾"; }
 .nav-items details:not([open]) summary::after { content: " ▸"; }
 .nav-items details ul { list-style: none; padding: 8px 0 0 16px; margin: 0; }
-.nav-items details ul li a { font-size: 12px; color: var(--color-text-subdued); }
+.nav-items details ul li a { font-size: 12px; color: var(--color-text-ink); text-decoration: none; transition: color 0.15s; }
+.nav-items details ul li a:hover { color: var(--color-elastic-blue, #0B64DD); }
 
 /* Right: Article content */
 .article-page__content { min-width: 0; }
@@ -767,7 +768,7 @@ footer {
 
   /* ── Mobile type scale: clear hierarchy ── */
   .section-strip-title { font-size: 64px !important; line-height: 1.1; }
-  .section-strip-slash { font-size: 30px !important; }
+  .section-strip-slash { color: var(--color-text-subdued, #69707D); }
   .section-strip-desc { font-size: 20px; }
   .fig-title { font-size: 20px !important; line-height: 1.25; }
   .blog-series-title { font-size: 22px !important; }
@@ -1159,7 +1160,7 @@ a.author-chip:hover { text-decoration: underline; text-underline-offset: 3px; te
   font-size: 20px;
   line-height: 1.6;
   color: var(--black, #111010);
-  max-width: 900px;
+  max-width: 800px;
   margin: 0;
 }
 .section-strip-title {
